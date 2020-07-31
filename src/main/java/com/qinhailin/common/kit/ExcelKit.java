@@ -16,11 +16,13 @@
 
 package com.qinhailin.common.kit;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -54,7 +56,7 @@ import com.jfinal.plugin.activerecord.Record;
 public class ExcelKit {
 
 	/**
-	 * 读取xecell数据
+	 * 读取xecell、csv数据
 	 * 
 	 * @param file
 	 * @return
@@ -80,7 +82,10 @@ public class ExcelKit {
 			} catch (InvalidFormatException | IOException e) {
 				e.printStackTrace();
 			}
+		} else if (".csv".equals(type)){
+			return getCSVData(file);
 		}
+		
 
 		return getData(file).get(0);
 	}
@@ -399,4 +404,30 @@ public class ExcelKit {
 		response.getOutputStream().close();
 		workbook.close();
 	}
+	
+	/**
+	 * 读取csv的数据
+	 * @param file
+	 * @return
+	 */
+	public static List<Object[]> getCSVData(File file) {
+		ArrayList<Object[]> list = new ArrayList<>();
+        try {
+            InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "GBK");
+            BufferedReader reader = new BufferedReader(isr);
+            //第一行信息，为标题信息
+            reader.readLine();
+            String line = null;
+            //第二行开始
+            while ((line = reader.readLine()) != null) {
+                String item[] = line.split(",");
+                System.out.println(line);
+                list.add(item);
+            }
+            System.out.println("从CSV中读取到的数据：" + list);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        return list;
+    }
 }
