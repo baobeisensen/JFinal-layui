@@ -232,7 +232,7 @@ function showLeftTree(treeNode,num,spred){
 	if(nodeNum>2){
 		spred=false;
 	}
-	leftNodes+="{name:'"+text+"',spread:"+spred+",id:'"+id+"',children:[";
+	leftNodes+="{title:'"+text+"',spread:"+spred+",id:'"+id+"',children:[";
 	var children=treeNode.children;
 	if(children.length>0){
 		for(var i=0;i<children.length;i++){			
@@ -259,28 +259,29 @@ function leftTree(){
 		var node=[strToJson(leftNodes.replace("undefined",""))];
 		leftOtions={
 				elem: '#leftLayout' //传入元素选择器
-				,skin: 'skin'			
+				,onlyIconControl: true  //是否仅允许节点左侧图标控制展开收缩						
 				,click: function(item){ //点击节点回调
 				      treeClick(item);	
 				      $("#addBtn_2").off("click");//去掉添加按钮重复绑定事件	      			     
 				      getDictionaryValueList();	
 				 }
-				,nodes: node				
+				,data: node				
 		}	
 		$('ul li').remove();
-		layui.tree(leftOtions);
+		layui.tree.render(leftOtions);
 	});
 }
 function treeClick(item){
-	name=item.name;
-    code=item.id;
-	var cite=document.getElementsByTagName('cite');
+	name=item.data.title;
+    code=item.data.id;
+	var cite=document.getElementsByTagName('span');
+	var event=window.event||arguments.callee.caller.arguments[0];//消除浏览器差异
     for(var i=0;i<cite.length;i++){
-  	  if(cite[i].innerText==item.name){
-		 document.getElementsByTagName('cite')[i].classList.add("cite")
-  	  }else{
-	     document.getElementsByTagName('cite')[i].classList.remove("cite")  
-  	  }
+    	if(cite[i]==event.srcElement){
+   		   cite[i].classList.add("cite")
+     	}else{
+   	       cite[i].classList.remove("cite")  
+     	}
     }
 
 }

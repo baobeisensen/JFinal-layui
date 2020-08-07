@@ -247,7 +247,7 @@ function showLeftTree(treeNode,num){
 	if(num!=0){
 		leftNodes+=",";
 	}
-	leftNodes+="{name:'"+text+"',spread:true,id:'"+id+"',children:[";
+	leftNodes+="{title:'"+text+"',spread:true,id:'"+id+"',children:[";
 	var children=treeNode.children;
 	if(children!=null&&children.length>0){
 		for(var i=0;i<children.length;i++){
@@ -296,23 +296,23 @@ function leftTree(){
 		var node=[strToJson(leftNodes.replace("undefined",""))];
 		leftOtions={
 				elem: '#leftLayout' //传入元素选择器
-				,skin: 'skin'			
+			    ,onlyIconControl: true  //是否仅允许节点左侧图标控制展开收缩				
 				,click: function(item){ //点击节点回调
 					treeClick(item);
 				 }
-				,nodes: node
+				,data: node
 				
 		}	
 		$('ul li').remove();
-		layui.tree(leftOtions);
+		layui.tree.render(leftOtions);
 	});
 }
 function treeClick(item){n=0;
-	$("#roleName").html(item.name);
-	roleName=item.name;
-    roleCode=item.id;  
+	$("#roleName").html(item.data.title);
+	roleName=item.data.title;
+    roleCode=item.data.id;  
     queryRoleFunctionTree(roleCode);
-    var cite=document.getElementsByTagName('cite');
+    var cite=document.getElementsByTagName('span');
     var event=window.event||arguments.callee.caller.arguments[0];//消除浏览器差异
     for(var i=0;i<cite.length;i++){
     	if(cite[i]==event.srcElement){
