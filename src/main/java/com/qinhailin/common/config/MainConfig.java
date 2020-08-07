@@ -63,7 +63,6 @@ public class MainConfig extends JFinalConfig {
 	         // 配置 UReport2 Servlet
 	         builder.addServlet("ureportServlet", "com.bstek.ureport.console.UReportServlet");
 	         builder.addServletMapping("ureportServlet", "/ureport/*");
-	         builder.addServletInitParam("ureportServlet", "key", "value");
 	         // 配置 Listener
 	         builder.addListener("org.springframework.web.context.ContextLoaderListener");
 	      })

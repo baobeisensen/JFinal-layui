@@ -142,6 +142,7 @@ public class SysOrgController extends BaseController {
 		if(b){			
 			String json=(String) getSession().getAttribute(entity.getId()+"sysUser");
 			sysUserService.saveUserList(JSONArray.parseArray(json), entity.getId());
+			getSession().removeAttribute(entity.getId()+"sysUser");
 		}
 		setAttr("sysOrg", entity);
 		CacheKit.removeAll("orgManager");
