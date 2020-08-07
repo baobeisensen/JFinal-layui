@@ -9,9 +9,10 @@
 <script type="text/javascript">
 	// 加载 ueditor，传入的初始化参数可以覆盖掉 ueditor.config.js 中的配置
 	// 对于同一项目中使用不同的配置的 ueditor 场景非常有用
-	var ue = UE.getEditor('container', {
-		initialFrameHeight:300
-		// , initialFrameWidth:796
+	var uId="#(ueditorId??'container')";
+	var height="#(ueditorHeight??300)";
+	var ue = UE.getEditor(uId, {
+		initialFrameHeight:height
 		,wordCount:false
 	});
 
