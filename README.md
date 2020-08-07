@@ -1,22 +1,19 @@
 # Jfinal-layui
 
 #### 介绍
-JFinal+layui极速开发企业应用管理系统，是以JFinal+layui为核心的企业应用项目架构，利用JFinal的特性与layui完美结合，达到快速启动项目的目的。让开发更简单高效，即使你不会layui，也能轻松掌握使用。该项目的核心功能有：登录、功能管理、角色管理（包含了权限管理）、用户管理、部门管理、系统日志、业务字典，通用的附件上传、下载、导入、导出，echart图表统计，缓存，druid的sql监控，基本满足企业应用管理系统的需求，简化了前段代码，后台公用接口都封装完善，你只需要开发业务功能即可。从后端架构到前端开发，从开发到部署，这真正的展现了jfinal极速开发的魅力。
+JFinal+layui极速开发企业应用管理系统，是以JFinal+layui为核心的企业应用项目架构，利用JFinal的特性与layui完美结合，达到快速启动项目的目的。让开发更简单高效，即使你不会layui，也能轻松掌握使用。该项目的核心功能有：登录、功能管理、角色管理（包含了权限管理）、用户管理、部门管理、系统日志、业务字典，报表管理、代码生成器、通用的附件上传、下载、导入、导出，echart图表统计，缓存，druid的sql监控，基本满足企业应用管理系统的需求，简化了前段代码，后台公用接口都封装完善，你只需要开发业务功能即可。从后端架构到前端开发，从开发到部署，这真正的展现了jfinal极速开发的魅力。
 
 #### 软件架构
 软件架构说明：
 核心架构：[jfinal](http://www.jfinal.com)，[jfinal-undertow](http://www.jfinal.com/doc/1-4)，[layui](https://www.layui.com/)，mysql，ehcach,rsa加密算法
 系统权限:通过“用户-角色-功能”三者关系来实现系统的权限控制，操作简单明了，代码实现极其简单，完全可以替代shiro，你不用再去折腾shiro那一套了，这都是得益于jfinal架构的巧妙设计。
 前端页面：封装了layui常用模块代码，参照使用例子，就能快速上手，无需担心不懂layui。
-系统日志：操作日志、数据日志、登录日志，无需注解和手动添加，就能跟踪记录数据，不担心数据丢失
+系统日志：操作日志、数据日志、登录日志，无需注解和手动添加，就能跟踪记录数据
 
 
 #### 友情链接
 
  **JFinal-layui在线演示系统：** [JFinal极速开发企业应用管理系统](http://www.qinhaisenlin.com:8080/)
- 系统登录账号：admin/123456
-
- **JFinal-layui代码在线生成器：** [代码生成器](http://www.qinhaisenlin.com/code)
 
  **JFinal-layui交流群：970045838**
 
@@ -30,7 +27,7 @@ JFinal+layui极速开发企业应用管理系统，是以JFinal+layui为核心�
 4. 访问地址：http://localhost;登录账号：admin/123456
 
 #### 使用说明
-jfinal的通用配置如果不是特别需要，不需要修改，直接开发你的功能即可，QQ交流群：970045838
+jfinal的通用配置如果不是特别需要，不需要修改，直接开发你的功能即可
 
 1. controller控制类：只需继承BaseController就能拥有上传、导入、导出等通用方法。
    ControllerBind的path、viewPath默认相同，也可自定义：
@@ -174,7 +171,10 @@ code:字典编号，name:元素name属性,text:选项名称，需要选中值，
 ![附件上传](https://images.gitee.com/uploads/images/2019/0105/220039_83ff97e3_1692092.png "附件上传.png")
 ![附件下载](https://images.gitee.com/uploads/images/2019/0105/220152_c1c0a0fc_1692092.png "附件下载.png")
 ![echart图表](https://images.gitee.com/uploads/images/2019/0105/220239_fea15866_1692092.png "echart图表.png")
-
+![代码生成器](https://images.gitee.com/uploads/images/2020/0807/111744_c69d2d87_1692092.png "代码生成器.png")
+![报表设计器](https://images.gitee.com/uploads/images/2020/0807/111819_fb934897_1692092.png "报表设计器.png")
+![可编辑表格](https://images.gitee.com/uploads/images/2020/0807/111924_16880ad0_1692092.png "可编辑表格.png")
+![联级多选](https://images.gitee.com/uploads/images/2020/0807/112021_1eefe7e1_1692092.png "联级多选.png")
  **4、响应式布局展示：** 
 
 ![移动端主菜单](https://images.gitee.com/uploads/images/2020/0121/175529_c0d9ea9e_1692092.png "移动端菜单.png")
