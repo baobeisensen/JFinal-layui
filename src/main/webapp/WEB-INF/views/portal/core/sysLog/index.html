@@ -73,4 +73,9 @@
 </script>
 
 #end
-
+#define layuiFunc()
+	form.on('select(remark)',function(data){
+		var value=data.value;
+		console.log("字典函数下拉选择值：",value)
+	})
+#end

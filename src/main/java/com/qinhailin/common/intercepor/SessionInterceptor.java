@@ -53,7 +53,7 @@ public class SessionInterceptor implements Interceptor {
 		boolean isAjax="XMLHttpRequest".equalsIgnoreCase(controller.getHeader("X-Requested-With"));
 		
 		//需要身份认证的地址
-		if (actionKey.startsWith("/portal")||actionKey.equals("/")) {
+		if (!actionKey.startsWith("/pub")) {
 			if (vs == null) {
 				//地址参数
 				String para=controller.getPara()==null?"":"/"+controller.getPara();

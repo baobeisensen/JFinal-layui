@@ -41,7 +41,7 @@
 
 <!-- 业务字典下拉函数 ，code:字典编号，name:元素name属性,text:选项名称 -->
 #define getSelect(code,name,text)
-<select id="select_#(code)_#(name==null?'':name.replace('.','_'))" name="#(name)" class="layui-input" lay-verType='tips' lay-verify="#(required)" #if(!disabled)lay-search#end #(disabled)>
+<select id="select_#(code)_#(name==null?'':name.replace('.','_'))" name="#(name)" class="layui-input" lay-verType='tips' lay-filter="#(name)" lay-verify="#(required)" #if(!disabled)lay-search#end #(disabled)>
 	<option value="">#(text)</option>
 </select>
 <script type="text/javascript">
@@ -55,7 +55,7 @@
 
 <!-- 自定义SQL下拉函数，code:sql编号，name:元素name属性,text:选项名称 -->
 #define getSelectBySql(code,name,text)
-<select id="select_#(code)_#(name==null?'':name.replace('.','_'))" name="#(name)" class="layui-input" lay-verType='tips' lay-verify="#(required)" #if(!disabled)lay-search#end #(disabled)>
+<select id="select_#(code)_#(name==null?'':name.replace('.','_'))" name="#(name)" class="layui-input" lay-verType='tips' lay-filter="#(name)" lay-verify="#(required)" #if(!disabled)lay-search#end #(disabled)>
 	<option value="">#(text)</option>
 </select>
 <script type="text/javascript">
