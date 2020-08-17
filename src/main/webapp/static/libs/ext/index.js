@@ -106,17 +106,18 @@ layui.config({
     $('ul.beg-navbar>li').on('click',function () {
     	var sideWidth = $('#admin-side').width();
     	if(sideWidth<200){
-    		setDivWidth(200);
+    		setDivWidth(110);
     		showAndHide('');   
     		layer.close(sideTips);
     	}
     });
-    //TODO,鼠标悬浮事件，显示菜单标题
+    //鼠标悬浮事件，显示菜单标题
     $('ul.beg-navbar>li').on({
         mouseenter:function(){
         	var aEl = $(this).children('a');
         	var citeEl = aEl.children('cite');
-        	if(citeEl.css('display') == 'none'){
+        	if(citeEl.css('display') == 'none'
+        		||$('#admin-side').width()<200){
         		sideTips = layer.tips(citeEl.text(), aEl, {
                     tips: [2, '#000'],time:0
                 });
