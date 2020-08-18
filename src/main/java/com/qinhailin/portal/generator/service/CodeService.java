@@ -187,10 +187,7 @@ public class CodeService{
 		
 		result.set("BaseModel.java", createBaseModelCode(record.getStr("name"),modelName));		
 		codeJava.add("BaseModel.java");
-		
-		result.set("_MappingKit.java", createMappingKitCode((String[])record.get("tableNames"),modelName));
-		codeJava.add("_MappingKit.java");
-		
+				
 		result.set("codeJava", codeJava);
 		result.set("codeHtml", codeHtml);
 		
@@ -214,7 +211,7 @@ public class CodeService{
 		@SuppressWarnings("unchecked")
 		List<TableMeta> tableMetas=(List<TableMeta>) queryTablesList(record).getList();
 		
-		String template = "/com/jfinal/plugin/activerecord/generator/model_template.jf";
+		String template = "/com/qinhailin/portal/generator/model_template.jf";
 		Kv data = Kv.by("modelPackageName", modelPackageName);
 		data.set("baseModelPackageName", baseModelPackageName);
 		data.set("generateDaoInModel", false);
@@ -247,36 +244,7 @@ public class CodeService{
 		String content=engine.getTemplate(template).renderToString(data);
 		return content;
 	}
-	
-	/**
-	 * 创建数据表映射文件_MappingKit.java代码
-	 * @param tableNames
-	 * @param className
-	 * @author QinHaiLin
-	 * @date 2020-02-21
-	 */
-	@SuppressWarnings("unchecked")
-	public String createMappingKitCode(String[] tableNames,String className){
-		// MappingKit 所使用的包名
-		String mappingKitPackageName = className.substring(0, className.lastIndexOf("."));
-		Record record=new Record();
-		record.set("pageNumber", "1").set("pageSize", "1");
-		List<TableMeta> tableMetas=new ArrayList<>();
-		
-		for(String tableName:tableNames){
-			record.set("name",tableName);
-			List<TableMeta> tableMeta=(List<TableMeta>) queryTablesList(record).getList();
-			tableMetas.addAll(tableMeta);
-		}		
-		
-		String template = "/com/jfinal/plugin/activerecord/generator/mapping_kit_template.jf";
-		Kv data = Kv.by("mappingKitPackageName", mappingKitPackageName);
-		data.set("mappingKitClassName", "_MappingKit");
-		data.set("tableMetas", tableMetas);
-		
-		return engine.getTemplate(template).renderToString(data);
-	}
-		
+			
 	/**
 	 * 下载文件
 	 * @param type
