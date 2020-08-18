@@ -121,9 +121,35 @@
 	</dependencies>
 	<build>
 		<!-- <finalName>jfinal-layui</finalName> -->
+		<!--
+		    添加 includes 配置后，excludes 默认为所有文件 **/*.*，反之亦然
+		    该规则在 maven-jar-plugin 等插件中同样适用
+		-->
+		<resources>
+			<!-- 添加该配置是为了将 .sql 文件打入 jar 包 -->
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<!-- **/* 前缀用法，可以匹配所有路径 -->
+					<include>**/*.jf</include>
+					<include>**/*.sql</include>
+					<include>**/*.class</include>
+				</includes>
+			</resource>
+			
+			<!--
+				没有添加 resources 配置时，src/main/resources 目录是默认配置
+			    一旦添加 resources 配置指向 src/main/java 目录时，原先的默认配置被取代，
+			    所以需要添加如下配置将默认配置再添加进来，否则无法使用 src/main/resources
+			    下的资源文件
+			-->
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
 		
 		<plugins>
-			
+	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
