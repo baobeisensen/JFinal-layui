@@ -110,7 +110,6 @@ public class MainConfig extends JFinalConfig {
 	public void configRoute(Routes me) {
 		// 配置ControllerBind注解路由
 		AutoBindRoutes autoBindRoutes = new AutoBindRoutes();
-		autoBindRoutes.includeAllJarsInLib(true);
 		autoBindRoutes.setBaseViewPath(WebContant.baseViewPath);
 		me.add(autoBindRoutes);
 	}

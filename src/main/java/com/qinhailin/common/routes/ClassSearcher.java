@@ -151,7 +151,7 @@ public class ClassSearcher {
 
 	private String classpath = PathKit.getRootClassPath();
 
-	private boolean includeAllJarsInLib = false;
+	private boolean includeAllJarsInLib = true;
 
 	private List<String> includeJars = new ArrayList<String>();
 
