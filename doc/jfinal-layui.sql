@@ -81,7 +81,7 @@ CREATE TABLE sys_function  (
   parent_code varchar(40)  COMMENT '上级编号',
   parent_name varchar(100)   COMMENT '上级名称',
   func_type int(11)  DEFAULT 0 COMMENT '功能类型(0:菜单,1:按钮)',
-  icon varchar(50)    COMMENT '图标',
+  icon varchar(100)    COMMENT '图标',
   order_no int(11)  COMMENT '排序',
   descript varchar(255)  COMMENT '注释',
   spread int(11) DEFAULT 1 COMMENT '是否展开菜单(0:展开,1:不展开)',
