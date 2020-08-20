@@ -26,7 +26,10 @@
 #sql("update")
 	UPDATE #(tableName) SET
 	#for(x : cond)
-    	 #(for.first ? "": ",")#(x.key) #para(x.value)
+    	 #(for.first ? "": ",")#(x.key)=#para(x.value)
+  	#end
+  	#for(y : whereCond)
+  		#(for.first ? " where ": ",")#(y.key)=#para(y.value)
   	#end
 #end
 
