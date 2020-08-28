@@ -172,8 +172,12 @@ public class SysOrgController extends BaseController {
 	 * @date 2020-06-05
 	 */
 	public void saveTableTata(){
-		//暂存从表数据
-		getSession().setAttribute(getPara("orgId")+"sysUser", getPara("tableList"));
+		if("formTable".equals(getPara("type"))){
+			sysUserService.saveUserList(JSONArray.parseArray(getPara("tableList")), getPara("orgId"));
+		}else{
+			//暂存从表数据
+			getSession().setAttribute(getPara("orgId")+"sysUser", getPara("tableList"));			
+		}
 		renderJson(ok());
 	}
 }
