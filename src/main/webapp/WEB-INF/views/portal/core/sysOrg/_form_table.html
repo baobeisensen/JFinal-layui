@@ -54,7 +54,7 @@
 			</div>
 		
 		<!-- 从表数据 -->
-		#include("_table.html")
+		#@subTable(['用户管理']);
 			
 		<div class="layui-row layui-col-space1 task-row">
 				<div class="layui-hide-xs layui-col-sm12 layui-col-md4">
@@ -76,5 +76,74 @@
 	  #@submitFunction()
   		
 
+#define js()
+#@subTableJs()
+<!-- 分页表格 -->
+<script>
+renderSubTable1('#(sysOrg.id??)');
+
+var params_sex=[{value:0,name:"女"},{value:1,name:"男"}];
+var params_yesno=[{value:0,name:"是"},{value:1,name:"否"}];
+var params = [{value:1,name:"张三1"},{value:2,name:"张三2"},{value:3,name:"张三3"},{value:4,name:"张三4"},{value:5,name:"张三5"}];
+
+/*=====表格1=====*/
+function renderSubTable1(orgId){
+	//获取默认配置
+	var config=editTable.config;
+	//查询数据接口
+	config.queryUrl="#(path)/portal/core/sysUser/list";
+	config.params={"type":"org","orgId":orgId};
+	//保存数据接口
+	config.saveUrl="#(path)/portal/core/sysOrg/saveTableTata?orgId="+orgId;
+	//删除接口
+	config.deleteUrl="#(path)/portal/core/sysUser/delete";
+	//添加行数据参数，可以给默认值
+	config.rowData={
+			"user_code":"test",
+			"user_name":"托尔斯泰",
+			"org_name":null,
+			"sex":"1",
+			"mobile":null,
+			"tel":null,
+			"email":null,
+			"allow_login":0
+	};
+	
+	//表格列表设置
+	editTable.render(config,{
+		  elem: '#'+config.tableId
+	      ,height: '300'
+	      ,toolbar:'#'+config.toolbar
+	      ,cols: [[ 
+	      		 {field : 'id',type:'checkbox'}
+	             ,{title:'序号',type:'numbers',width:35}
+	             ,{field:'user_code',title: '用户名',edit:true}
+	             ,{field:'user_name',align:'center', title: '姓名',width:120,edit:true}               
+	             ,{field:'sex', title: '性别',event:'sex'
+	                 ,config:{type:'select',data:params_sex},templet:function(d){
+	                 	if(d.sex&&d.sex.name){
+	                          return  d.sex.name; 
+	                     }
+	                     return d.sex == 0 ? '女' : '男';
+	                 }
+	             }
+	             ,{field:'mobile', title: '手机 ',edit:true}
+	             ,{field:'tel', title: '电话',edit:true}
+	             ,{field:'email', title: '邮箱',edit:true}
+	             ,{field:'allow_login', title: '允许登录',event:'allow_login'
+	                 ,config:{type:'select',data:params_yesno},templet:function (d) {
+	                    if(d.allow_login&&d.allow_login.name){
+	                        return  d.allow_login.name;
+	                    }
+	                     return d.allow_login == 0 ? '是' : '否';
+	             	  }
+	            }
+			,{fixed: 'right', title:'操作', toolbar: '#'+config.rowbar,width:100 }
+		]]
+	});
+	
+}
+</script>
+#end
 
 

@@ -96,13 +96,17 @@
 <!-- 条件查询div start -->
 #define queryStart(lable)
 		<div class="layui-inline" style="#(style)">
-			<!-- <label class="layui-form-label" for="sex_id">#(lable??)</label>
-			<div class="layui-input-block"> -->
+		    #if(showLabel==true)
+			<label class="layui-form-label" for="sex_id">#(lable??)</label>
+			<div class="layui-input-block">
+			#end
 #end
-#define queryEnd()				
-			<!-- </div> -->
+#define queryEnd()	
+ 			#if(showLabel==true)			
+			 </div>
+			#end
 		</div>
-#set(style="")
+#set(style="",showLabel=false)
 #end
 <!-- 条件查询div end -->
 

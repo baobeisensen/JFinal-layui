@@ -1,0 +1,38 @@
+<title>子表表格函数</title>
+### items=['用户管理','用户管理2',...]
+#define subTable(items)
+	<div class="layui-tab layui-tab-card">
+		  <ul class="layui-tab-title">
+		  	#for(x:items)	 		
+			    <li #if(for.first) class="layui-this" #end>#(x)</li>
+			 #end
+		  </ul>
+		  <div class="layui-tab-content" style="height: 300px">
+		  	#for(x:items)
+		  		<!-- 内容#(for.count)-->
+			    <div class="layui-tab-item #if(for.first) layui-show #end">	   	
+				   	<table class="layui-hide" id="tab_item_#(for.count)" lay-filter="tab_item_#(for.count)"></table>  
+				   	<!-- 表头工具栏 -->
+				   	<script type="text/html" id="table_toolbar_#(for.count)">
+  						<div class="layui-btn-group">
+							<button class="layui-btn layui-btn-normal layui-btn-sm" id="add_btn_#(for.count)" type="button">
+				  				<i class="layui-icon">&#xe608;</i> 新增
+							</button>
+							<button class="layui-btn layui-btn-normal layui-btn-sm" id="save_btn_#(for.count)" type="button">
+				  				<i class="layui-icon">&#xe605;</i> 保存
+							</button>
+						</div>
+					</script>
+					<!-- 	每行的操作按钮 -->
+					<script type="text/html" id="table_rowbar_#(for.count)">
+  						<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del_btn_#(for.count)">删除</a>
+					</script>	
+			    </div>
+			#end
+		  </div>
+	</div>
+
+#end	
+#define subTableJs()
+	<script src="#(path)/static/portal/core/sysOrg/tab-item.js?t=#now()" type="text/javascript" ></script>
+#end

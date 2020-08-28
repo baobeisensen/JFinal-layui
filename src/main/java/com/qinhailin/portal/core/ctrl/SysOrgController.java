@@ -21,6 +21,7 @@ import java.util.Collection;
 
 import com.alibaba.fastjson.JSONArray;
 import com.jfinal.aop.Inject;
+import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
 import com.qinhailin.common.base.BaseController;
@@ -46,7 +47,23 @@ public class SysOrgController extends BaseController {
 	SysUserService sysUserService;
 
 	public void index() {
+		String str=getPara(0);
 		render("index.html");
+		if(str!=null)
+			render("index_sub_table.html");
+	}
+	
+	public void list(){
+		Record record = new Record();
+		String showSubOrg=getPara("showSubOrg");
+		String orgName=getPara("orgName");
+
+		if(showSubOrg!=null&&orgName!=null&&showSubOrg.equals("1")){
+			record.set("org_name like '%"+orgName+"%' or parentid_name like",orgName);			
+		}else{		
+			record.set("org_name like", getPara("orgName"));
+		}
+		renderJson(service.queryForList(getParaToInt("pageNumber", 1), getParaToInt("pageSize", 10), record));
 	}
 
 	public void add() {
