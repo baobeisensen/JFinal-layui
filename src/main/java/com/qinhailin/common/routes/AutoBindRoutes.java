@@ -33,7 +33,7 @@ public class AutoBindRoutes extends Routes {
 
 	private List<Class<? extends Controller>> excludeClasses = new ArrayList<>();
 
-	private boolean includeAllJarsInLib = false;
+	private boolean includeAllJarsInLib = true;
 
 	private List<String> includeJars = new ArrayList<String>();
 
