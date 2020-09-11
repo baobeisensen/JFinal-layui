@@ -6,4 +6,5 @@
 	#include("add.sql")
 	#include("edit.sql")
 	#include("_form.sql")
+	#include("index_subtable.sql")
 #end

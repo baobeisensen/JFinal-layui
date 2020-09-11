@@ -144,7 +144,11 @@ INSERT INTO sys_function VALUES ('sql_sys_tree_delete', '删除', 0, '/portal/fo
 INSERT INTO sys_function VALUES ('sql_sys_tree_update', '修改', 0, '/portal/form/sysTree/update', 'sql_sys_tree', 'sql分类树', 1, NULL, 6, NULL, 1);
 INSERT INTO sys_function VALUES ('sys_cus_sql', '自定义SQL', 0, '/portal/form/sql', 'sys_manager', '系统管理', 0, NULL, 6, NULL, 1);
 -- 代码器
-INSERT INTO sys_function VALUES ('generator_manager', '代码生成器', 0, '/portal/generator/code', 'sys', '网站后台管理', 0, 'layui-icon-fonts-code', 2, NULL, 1);
+INSERT INTO sys_function VALUES ('generator_manager', '代码生成器', 0, NULL, 'sys', '网站后台管理', 0, 'layui-icon-fonts-code', 2, NULL, 1);
+INSERT INTO sys_function VALUES ('generator_single', '单表生成器', 0, '/portal/generator/code', 'generator_manager', '代码生成器', 0, NULL, 10, NULL, 1);
+INSERT INTO sys_function VALUES ('generator_subtable', '主从表生成器', 0, '/portal/generator/code/2', 'generator_manager', '代码生成器', 0, NULL, 20, NULL, 1);
+INSERT INTO sys_function VALUES ('generator_subtable_demo', '主从模板示例', 0, '/portal/core/sysOrg/2', 'generator_manager', '代码生成器', 0, NULL, 30, NULL, 1);
+
 -- 联级多选
 INSERT INTO sys_function VALUES ('select_more_demo', '联级多选', 0, '/portal/go/common/demo/select', 'sys', '网站后台管理', 0, 'layui-icon-down', 60, NULL, 1);
 -- 角色管理中权限分配的保存按钮
@@ -541,6 +545,15 @@ INSERT INTO sys_role_function VALUES ('sys_sys_cus_sql', 'sys_cus_sql', 'sys');
 INSERT INTO sys_role_function VALUES ('admin-generator_manager', 'generator_manager', 'admin');
 INSERT INTO sys_role_function VALUES ('superadmin_generator_manager', 'generator_manager', 'superadmin');
 INSERT INTO sys_role_function VALUES ('sys_generator_manager', 'generator_manager', 'sys');
+INSERT INTO sys_role_function VALUES ('admin-generator_single', 'generator_single', 'admin');
+INSERT INTO sys_role_function VALUES ('admin-generator_subtable', 'generator_subtable', 'admin');
+INSERT INTO sys_role_function VALUES ('admin-generator_subtable_demo', 'generator_subtable_demo', 'admin');
+INSERT INTO sys_role_function VALUES ('superadmin_generator_single', 'generator_single', 'superadmin');
+INSERT INTO sys_role_function VALUES ('superadmin_generator_subtable', 'generator_subtable', 'superadmin');
+INSERT INTO sys_role_function VALUES ('superadmin_generator_subtable_demo', 'generator_subtable_demo', 'superadmin');
+INSERT INTO sys_role_function VALUES ('sys_generator_single', 'generator_single', 'sys');
+INSERT INTO sys_role_function VALUES ('sys_generator_subtable', 'generator_subtable', 'sys');
+INSERT INTO sys_role_function VALUES ('sys_generator_subtable_demo', 'generator_subtable_demo', 'sys');
 -- 联级多选
 INSERT INTO sys_role_function VALUES ('admin-select_more_demo', 'select_more_demo', 'admin');
 INSERT INTO sys_role_function VALUES ('superadmin_select_more_demo', 'select_more_demo', 'superadmin');

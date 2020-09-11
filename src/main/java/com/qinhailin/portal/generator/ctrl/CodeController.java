@@ -46,6 +46,8 @@ public class CodeController extends BaseController {
 	 */
 	public void index(){
 		render("index.html");
+		if(getPara(0)!=null)
+			render("index2.html");
 	}
 
 	public void tables(){
@@ -91,6 +93,7 @@ public class CodeController extends BaseController {
 			record.set("primaryKey", tableList.get(0).primaryKey);
 			record.set("tableComment", tableList.get(0).remarks);
 			record.set("tableNames", tableNameArray);
+			record.set("isSubTable", false);
 			Record codeRecord=codeService.createCodeTemplete(record,formItem,tableItem);		
 			codeList.add(codeRecord);
 			modelList.add(modelPackage+modelNameArray[i]);
@@ -121,5 +124,103 @@ public class CodeController extends BaseController {
 			renderJson(fail());
 		}
 	}
+	
+	public void createSubTableCode(){
+		Record record=getAllParamsToRecord();
+		String basePackage=getPara("packageName");
+		String modelPackage=basePackage+".model.";
+		List<Record> codeList=new ArrayList<>();
+		List<String> modelList=new ArrayList<>();
+		//主表,只支持单一主表
+		String tableName=getPara("tableName").split(",")[0];
+		String modelName=getPara("modelName").split(",")[0];
+		String tableColumn=getPara("tableColumn");
+		record.set("name", tableName);
+		Ret ret=codeService.tableItemRet(record, modelName);
+		String formItem = renderToString("temp/_form.html", ret);
+		String tableItem = renderToString("temp/_table.html", ret);
+		
+		// 创建模板内容
+		record.set("modelName", modelPackage+modelName);
+		record.set("primaryKey", ret.get("primaryKey"));
+		record.set("tableComment", ret.get("tableComment"));
+		record.set("isSubTable", false);
+		Record codeRecord=codeService.createCodeTemplete(record,formItem,tableItem);		
+		codeList.add(codeRecord);
+		modelList.add(modelPackage+modelName);
+		
+		//子表
+		String[] subTableNameArray=getPara("subTableName").split(",");
+		String[] subModelNameArray=getPara("subModelName").split(",");
+		String[] subTableColumnArray=getPara("subTableColumn").split(",");
+		StringBuffer subTableTitle=new StringBuffer();
+		List<Record> subTableList=new ArrayList<>();
+		StringBuffer renderSubTable=new StringBuffer();
+		for(int i=0;i<subTableNameArray.length;i++){
+			record.set("name", subTableNameArray[i]);
+			record.set("modelName", subModelNameArray[i]);
+			record.set("basePackage", basePackage);
+			record.set("refColumn", subTableColumnArray[i]);
+			Record subTable=subRecord(record, subTableTitle,codeList,modelList);
+			subTableList.add(subTable);
+			//页面调用子表js方法
+			renderSubTable.append("renderSubTable").append(i+1).append("(refId);\r\n	");			
+		}
+		
+		//主表index模板
+		String subTableScript= renderToString("temp/_subtable.html", Ret.by("subTableList", subTableList));
+		record.set("modelName", modelPackage+modelName);
+		String indexSubTable=codeService.createIndexTableCode(record, tableItem, subTableScript, subTableTitle.toString());
+		indexSubTable=indexSubTable.replace("${refId}", tableColumn);
+		indexSubTable=indexSubTable.replace("${renderSubTable}", renderSubTable.toString());
+		codeRecord.set("index.html", indexSubTable);
+		
+		// 存储数据，用于创建本地文件
+		setSessionAttr("downloadCode", codeList);
+		setSessionAttr("modelList", modelList);
+		setSessionAttr("packageName", getPara("packageName"));
+		renderJson(Ret.ok("data", codeList));	
+	}
+	
+	/**
+	 * 子表模板
+	 * @param record
+	 * @param subTableTitle
+	 * @param codeList
+	 * @param modelList
+	 * @return
+	 */
+	private Record subRecord(Record record,StringBuffer subTableTitle,List<Record> codeList,List<String> modelList){
+		String modelName=record.getStr("modelName");
+		String basePackage=record.getStr("basePackage");
+		Ret itemRet=codeService.tableItemRet(record,modelName);			
+		if(subTableTitle.length()>0)
+			subTableTitle.append(",");
+		String tableComment=itemRet.getStr("tableComment");
+		subTableTitle.append("'")
+		.append(tableComment.equals("") ? "Tab" : tableComment)
+		.append("'");
+		itemRet.set("isEdit", true);
+		String formItem = renderToString("temp/_form.html", itemRet);
+		String tableItem = renderToString("temp/_table.html", itemRet);
+		// 创建模板内容
+		String modelPackage=basePackage+".model.";
+		record.set("modelName", modelPackage+modelName);
+		record.set("primaryKey", itemRet.get("primaryKey"));
+		record.set("tableComment", itemRet.get("tableComment"));
+		record.set("isSubTable", true);
+		Record codeRecord=codeService.createCodeTemplete(record,formItem,tableItem);
+		codeList.add(codeRecord);
+		modelList.add(modelPackage+modelName);
+		
+		Record subTable=new Record();
+		subTable.set("tableCols", tableItem);
+		subTable.set("rowData", codeService.rowDataJson(itemRet.getAs("columnMetas")));
+		String actionKey="/"+basePackage.substring(basePackage.lastIndexOf(".")+1)+"/"+StrKit.firstCharToLowerCase(modelName);
+		subTable.set("actionKey",actionKey);
+		return subTable;
+	}
+	
+
 	
 }

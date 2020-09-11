@@ -22,11 +22,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jfinal.kit.JavaKeyword;
 import com.jfinal.kit.Kv;
+import com.jfinal.kit.Ret;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import com.jfinal.plugin.activerecord.generator.ColumnMeta;
 import com.jfinal.plugin.activerecord.generator.MetaBuilder;
 import com.jfinal.plugin.activerecord.generator.TableMeta;
 import com.jfinal.plugin.druid.DruidPlugin;
@@ -187,6 +190,15 @@ public class CodeService{
 		
 		result.set("BaseModel.java", createBaseModelCode(record.getStr("name"),modelName));		
 		codeJava.add("BaseModel.java");
+		//如果是主从表模板，覆盖原来模板
+		if(record.getBoolean("isSubTable")){
+			kv.set("refColumn", record.getStr("refColumn"));
+			result.set("Service.java", createServiceCode(kv));		
+			codeJava.add("Service.java");
+			
+			result.set("Controller.java", createControllerCode(kv));		
+			codeJava.add("Controller.java");
+		}
 				
 		result.set("codeJava", codeJava);
 		result.set("codeHtml", codeHtml);
@@ -289,4 +301,65 @@ public class CodeService{
 
 	}
 	
+	public String createIndexTableCode(Record record,String tableItem,String subTableScript,String subTableTitle){
+		String modelName=record.getStr("modelName");
+		String authorName=record.get("authorName");
+		String basePackage=record.getStr("packageName");
+		String tableComment=record.getStr("tableComment");
+		String primaryKey=record.getStr("primaryKey");
+		
+		//模板变量
+		GeneratorKit codeKit=GeneratorKit.getInstance();
+		@SuppressWarnings("static-access")
+		Kv kv=codeKit.setBasePackage(basePackage).setModular(basePackage.substring(basePackage.lastIndexOf(".")+1)).getJavaKv(modelName);
+		kv.set("author", authorName).set("tableComment", tableComment).set("primaryKey", primaryKey);
+				
+		//index.html模板内容
+		String content=Db.getSql("code.index_subtable");	
+		@SuppressWarnings("unchecked")
+		Iterator<Object> iter=kv.keySet().iterator();
+		while(iter.hasNext()){
+			Object obj=iter.next();
+			content=content.replace("${"+obj+"}", kv.get(obj).toString());
+		}
+		
+		content=content.replace("${subTableTitle}", subTableTitle);
+		content=content.replace("${subTableScript}", subTableScript);
+		content=content.replace("${tableCols}", tableItem);
+				
+		return content;
+	}
+	
+	private String createServiceCode(Kv data){
+		String template = "/com/qinhailin/portal/generator/service_template.jf";
+		String content=engine.getTemplate(template).renderToString(data);
+		return content;
+	}
+	
+	private String createControllerCode(Kv data){
+		String template = "/com/qinhailin/portal/generator/controller_template.jf";
+		String content=engine.getTemplate(template).renderToString(data);
+		return content;
+	}
+	
+	
+	public Ret tableItemRet(Record record,String modelName){
+		Grid grid=queryTablesList(record);
+		@SuppressWarnings("unchecked")
+		List<TableMeta> tableList=(List<TableMeta>) grid.getList();
+		List<ColumnMeta> columnMetas=tableList.get(0).columnMetas;
+		Ret ret=Ret.by("columnMetas", columnMetas);
+		ret.set("modelName",StrKit.firstCharToLowerCase(modelName));
+		ret.set("primaryKey",tableList.get(0).primaryKey);
+		ret.set("tableComment",tableList.get(0).remarks);
+		return ret;
+	}
+	
+	public JSONObject rowDataJson(List<ColumnMeta> columnMetas){
+		JSONObject rowData=new JSONObject();
+		for(ColumnMeta column:columnMetas){
+			rowData.put(column.name, "");
+		}
+		return rowData;
+	}
 }
