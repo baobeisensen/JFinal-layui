@@ -248,6 +248,11 @@ public abstract class DbService {
 		return getDbPro().update(getTable(), record);
 	}
 	
+	public int update(Kv data,Kv whereData){
+		Kv templateData=Kv.by("tableName",getTable()).set("cond", getKv(data)).set("whereCond", whereData);	
+		return getDbPro().update(Db.getSqlPara("crud.update", templateData));
+	}
+	
 	/**
 	 * Update Record.
 	 * <pre>
@@ -308,6 +313,11 @@ public abstract class DbService {
 	public boolean deleteByIds(List<String> list,String primaryKey){
 		String sql="delete from "+getTable()+" where "+primaryKey+" in "+SqlKit.joinIds(list);
 		return getDbPro().delete(sql)>0;
+	}
+	
+	public int delete(Kv data){
+		Kv templateData=Kv.by("tableName",getTable()).set("cond", data);	
+		return getDbPro().update(Db.getSqlPara("crud.delete", templateData));
 	}
 	
 	/**

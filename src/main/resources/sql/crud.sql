@@ -29,7 +29,7 @@
     	 #(for.first ? "": ",")#(x.key)=#para(x.value)
   	#end
   	#for(y : whereCond)
-  		#(for.first ? " where ": ",")#(y.key)=#para(y.value)
+  		#(for.first ? " where ": "and")#(y.key)=#para(y.value)
   	#end
 #end
 
