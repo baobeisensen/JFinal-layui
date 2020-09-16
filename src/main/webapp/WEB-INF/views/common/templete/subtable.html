@@ -35,4 +35,43 @@
 #end	
 #define subTableJs()
 	<script src="#(path)/static/portal/core/sysOrg/tab-item.js?t=#now()" type="text/javascript" ></script>
+	#@tableEditKeydown()
+#end
+
+#define tableEditKeydown()
+<script type="text/javascript">
+$(document).on('keydown','.layui-input',function(e){
+	var td=$(this).parent('td')
+		,tr=td.parent('tr')
+		,trs=tr.parent().parent().find("tr")
+		,tr_index=tr.index()
+		,td_index=td.index()
+		,td_last_index=tr.find('[data-edit="true"]:last').index()
+		,td_first_index=tr.find('[data-edit="true"]:first').index();
+	switch(e.keyCode){
+		case 13:
+		case 39:
+			td.nextAll('[data-edit="true"]:first').click();
+		if(td_index==td_last_index){
+			tr.next().find('td').eq(td_first_index).click();
+			if(tr_index==trs.length-1)
+				trs.eq(0).find('td').eq(td_first_index).click();
+		}
+		setTimeout(function(){$('.layui-table').select()},0);
+		break;
+		case 37:
+			td.prevAll('[data-edit="true"]:first').click();
+			setTimeout(function(){$('.layui-table').select()},0);
+			break;
+		case 38:
+			tr.prev().find('td').eq(td_index).click();
+			setTimeout(function(){$('.layui-table').select()},0);
+			break;
+		case 40:
+			tr.next().find('td').eq(td_index).click();
+			setTimeout(function(){$('.layui-table').select()},0);
+			break;
+	}
+});
+</script>
 #end
