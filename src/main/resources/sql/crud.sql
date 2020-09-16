@@ -37,7 +37,7 @@
 #sql("delete")
 	DELETE FROM #(tableName) 
 	#for(x : cond)
-    	#(for.first ? "where": "and") #(x.key) #para(x.value)
+    	#(for.first ? "where": "and") #(x.key)=#para(x.value)
   	#end
 #end
 

@@ -249,7 +249,7 @@ public abstract class DbService {
 	}
 	
 	public int update(Kv data,Kv whereData){
-		Kv templateData=Kv.by("tableName",getTable()).set("cond", getKv(data)).set("whereCond", whereData);	
+		Kv templateData=Kv.by("tableName",getTable()).set("cond", data).set("whereCond", getKv(data));	
 		return getDbPro().update(Db.getSqlPara("crud.update", templateData));
 	}
 	
