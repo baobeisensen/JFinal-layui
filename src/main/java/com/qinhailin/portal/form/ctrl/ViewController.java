@@ -138,4 +138,15 @@ public class ViewController extends BaseController {
 		boolean b=service.deleteByIds(getIds());
 		renderJson(b?suc():err());
 	}
+	
+	public void updateStatus() {
+		Record record=getAllParamsToRecord();
+		record.set("update_time", new Date());
+		boolean b=service.update(record);
+		if(!b) {
+			renderJson(fail());
+			return;
+		}
+		renderJson(ok());
+	}
 }
