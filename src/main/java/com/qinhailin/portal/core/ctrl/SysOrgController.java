@@ -164,7 +164,7 @@ public class SysOrgController extends BaseController {
 		}
 		setAttr("sysOrg", entity);
 		CacheKit.removeAll("orgManager");
-		set("msg","数据保存成功");
+		setMsg("数据保存成功");
 		render("addOrgUser.html");
 	}
 	
