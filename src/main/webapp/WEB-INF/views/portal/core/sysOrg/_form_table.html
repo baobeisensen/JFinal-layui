@@ -80,11 +80,11 @@
 #@subTableJs()
 <!-- 分页表格 -->
 <script>
-renderSubTable1('#(sysOrg.id??)');
-
 var params_sex=[{value:0,name:"女"},{value:1,name:"男"}];
 var params_yesno=[{value:0,name:"是"},{value:1,name:"否"}];
 var params = [{value:1,name:"张三1"},{value:2,name:"张三2"},{value:3,name:"张三3"},{value:4,name:"张三4"},{value:5,name:"张三5"}];
+
+renderSubTable1('#(sysOrg.id??)');
 
 /*=====表格1=====*/
 function renderSubTable1(orgId){

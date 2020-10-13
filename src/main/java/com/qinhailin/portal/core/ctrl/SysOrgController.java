@@ -143,6 +143,7 @@ public class SysOrgController extends BaseController {
 				.setId(createUUID())
 				.setParentid(entity!=null?entity.getId():"sys")
 				.setParentidName(entity!=null?entity.getOrgName():"组织机构")
+				.setIsstop(1)
 			);
 		render("addOrgUser.html");
 	}
@@ -163,6 +164,7 @@ public class SysOrgController extends BaseController {
 		}
 		setAttr("sysOrg", entity);
 		CacheKit.removeAll("orgManager");
+		set("msg","数据保存成功");
 		render("addOrgUser.html");
 	}
 	
