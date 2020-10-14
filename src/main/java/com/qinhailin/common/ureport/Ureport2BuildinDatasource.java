@@ -28,7 +28,13 @@ import com.qinhailin.common.config.MainConfig;
  * @date 2020-06-06
  */
 public class Ureport2BuildinDatasource implements BuildinDatasource {
-
+	
+	static DruidPlugin druidplugin;
+	static{
+		druidplugin=MainConfig.createDruidPlugin();
+		druidplugin.start();
+	}
+	
 	@Override
 	public String name() {
 		return "mainDataSource";
@@ -36,9 +42,7 @@ public class Ureport2BuildinDatasource implements BuildinDatasource {
 
 	@Override
 	public Connection getConnection() {
-		try {
-			DruidPlugin druidplugin=MainConfig.createDruidPlugin();
-			druidplugin.start();
+		try {			
 			return druidplugin.getDataSource().getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
