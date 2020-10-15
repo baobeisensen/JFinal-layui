@@ -216,11 +216,11 @@ layui.define(['element', 'common'], function (exports) {
                 	//第三级菜单
                     if(data[i].children[j].children.length>0){
                     	if(data[i].children[j].spread){
-                    		ulHtml += '<dd title="' + data[i].children[j].title + '" style="margin-left:10px;" class="layui-nav-itemed">';    
+                    		ulHtml += '<dd title="' + data[i].children[j].title + '" class="layui-nav-itemed">';    
                     	}else{
-                    		ulHtml += '<dd title="' + data[i].children[j].title + '" style="margin-left:10px;">';                  		
-                    	}
-                    	ulHtml += '<a href="javascript:;"';
+                    		ulHtml += '<dd title="' + data[i].children[j].title + '" >';                  		
+                    	}debugger
+                    	ulHtml += '<a href="javascript:;">';
                     	if (data[i].children[j].icon !== null && data[i].children[j].icon !== undefined && data[i].children[j].icon !== '') {
                             if (data[i].children[j].icon.indexOf('fa-') !== -1) {
                                 ulHtml += '<i class="fa ' + data[i].children[j].icon + '" aria-hidden="true" data-icon="' + data[i].children[j].icon + '"></i>';
@@ -230,7 +230,7 @@ layui.define(['element', 'common'], function (exports) {
                         }
                     	ulHtml += '<cite>' + data[i].children[j].title + '</cite>';
                     	ulHtml += '</a>';
-                    	ulHtml += '<dl class="layui-nav-child">'
+                    	ulHtml += '<dl class="layui-nav-child" style="margin-left:10px;">'
                     	for(var k=0;k<data[i].children[j].children.length;k++){
                     		if(data[i].children[j].children[k].spread){
                     			ulHtml=ulHtml.replace("class=\"layui-this\"","");
