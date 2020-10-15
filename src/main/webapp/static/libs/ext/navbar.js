@@ -219,7 +219,7 @@ layui.define(['element', 'common'], function (exports) {
                     		ulHtml += '<dd title="' + data[i].children[j].title + '" class="layui-nav-itemed">';    
                     	}else{
                     		ulHtml += '<dd title="' + data[i].children[j].title + '" >';                  		
-                    	}debugger
+                    	}
                     	ulHtml += '<a href="javascript:;">';
                     	if (data[i].children[j].icon !== null && data[i].children[j].icon !== undefined && data[i].children[j].icon !== '') {
                             if (data[i].children[j].icon.indexOf('fa-') !== -1) {
