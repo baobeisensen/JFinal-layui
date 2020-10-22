@@ -157,14 +157,34 @@ public class MainConfig extends JFinalConfig {
 		
 		/******** 在此添加数据库 表-Model 映射 *********/
 		_MappingKit.mapping(arp);
-		
-		
 		// 添加到插件列表中
 		me.add(dbPlugin);
 		me.add(arp);
+		
+		/******** 多数据源配置，接入第三方库进行登录或者业务开发 *********/
+//		oracleDb(me);
+
+		
 		// 配置缓存插件
 		me.add(new EhCachePlugin());
 		
+	}
+	
+	/**
+	 * oracle 数据源
+	 * @param me
+	 */
+	public void oracleDb(Plugins me){		
+		DruidPlugin dbPluginOracle = new DruidPlugin(p.get("oracle.jdbcUrl"), p.get("oracle.user"), p.get("oracle.password").trim());
+		me.add(dbPluginOracle);
+		dbPluginOracle.addFilter(new StatFilter());
+		WallFilter wallOracle = new WallFilter();
+		wallOracle.setDbType(p.get("oracle.dbType"));
+		dbPluginOracle.addFilter(wallOracle);		
+		// oracle ActiveRecrodPlugin 实例，并指定configName为 oracle
+		ActiveRecordPlugin arpOracle = new ActiveRecordPlugin("oracle", dbPluginOracle);
+		arpOracle.setDialect(new OracleDialect());	
+		me.add(arpOracle);
 	}
 
 	/**

@@ -132,7 +132,7 @@ public class LoginService {
 	 * @author QinHaiLin
 	 * @date 2018年10月22日
 	 */
-	private Visitor returnVistor(SysUser user, HttpServletRequest req) throws LoginException {
+	public Visitor returnVistor(SysUser user, HttpServletRequest req) throws LoginException {
 		LoginUserImpl loginUser = new LoginUserImpl();
 		loginUser.setId(user.getId());
 		loginUser.setUserCode(user.getUserCode());
