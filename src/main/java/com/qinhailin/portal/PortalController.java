@@ -25,12 +25,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.jfinal.core.JFinal;
+import com.jfinal.core.Path;
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.Ret;
 import com.jfinal.render.JsonRender;
 import com.jfinal.upload.UploadFile;
 import com.qinhailin.common.model.FileUploaded;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.config.WebContant;
 
@@ -40,7 +40,7 @@ import com.qinhailin.common.config.WebContant;
  * @author QinHaiLin
  *
  */
-@ControllerBind(path="/portal")
+@Path(value="/portal",viewPath="/")
 public class PortalController extends BaseController {
 
 	/**

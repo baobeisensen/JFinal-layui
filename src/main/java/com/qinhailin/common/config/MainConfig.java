@@ -108,10 +108,8 @@ public class MainConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configRoute(Routes me) {
-		// 配置ControllerBind注解路由
-		AutoBindRoutes autoBindRoutes = new AutoBindRoutes();
-		autoBindRoutes.setBaseViewPath(WebContant.baseViewPath);
-		me.add(autoBindRoutes);
+		me.scan("com.qinhailin");
+		me.setBaseViewPath(WebContant.baseViewPath);
 	}
 	
 	/**

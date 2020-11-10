@@ -21,6 +21,7 @@ import java.util.Collection;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
@@ -29,7 +30,6 @@ import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.jfinal.plugin.ehcache.IDataLoader;
 import com.qinhailin.common.model.SysFunction;
 import com.qinhailin.common.model.SysRole;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.vo.Feedback;
 import com.qinhailin.common.vo.TreeNode;
 import com.qinhailin.common.base.BaseController;
@@ -43,7 +43,7 @@ import com.qinhailin.portal.core.service.SysRoleService;
  * @author QinHaiLin
  *
  */
-@ControllerBind(path="/portal/core/sysFunc")
+@Path("/portal/core/sysFunc")
 public class SysFuncController extends BaseController {
 
 	@Inject

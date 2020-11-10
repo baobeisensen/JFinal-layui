@@ -19,10 +19,10 @@ package com.qinhailin.portal.form.ctrl;
 import java.util.List;
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.portal.form.service.FormViewService;
 import com.qinhailin.portal.form.service.BusinessService;
 
@@ -31,7 +31,7 @@ import com.qinhailin.portal.form.service.BusinessService;
  * @author QinHaiLin
  * @date 2019年3月14日  
  */
-@ControllerBind(path="/portal/form/business")
+@Path("/portal/form/business")
 public class BusinessController extends BaseController{
 	/**
 	 * 表前缀，只能处理这个前缀的表，降低风险

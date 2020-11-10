@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.kit.Ret;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.generator.ColumnMeta;
 import com.jfinal.plugin.activerecord.generator.TableMeta;
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.vo.Grid;
 import com.qinhailin.portal.generator.service.CodeService;
 
@@ -35,7 +35,7 @@ import com.qinhailin.portal.generator.service.CodeService;
  * @author QinHaiLin
  * @date 2020-02-21
  */
-@ControllerBind(path="/portal/generator/code")
+@Path("/portal/generator/code")
 public class CodeController extends BaseController {
 
 	@Inject

@@ -20,13 +20,13 @@ import java.util.Date;
 import java.util.List;
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.portal.form.service.FormSqlService;
 import com.qinhailin.portal.form.service.SysTreeService;
 
@@ -36,7 +36,7 @@ import com.qinhailin.portal.form.service.SysTreeService;
  * @author QinHaiLin
  * @date 2019年4月24日  
  */
-@ControllerBind(path="/portal/form/sql")
+@Path("/portal/form/sql")
 public class SqlController extends BaseController {
 
 	@Inject

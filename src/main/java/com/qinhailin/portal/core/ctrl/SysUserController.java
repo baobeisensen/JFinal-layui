@@ -22,13 +22,12 @@ import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.intercepor.TokenInterceptor;
 import com.qinhailin.common.kit.RSAKit;
 import com.qinhailin.common.model.SysOrg;
 import com.qinhailin.common.model.SysUser;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.safe.TokenValidator;
 import com.qinhailin.common.visit.Visitor;
 import com.qinhailin.common.vo.Feedback;
@@ -42,7 +41,7 @@ import com.qinhailin.portal.core.service.SysUserService;
  * @author QinHaiLIn
  *
  */
-@ControllerBind(path="/portal/core/sysUser")
+@Path("/portal/core/sysUser")
 public class SysUserController extends BaseController {
 	@Inject
 	SysUserService service;

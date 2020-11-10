@@ -21,11 +21,11 @@ import java.util.Collection;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.ehcache.CacheName;
 import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.model.DataDictionary;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.vo.TreeNode;
 import com.qinhailin.portal.core.service.DataDictionaryService;
 import com.qinhailin.portal.core.service.DataDictionaryValueService;
@@ -34,7 +34,7 @@ import com.qinhailin.portal.core.service.DataDictionaryValueService;
  * 数据字典
  * @author QinHaiLin
  */
-@ControllerBind(path="/portal/core/dictionary")
+@Path("/portal/core/dictionary")
 public class DataDictionaryController extends BaseController {
 
 	@Inject

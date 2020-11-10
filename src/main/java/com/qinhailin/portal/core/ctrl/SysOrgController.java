@@ -21,12 +21,12 @@ import java.util.Collection;
 
 import com.alibaba.fastjson.JSONArray;
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.model.SysOrg;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.vo.Feedback;
 import com.qinhailin.common.vo.TreeNode;
 import com.qinhailin.portal.core.service.SysOrgService;
@@ -38,7 +38,7 @@ import com.qinhailin.portal.core.service.SysUserService;
  * @author QinHaiLin
  *
  */
-@ControllerBind(path="/portal/core/sysOrg")
+@Path("/portal/core/sysOrg")
 public class SysOrgController extends BaseController {
 
 	@Inject

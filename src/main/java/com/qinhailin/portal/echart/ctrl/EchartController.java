@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.jfinal.core.Controller;
-import com.qinhailin.common.routes.ControllerBind;
+import com.jfinal.core.Path;
 import com.qinhailin.portal.echart.service.EchartService;
 import com.qinhailin.portal.echart.vo.Chart;
 import com.qinhailin.portal.echart.vo.EchartData;
@@ -31,7 +31,7 @@ import com.qinhailin.portal.echart.vo.EchartData;
  * @author QinHaiLin
  * @date 2018年11月28日  
  */
-@ControllerBind(path="/portal/echart")
+@Path("/portal/echart")
 public class EchartController extends Controller {
 
 	private EchartService service=EchartService.me;

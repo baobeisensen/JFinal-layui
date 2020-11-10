@@ -31,6 +31,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 public @interface Table {
 
+	String DEFAULT_PRIMARY_KEY="id";
 	/**
 	 * 数据表名称
 	 * @return
@@ -41,6 +42,6 @@ public @interface Table {
 	 * 主键，默认为id
 	 * @return
 	 */
-	String primaryKey() default "id";
+	String primaryKey() default DEFAULT_PRIMARY_KEY;
 	
 }

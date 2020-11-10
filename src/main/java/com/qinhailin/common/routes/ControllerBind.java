@@ -25,13 +25,16 @@ import java.lang.annotation.Target;
 /**
  * 注解配置控制器路由<br/>
  * viewPath为默认值"/"时,加载到JFinal路由时,和path相同
- * 
+ * <br/>
+ * 建议使用：
+ * <code>@Path</code>，用法和原來的一樣
  * @author qinhailin
  * @date 2018年7月17日
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE })
+@Deprecated
 public @interface ControllerBind {
 	/**
 	 * 控制器路径值

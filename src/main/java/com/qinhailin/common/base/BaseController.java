@@ -442,9 +442,11 @@ public class BaseController extends Controller {
 	
 	/**
 	 * 创建token
+	 * @return 
 	 */
 	@NotAction
-	public void createToken(){
+	public String createToken(){
 		tokenService.createToken(this);
+		return null;
 	}
 }

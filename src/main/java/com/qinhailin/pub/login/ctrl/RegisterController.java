@@ -16,8 +16,8 @@
 package com.qinhailin.pub.login.ctrl;
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.pub.login.exception.LoginException;
 import com.qinhailin.pub.login.service.RegisterService;
 
@@ -26,7 +26,7 @@ import com.qinhailin.pub.login.service.RegisterService;
  * @author qinhailin
  * @date 2020-10-22
  */
-@ControllerBind(path="/pub/reg")
+@Path("/pub/reg")
 public class RegisterController extends BaseController {
 
 	@Inject

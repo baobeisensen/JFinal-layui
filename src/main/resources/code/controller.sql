@@ -4,10 +4,10 @@
 package ${controllerPackage};
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.routes.ControllerBind;
 import ${importModel};
 import ${servicePackage}.${modelName}Service;
 
@@ -16,7 +16,7 @@ import ${servicePackage}.${modelName}Service;
  * @author ${author}
  * @date ${date}
  */
-@ControllerBind(path="/portal${actionKey}")
+@Path("/portal${actionKey}")
 public class ${modelName}Controller extends BaseController {
 
    @Inject

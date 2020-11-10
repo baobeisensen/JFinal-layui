@@ -17,9 +17,9 @@
 package com.qinhailin.portal.form.ctrl;
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.portal.form.service.FormViewService;
 
 /**
@@ -27,7 +27,7 @@ import com.qinhailin.portal.form.service.FormViewService;
  * @author QinHaiLin
  * @date 2019年3月14日  
  */
-@ControllerBind(path="/portal/form/viewTemp")
+@Path("/portal/form/viewTemp")
 public class ViewTempController extends BaseController{
 
 	@Inject

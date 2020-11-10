@@ -17,6 +17,7 @@
 package com.qinhailin.pub.login.ctrl;
 
 import com.jfinal.core.Controller;
+import com.jfinal.core.Path;
 import com.qinhailin.common.kit.VerifyCodeKit;
 import com.qinhailin.common.routes.ControllerBind;
 
@@ -26,7 +27,7 @@ import com.qinhailin.common.routes.ControllerBind;
  * @author QinHaiLin
  *
  */
-@ControllerBind(path="/pub/verify")
+@Path("/pub/verify")
 public class VerifyController extends Controller {
 
 	public void index() {

@@ -21,10 +21,10 @@ import java.util.Collection;
 import java.util.Date;
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.config.WebContant;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.vo.TreeNode;
 import com.qinhailin.portal.form.service.FormViewService;
 import com.qinhailin.portal.form.service.SysTreeService;
@@ -35,7 +35,7 @@ import com.qinhailin.portal.form.service.SysTreeService;
  * @author QinHaiLin
  * @date 2019年4月24日  
  */
-@ControllerBind(path="/portal/form/view")
+@Path("/portal/form/view")
 public class ViewController extends BaseController {
 
 	@Inject

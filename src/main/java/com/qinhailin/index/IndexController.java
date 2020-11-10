@@ -20,6 +20,7 @@ import java.util.Collection;
 
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
@@ -27,7 +28,6 @@ import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.kit.Md5Kit;
 import com.qinhailin.common.model.SysFunction;
 import com.qinhailin.common.model.SysUser;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.visit.Visitor;
 import com.qinhailin.common.visit.VisitorUtil;
 import com.qinhailin.common.vo.TreeNode;
@@ -40,7 +40,7 @@ import com.qinhailin.portal.core.service.SysUserService;
  * @author qinhailin
  * @date 2018年7月19日
  */
-@ControllerBind(path="/")
+@Path("/")
 public class IndexController extends BaseController {
 
 	@Inject

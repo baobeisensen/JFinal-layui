@@ -20,6 +20,7 @@ import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.CacheName;
@@ -27,14 +28,13 @@ import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.jfinal.plugin.ehcache.IDataLoader;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.model.DataDictionaryValue;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.portal.core.service.DataDictionaryValueService;
 
 /**
  * 数据字典
  * @author QinHaiLin
  */
-@ControllerBind(path="/portal/core/dictionary/value")
+@Path("/portal/core/dictionary/value")
 public class DataDictionaryValueController extends BaseController {
 
 	@Inject

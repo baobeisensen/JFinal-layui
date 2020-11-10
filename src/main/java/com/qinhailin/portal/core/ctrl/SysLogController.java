@@ -17,9 +17,9 @@
 package com.qinhailin.portal.core.ctrl;
 
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.BaseController;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.portal.core.service.SysLogService;
 
 /**
@@ -27,7 +27,7 @@ import com.qinhailin.portal.core.service.SysLogService;
  * @author QinHaiLin
  *
  */
-@ControllerBind(path="/portal/core/sysLog")
+@Path("/portal/core/sysLog")
 public class SysLogController extends BaseController {
 
 	@Inject

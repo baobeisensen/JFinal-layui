@@ -22,11 +22,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.jfinal.aop.Inject;
-import com.jfinal.kit.Kv;
+import com.jfinal.core.Path;
 import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.config.WebContant;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.vo.TreeNode;
 import com.qinhailin.portal.form.service.SysTreeService;
 
@@ -36,7 +35,7 @@ import com.qinhailin.portal.form.service.SysTreeService;
  * @author QinHaiLin
  * @date 2019年4月24日  
  */
-@ControllerBind(path="/portal/form/sysTree")
+@Path("/portal/form/sysTree")
 public class SysTreeController extends BaseController {
 
 	@Inject

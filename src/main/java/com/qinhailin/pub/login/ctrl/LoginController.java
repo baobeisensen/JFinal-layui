@@ -27,11 +27,11 @@ import java.util.regex.Pattern;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.kit.RSAKit;
 import com.qinhailin.common.model.SysUser;
-import com.qinhailin.common.routes.ControllerBind;
 import com.qinhailin.common.safe.TokenValidator;
 import com.qinhailin.portal.core.service.SysUserService;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Inject;
+import com.jfinal.core.Path;
 import com.qinhailin.pub.login.service.LoginService;
 
 /**
@@ -40,7 +40,7 @@ import com.qinhailin.pub.login.service.LoginService;
  * @author QinHaiLin
  * @date 2018-10-15
  */
-@ControllerBind(path="/pub/login")
+@Path("/pub/login")
 public class LoginController extends BaseController {
 
 	@Inject
