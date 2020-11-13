@@ -114,7 +114,7 @@ public class PortalController extends BaseController {
 		//实现服务器资源共享
 		String fileTypeName = fu.getFileName().substring(fu.getFileName().lastIndexOf("."));
 		fu.setSavePath(PathKit.getWebRootPath() +  "/" +
-				WebContant.baseUloadPath + "/" + fu.getUrl() + fileTypeName);
+				WebContant.baseUploadPath + "/" + fu.getUrl() + fileTypeName);
 		
 		renderFile(new File(fu.getSavePath()), fu.getFileName());
 	}
@@ -196,7 +196,7 @@ public class PortalController extends BaseController {
 		try {
 			String fileTypeName = fu.getFileName().substring(fu.getFileName().lastIndexOf("."));
 			fu.setSavePath(PathKit.getWebRootPath() +  "/" +
-					WebContant.baseUloadPath + "/" + fu.getUrl() + fileTypeName);
+					WebContant.baseUploadPath + "/" + fu.getUrl() + fileTypeName);
 			File image = new File(fu.getSavePath());
 			@SuppressWarnings("resource")
 			FileInputStream inputStream = new FileInputStream(image);

@@ -33,7 +33,7 @@ public interface WebContant {
 	/** 项目名称 **/
 	String projectName=PropKit.get("projectName","JFinal极速开发世界");
 	/** 上传目录 **/
-	String baseUloadPath=PropKit.get("baseUploadPath","WEB-INF/temp/upload");
+	String baseUploadPath=PropKit.get("baseUploadPath","WEB-INF/temp/upload");
 	/** 下载目录 **/
 	String baseDownloadPath=PropKit.get("baseDownloadPath","WEB-INF/temp/download");
 
