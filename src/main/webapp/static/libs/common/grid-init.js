@@ -445,7 +445,12 @@ function loadGrid() {
 }
 //刷新当前页数据
 function refreshData(){
-	$(".layui-laypage-btn").click();
+	var button = $(".layui-laypage-btn");
+	if (button.length > 0) {
+		$(".layui-laypage-btn").click();
+	} else {
+		loadGrid()
+	}
 }
 var digit = function(num, length, end){
 	  var str = '';
