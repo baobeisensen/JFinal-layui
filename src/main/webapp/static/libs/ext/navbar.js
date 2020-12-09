@@ -192,110 +192,105 @@ layui.define(['element', 'common'], function (exports) {
 	 * @param {Object} data
 	 */
     function getHtml(data) {
-        //debugger;
+    	//debugger;
         var ulHtml = '<ul class="layui-nav layui-nav-tree beg-navbar">';
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].spread) {
-                ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
-            } else {
-                ulHtml += '<li class="layui-nav-item">';
+        $.each(data,function(i,obj){
+            ulHtml += '<li class="layui-nav-item">';
+            if (obj.spread) {
+            	ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
             }
-            if (data[i].children !== undefined && data[i].children !== null && data[i].children.length > 0) {
-                ulHtml += '<a href="javascript:;">';
-                if (data[i].icon !== null && data[i].icon !== undefined && data[i].icon !== '') {
-                    if (data[i].icon.indexOf('fa-') !== -1) {
-                        ulHtml += '<i class="fa ' + data[i].icon + '" aria-hidden="true" data-icon="' + data[i].icon + '"></i>';
+            if (obj.children !== undefined && obj.children !== null && obj.children.length > 0) {
+            	ulHtml += '<a href="javascript:;">';
+            	if (obj.icon !== null && obj.icon !== undefined && obj.icon !== '') {
+                    if (obj.icon.indexOf('fa-') !== -1) {
+                    	ulHtml += '<i class="fa ' + obj.icon + '" aria-hidden="true" data-icon="' + obj.icon + '"></i>';
                     } else {
-                        ulHtml += '<i class="layui-icon ' + data[i].icon + '"></i>';
+                    	ulHtml += '<i class="layui-icon ' + obj.icon + '"></i>';
                     }
                 }
-                ulHtml += '<cite>' + data[i].title + '</cite>'
-                ulHtml += '</a>';
-                ulHtml += '<dl class="layui-nav-child">'
-                for (var j = 0; j < data[i].children.length; j++) {
-                	//第三级菜单
-                    if(data[i].children[j].children.length>0){
-                    	if(data[i].children[j].spread){
-                    		ulHtml += '<dd title="' + data[i].children[j].title + '" class="layui-nav-itemed">';    
-                    	}else{
-                    		ulHtml += '<dd title="' + data[i].children[j].title + '" >';                  		
-                    	}
-                    	ulHtml += '<a href="javascript:;">';
-                    	if (data[i].children[j].icon !== null && data[i].children[j].icon !== undefined && data[i].children[j].icon !== '') {
-                            if (data[i].children[j].icon.indexOf('fa-') !== -1) {
-                                ulHtml += '<i class="fa ' + data[i].children[j].icon + '" aria-hidden="true" data-icon="' + data[i].children[j].icon + '"></i>';
-                            } else {
-                                ulHtml += '<i class="layui-icon ' + data[i].children[j].icon + '"></i>';
-                            }
-                        }
-                    	ulHtml += '<cite>' + data[i].children[j].title + '</cite>';
-                    	ulHtml += '</a>';
-                    	ulHtml += '<dl class="layui-nav-child" style="margin-left:10px;">'
-                    	for(var k=0;k<data[i].children[j].children.length;k++){
-                    		if(data[i].children[j].children[k].spread){
-                    			ulHtml=ulHtml.replace("class=\"layui-this\"","");
-                    			ulHtml += '<dd title="' + data[i].children[j].children[k].title + '" class="layui-this">';
-                    		}else{
-                    			ulHtml += '<dd title="' + data[i].children[j].children[k].title + '">';
-                    		}
-                    		ulHtml += '<a href="javascript:;" data-url="' + data[i].children[j].children[k].href + '">';
-                    		if (data[i].children[j].children[k].icon != null && data[i].children[j].children[k].icon !== undefined && data[i].children[j].children[k].icon !== '') {
-                                if (data[i].children[j].children[k].icon.indexOf('fa-') !== -1) {
-                                    ulHtml += '<i class="fa ' + data[i].children[j].children[k].icon + '" data-icon="' + data[i].children[j].children[k].icon + '" aria-hidden="true"></i>';
-                                } else {
-                                    ulHtml += '<i class="layui-icon ' + data[i].children[j].children[k].icon + '"></i>';
-                                }
-                            }
-                    		 ulHtml += '<cite>' + data[i].children[j].children[k].title + '</cite>';
-                             ulHtml += '</a>';
-                             ulHtml += '</dd>';
-                    	}
-                    	ulHtml += '</dl>';
-                    }else{        
-                    	ulHtml += '<dd title="' + data[i].children[j].title + '">';
-                    	if(data[i].children[j].spread){
-                    		ulHtml=ulHtml.replace("class=\"layui-this\"","");
-                    		ulHtml += '<a href="javascript:;" data-url="' + data[i].children[j].href + '" class="layui-this">';  
-                    	}else{
-                    		ulHtml += '<a href="javascript:;" data-url="' + data[i].children[j].href + '">';                   		
-                    	}
-                    	if (data[i].children[j].icon != null && data[i].children[j].icon !== undefined && data[i].children[j].icon !== '') {
-                    		if (data[i].children[j].icon.indexOf('fa-') !== -1) {
-                    			ulHtml += '<i class="fa ' + data[i].children[j].icon + '" data-icon="' + data[i].children[j].icon + '" aria-hidden="true"></i>';
-                    		} else {
-                    			ulHtml += '<i class="layui-icon ' + data[i].children[j].icon + '"></i>';
-                    		}
-                    	}
-                    	ulHtml += '<cite>' + data[i].children[j].title + '</cite>';
-                    	ulHtml += '</a>';
-                    	ulHtml += '</dd>';                   	
-                    }
-                }
-                ulHtml += '</dl>';
-            } else {
-                var dataUrl = (data[i].href !== undefined && data[i].href !== '') ? 'data-url="' + data[i].href + '"' : '';
-                if(data[i].spread){
-                	ulHtml=ulHtml.replace("class=\"layui-this\"","");
-                	dataUrl+=' class="layui-this"';
+            	ulHtml += '<cite>' + obj.title + '</cite>'
+            	ulHtml += '</a>';
+            }else{
+            	var dataUrl = (obj.href !== undefined && obj.href !== '') ? 'data-url="' + obj.href + '"' : '';
+                if(obj.spread){
+                	ulHtml = ulHtml.replace("class=\"layui-this\"","");
+                	dataUrl +=' class="layui-this"';
                 }
                 ulHtml += '<a href="javascript:;" ' + dataUrl + '>';
-                if (data[i].icon !== null && data[i].icon !== undefined && data[i].icon !== '') {
-                    if (data[i].icon.indexOf('fa-') !== -1) {
-                        ulHtml += '<i class="fa ' + data[i].icon + '" aria-hidden="true" data-icon="' + data[i].icon + '"></i>';
+                if (obj.icon !== null && obj.icon !== undefined && obj.icon !== '') {
+                    if (obj.icon.indexOf('fa-') !== -1) {
+                    	ulHtml += '<i class="fa ' + obj.icon + '" aria-hidden="true" data-icon="' + obj.icon + '"></i>';
                     } else {
-                        ulHtml += '<i class="layui-icon ' + data[i].icon + '"></i>';
+                    	ulHtml += '<i class="layui-icon ' + obj.icon + '"></i>';
                     }
                 }
-                ulHtml += '<cite>' + data[i].title + '</cite>'
+                ulHtml += '<cite>' + obj.title + '</cite>'
                 ulHtml += '</a>';
             }
+            //这里是添加所有的子菜单
+            ulHtml += loadchild(obj,0);
             ulHtml += '</li>';
-        }
+        });
         ulHtml += '</ul>';
-
         return ulHtml;
     }
 
+    //组装子菜单的方法
+    var dep=0;
+    function loadchild(obj,num){
+        if(obj==null){
+            return;
+        }
+             
+        var content='';
+        if(obj.children!=null && obj.children.length>0){
+        	dep++;
+        	num=num*dep;
+        	content += '<dl class="layui-nav-child">';
+            $.each(obj.children,function(i,note){
+            	if (note.children !== undefined && note.children !== null && note.children.length > 0) {
+            		if(note.spread){
+                		content += '<dd title="' + note.title + '" style="margin-left:'+num+'px;" class="layui-nav-itemed">';    
+                	}else{
+                		content += '<dd title="' + note.title + '" style="margin-left:'+num+'px;">';                  		
+                	}
+                	content += '<a href="javascript:;">';
+                	if (note.icon !== null && note.icon !== undefined && note.icon !== '') {
+                        if (note.icon.indexOf('fa-') !== -1) {
+                        	content += '<i class="fa ' + note.icon + '" aria-hidden="true" data-icon="' + note.icon + '"></i>';
+                        } else {
+                        	content += '<i class="layui-icon ' + note.icon + '"></i>';
+                        }
+                    }
+                	content += '<cite>' + note.title + '</cite>'
+                	content += '</a>';
+                	content+=loadchild(note,3);
+                }else{
+                	content += '<dd title="' + note.title + '" style="margin-left:'+num+'px;">';
+                	var dataUrl = (note.href !== undefined && note.href !== '') ? 'data-url="' + note.href + '"' : '';
+                    if(note.spread){
+                    	content=content.replace("class=\"layui-this\"","");
+                    	dataUrl+=' class="layui-this"';
+                    }
+                    content += '<a href="javascript:;" ' + dataUrl + '>';
+                    if (note.icon !== null && note.icon !== undefined && note.icon !== '') {
+                        if (note.icon.indexOf('fa-') !== -1) {
+                        	content += '<i class="fa ' + note.icon + '" aria-hidden="true" data-icon="' + note.icon + '"></i>';
+                        } else {
+                        	content += '<i class="layui-icon ' + note.icon + '"></i>';
+                        }
+                    }
+                    content += '<cite>' + note.title + '</cite>'
+                    content += '</a>';
+                }
+                content += '</dd>';
+            });
+
+            content += '</dl>';
+        }
+        return content;
+    }
+    
     var navbar = new Navbar();
 
     exports('navbar', function (options) {
