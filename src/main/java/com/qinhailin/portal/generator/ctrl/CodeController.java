@@ -216,7 +216,9 @@ public class CodeController extends BaseController {
 		Record subTable=new Record();
 		subTable.set("tableCols", tableItem);
 		subTable.set("rowData", codeService.rowDataJson(itemRet.getAs("columnMetas")));
-		String actionKey="/"+basePackage.substring(basePackage.lastIndexOf(".")+1)+"/"+StrKit.firstCharToLowerCase(modelName);
+		String portal=basePackage.split("\\.")[2];
+		String modular=basePackage.substring(basePackage.indexOf(portal));
+		String actionKey="/"+modular.replace(".", "/")+"/"+StrKit.firstCharToLowerCase(modelName);
 		subTable.set("actionKey",actionKey);
 		return subTable;
 	}

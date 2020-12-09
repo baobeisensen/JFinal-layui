@@ -36,10 +36,10 @@ public class GeneratorKit {
 	private static String author = "QinHaiLin";
 
 	private static final String javaResource="src/main/java";
-	private static final String htmlResource="src/main/webapp/WEB-INF/views/portal";
+	private static final String htmlResource="src/main/webapp/WEB-INF/views";
 	
 	//packager名称
-	private static String basePackage = "com.qinhailin.portal";
+	private static String basePackage = "com.qinhailin";
 	private static String modular="business";
 	private static String ctrl="ctrl";
 	private static String service="service";

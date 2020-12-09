@@ -49,9 +49,9 @@
 <script>
     gridArgs.title='${tableComment}';
     gridArgs.dataId='${primaryKey}';
-    gridArgs.deleteUrl='#(path)/portal${actionKey}/delete';
-    gridArgs.updateUrl='#(path)/portal${actionKey}/edit/';
-    gridArgs.addUrl='#(path)/portal${actionKey}/add';
+    gridArgs.deleteUrl='#(path)${actionKey}/delete';
+    gridArgs.updateUrl='#(path)${actionKey}/edit/';
+    gridArgs.addUrl='#(path)${actionKey}/add';
     gridArgs.heightDiff=340;//调整表格高度
     gridArgs.gridDivId ='maingrid';
     initGrid({id : 'maingrid'
@@ -62,7 +62,7 @@
 ${tableCols}
             {fixed:'right',width : 180,align : 'left',toolbar : '#bar_maingrid'}
             ] ]
-        ,url:"#(path)/portal${actionKey}/list"
+        ,url:"#(path)${actionKey}/list"
         ,searchForm : 'searchForm'
     });
 

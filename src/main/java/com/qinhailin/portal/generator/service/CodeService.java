@@ -147,8 +147,10 @@ public class CodeService{
 		
 		//模板变量
 		GeneratorKit codeKit=GeneratorKit.getInstance();
+		String portal=basePackage.split("\\.")[2];
+		String modular=basePackage.substring(basePackage.indexOf(portal));
 		@SuppressWarnings("static-access")
-		Kv kv=codeKit.setBasePackage(basePackage).setModular(basePackage.substring(basePackage.lastIndexOf(".")+1)).getJavaKv(modelName);
+		Kv kv=codeKit.setBasePackage(basePackage).setModular(modular.replace(".", "/")).getJavaKv(modelName);
 		kv.set("author", authorName).set("tableComment", tableComment).set("primaryKey", primaryKey);
 		
 		//项目模板
@@ -269,10 +271,12 @@ public class CodeService{
 	@SuppressWarnings("static-access")
 	public void downloadFile(String type,String className,String packageName,Record record) throws IOException{
 		GeneratorKit genratorKit=GeneratorKit.getInstance();
+		String portal=packageName.split("\\.")[2];
+		String modular=packageName.substring(packageName.indexOf(portal));
 		//设置package
-		genratorKit.setBasePackage(packageName.substring(0, packageName.lastIndexOf(".")));
+		genratorKit.setBasePackage(packageName.substring(0, packageName.indexOf(portal)));
 		//设置模块
-		genratorKit.setModular(packageName.substring(packageName.lastIndexOf(".")+1,packageName.length()));
+		genratorKit.setModular(modular.replace(".", "/"));
 		List<String> listCode=record.get(type);
 
 		//后端代码
@@ -310,8 +314,10 @@ public class CodeService{
 		
 		//模板变量
 		GeneratorKit codeKit=GeneratorKit.getInstance();
+		String portal=basePackage.split("\\.")[2];
+		String modular=basePackage.substring(basePackage.indexOf(portal));
 		@SuppressWarnings("static-access")
-		Kv kv=codeKit.setBasePackage(basePackage).setModular(basePackage.substring(basePackage.lastIndexOf(".")+1)).getJavaKv(modelName);
+		Kv kv=codeKit.setBasePackage(basePackage).setModular(modular.replace(".", "/")).getJavaKv(modelName);
 		kv.set("author", authorName).set("tableComment", tableComment).set("primaryKey", primaryKey);
 				
 		//index.html模板内容

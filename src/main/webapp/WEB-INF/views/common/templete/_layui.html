@@ -153,3 +153,18 @@
 	changeDivContent('#(path)/portal/toFormUpload/#(objectId)','#(divId)');
 #end
 
+<!-- 是否选项函数 -->
+#define getYesOrNo(type,name,title)
+	#if(type=='select')
+	<select name="#(name)">
+			#if(title)
+   			<option value="">#(title)</option>
+   			#end
+   			<option value="1" #if(value==1) selected="selected" #end>#(yesTitle??'是')</option>
+   			<option value="0" #if(value==0) selected="selected" #end>#(noTitle??'否')</option>
+   	</select>
+   	#else
+   		<input type="radio" name="#(name)" value="1" #if(value==1) checked="checked" #end  title="#(yesTitle??'是')"/>
+   		<input type="radio" name="#(name)" value="0" #if(value==0) checked="checked" #end  title="#(noTitle??'否')"/>
+   	#end
+#end

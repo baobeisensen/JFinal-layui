@@ -144,17 +144,11 @@ public class SqlController extends BaseController {
 	 * 下拉选择数据接口
 	 */
 	public void getOption(){
-		List<Record> list=CacheKit.get("cusSql", getPara("code"), new IDataLoader() {
-			
-			@Override
-			public Object load() {
-				Record sqlView=service.findPk("code", getPara("code"));
-				if(sqlView!=null){
-					return Db.find(sqlView.getStr("content"));					
-				}
-				return null;
-			}
-		});
+		List<Record> list=null;
+		Record sqlView=service.findPk("code", getPara("code"));
+		if(sqlView!=null){
+			list= Db.find(sqlView.getStr("content"));					
+		}
 		renderJson(list);
 	}
 }

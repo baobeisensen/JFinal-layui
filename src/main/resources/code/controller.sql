@@ -16,7 +16,7 @@ import ${servicePackage}.${modelName}Service;
  * @author ${author}
  * @date ${date}
  */
-@Path("/portal${actionKey}")
+@Path("${actionKey}")
 public class ${modelName}Controller extends BaseController {
 
    @Inject

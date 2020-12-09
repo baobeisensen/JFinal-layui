@@ -3,7 +3,7 @@
 #[[
 #@layout()
 #define main()
-  <form action="#(path)/portal${actionKey}/update" class="layui-form layui-form-pane f-form" method="post" autocomplete="off">
+  <form action="#(path)${actionKey}/update" class="layui-form layui-form-pane f-form" method="post" autocomplete="off">
       #include("_form.html")
   </form>
 #end
