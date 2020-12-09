@@ -113,10 +113,10 @@ public class CodeController extends BaseController {
 		List<Record> codeList=getSessionAttr("downloadCode");
 		String packageName=getSessionAttr("packageName");
 		List<String> modelList=getSessionAttr("modelList");
-		
+		String codeName=getPara("codeName");
 		try {
-			for(int i=0;i<codeList.size();i++){		
-				codeService.downloadFile(getPara("type"),modelList.get(i), packageName,codeList.get(i));		
+			for(int i=0;i<codeList.size();i++){
+				codeService.downloadFile(getPara("type"),modelList.get(i), packageName,codeList.get(i).set("codeName", codeName));		
 			}
 			renderJson(ok());
 		} catch (IOException e) {

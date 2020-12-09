@@ -278,16 +278,16 @@ public class CodeService{
 		//设置模块
 		genratorKit.setModular(modular.replace(".", "/"));
 		List<String> listCode=record.get(type);
-
+		String[] codeName=record.getStr("codeName").split(",");
 		//后端代码
 		if("codeJava".equals(type)){
-			for(String str:listCode){
+			for(String str:codeName){
 				genratorKit.createJavaFile(className, str,record.getStr(str));				
 			}
 		}
 		//前端代码
 		else if("codeHtml".equals(type)){
-			for(String str:listCode){
+			for(String str:codeName){
 				genratorKit.createHtmlFile(className, str,record.getStr(str));
 			}
 		}

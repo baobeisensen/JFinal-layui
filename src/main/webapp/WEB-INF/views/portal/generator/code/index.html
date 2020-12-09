@@ -140,31 +140,42 @@ function getTable(data){
                         codeData = data.data[0];
                         var codeJava=codeData["codeJava"]||[];
                         var codeHtml=codeData["codeHtml"]||[];
-                        var btn1="",btn2="";
+                        var btn1="",btn2="",checkbox1="",checkbox2="";
                         
                         codeJava.forEach(v=>{                            
                         	btn1+='<button  class="btn layui-btn layui-btn-primary " onclick="chilckBtn(this);" id="'+v+'" >'+v+'</button>';
+                        	checkbox1+='<input lay-filter="code" type="checkbox" name="javaCode" onclick="chilckBtn(this);" id="'+v+'" value="'+v+'" title="'+v+'" />';
                         });
                         codeHtml.forEach(v=>{  
                         	btn2+='<button  class="btn layui-btn layui-btn-primary" onclick="chilckBtn(this);" id="'+v+'" >'+v+'</button>';
+                        	checkbox2+='<input lay-filter="code" type="checkbox" name="htmlCode" onclick="chilckBtn(this);" id="'+v+'" value="'+v+'" title="'+v+'" />';
                         });
                         
                         if(btn1!=""){                       	
-                       		btn1+='<button class="btn layui-btn layui-btn-primary" onclick="download(\'codeJava\')">下载</button>';
+                        	//btn1+='<button class="btn layui-btn layui-btn-primary" onclick="download(\'codeJava\')">下载</button>';
+                        	checkbox1+='<button class="btn layui-btn layui-btn-primary" onclick="download(\'codeJava\')">下载</button>';
                         }
                         if(btn2!=""){
-                        	btn2+='<button class="btn layui-btn layui-btn-primary" onclick="download(\'codeHtml\')">下载</button>';
+                        	//btn2+='<button class="btn layui-btn layui-btn-primary" onclick="download(\'codeHtml\')">下载</button>';
+                        	checkbox2+='<button class="btn layui-btn layui-btn-primary" onclick="download(\'codeHtml\')">下载</button>';
                         }          
                                      
-                        $("#btnGroupJava").html(btn1);
-                       	$("#btnGroupHtml").html(btn2);
-                       	
-                       	$('.btn').bind('click', function () {
+                        $("#btnGroupJava").html(checkbox1);
+                       	$("#btnGroupHtml").html(checkbox2);
+                       	layui.form.render();
+                       	layui.form.on('checkbox(code)', function(data){
+	                       	if (!$.isEmptyObject(codeData)) {
+	                            genCodeArea.setValue(codeData[data.value]);
+	                            genCodeArea.setSize('auto', 'auto');                                                     
+	                        }
+                       	});
+                       	         
+                       	/* $('.btn').bind('click', function () {
                                if (!$.isEmptyObject(codeData)) {
                                    genCodeArea.setValue(codeData[this.id]);
                                    genCodeArea.setSize('auto', 'auto');                                                     
                                }
-                           });
+                           }); */
                                     
                         $('#downloadAll').removeClass('layui-disabled');                        
                         $('#downloadAll').attr("disabled",false);
@@ -188,18 +199,30 @@ function getTable(data){
      });
 
     function download(type){
-        var text="Java";
+        var text="所有";
+        var codeName = [];
         if(type=="codeHtml"){
-            text="Html";
-        }else if(type=='codeAll'){
-			text="所有";
+            $('input[type=checkbox][name=htmlCode]:checked').each(function() {
+            	codeName.push($(this).val());
+ 	        });
+            text=codeName.toString();
+        }else if(type=='codeJava'){
+	        $('input[type=checkbox][name=javaCode]:checked').each(function() {
+	        	codeName.push($(this).val());
+	        });
+        	text=codeName.toString();
+        }
+        
+        if(type!='codeAll'&&codeName.length==0){
+        	error("请选择要下载的文件")
+        	return
         }
         
         jsConfirm("确定创建"+text+"文件吗？",function(){
         	$.ajax({
 				url:"#(path)/portal/generator/code/download",  
 			    type:"POST", 
-			    data: {"type":type},
+			    data: {"type":type,"codeName":codeName.toString()},
 			    success:function(ret){
 			    	if(ret.state=='ok'){
 			    		success("代码文件创建成功，请刷新项目!")
