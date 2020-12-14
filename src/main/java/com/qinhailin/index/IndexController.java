@@ -156,4 +156,20 @@ public class IndexController extends BaseController {
 			renderJson(err("密码错误，请重新输入..."));
 		}
 	}
+	
+	
+	/**
+	 * 主题切换
+	 */
+	public void switchTheme() {
+		String theme=getPara("theme");
+		Visitor vs = VisitorUtil.getVisitor(getSession());
+		String id=vs.getUserData().getId();
+		if(sysUserService.updateTheme(id,theme)) {
+			renderJson(suc("切换成功"));
+		}else {
+			renderJson(err("切换失败"));
+		}
+	}
+	
 }

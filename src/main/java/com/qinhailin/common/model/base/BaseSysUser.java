@@ -143,5 +143,20 @@ public abstract class BaseSysUser<M extends BaseSysUser<M>> extends Model<M> imp
 	public java.lang.Integer getFailureNumber() {
 		return getInt("failure_number");
 	}
+	
+	/**
+	 * 主题模板
+	 * @param theme
+	 * @return
+	 */
+	public M setTheme(java.lang.String theme) {
+		set("theme", theme);
+		return (M)this;
+	}
+	
+	public java.lang.String getTheme() {
+		return getStr("theme");
+	}
+	
 
 }

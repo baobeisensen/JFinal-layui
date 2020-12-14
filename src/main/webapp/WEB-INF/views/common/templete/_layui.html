@@ -53,6 +53,33 @@
 			#@submitFunction()   
  #end
  
+ 
+ #define viewButton()
+	#@viewButton2(4)
+#end
+#define viewButton2(colNum)
+ 			<div class="layui-row layui-col-space1 task-row">
+				<div class="layui-hide-xs layui-col-sm3 layui-col-md#(colNum??4)">
+					<div class="layui-input-block"></div>	
+				</div>
+				<div class="layui-col-xs12 layui-col-sm9 layui-col-md#(12-colNum)">
+					<div class="layui-input-block">
+							<div class="layui-btn-container" style="margin-top: 10px;margin-left:-25px">
+							 
+								<button id='closeWinBtn' type="button" 	 class='layui-btn  layui-btn-normal  layui-btn-radius' value="Close">
+									<i class="layui-icon">&#x1006;</i>	关闭
+								</button>
+							</div>
+					</div>
+				</div>
+			</div>
+			#@submitFunction()   
+ #end
+ 
+ 
+ 
+ 
+ 
 #define submitFunction()
 <!-- 防止重复提交数据 -->
 <script type="text/javascript">
@@ -80,7 +107,7 @@
 <!-- 分页条件查询表单 start -->
 #define formStart()
 <form class="layui-form layui-form-pane f-form" id='searchForm' lay-filter='searchForm' action="javascript:;">
-	<div class='layui-row layui-col-space1 task-row'>
+	<div class='layui-row layui-col-space1 task-row search-model'>
 		<div class='layui-col-xs12 layui-col-sm12 layui-col-md12'> 
 			<div class="layui-form-item">
 #end
@@ -118,28 +145,28 @@
 
  <!-- 分页列表-->
 #define table()
- 	<div class='layui-row f-index-toolbar'>
-		<div class='layui-col-xs12 layui-col-sm12 layui-col-md12'>
-			<div class="layui-btn-group">
-				<button id='addBtn_' class="layui-btn layui-btn-normal layui-btn-sm">
-				  <i class="layui-icon">&#xe608;</i> 新增
-				</button>
-				<button id='refreshBtn_' class="layui-btn layui-btn-normal layui-btn-sm">
-				  <i class="layui-icon">&#xe669;</i> 刷新
-				</button>	
-				#@button?()		
-				<button id='deleteBtn_' class="layui-btn  layui-btn-normal layui-btn-sm">
-				  <i class="layui-icon">&#xe640;</i> 删除
-				</button>			
+	 <div class='layui-row f-index-toolbar'>
+			<div class='layui-col-xs12 layui-col-sm12 layui-col-md12'>
+				<div class="layui-btn-group">
+					<button id='addBtn_' class="layui-btn layui-btn-normal layui-btn-sm">
+					  <i class="layui-icon">&#xe608;</i> 新增
+					</button>
+					<button id='refreshBtn_' class="layui-btn layui-btn-normal layui-btn-sm">
+					  <i class="layui-icon">&#xe669;</i> 刷新
+					</button>	
+					#@button?()		
+					<button id='deleteBtn_' class="layui-btn  layui-btn-normal layui-btn-sm">
+					  <i class="layui-icon">&#xe640;</i> 删除
+					</button>			
+				</div>
 			</div>
-		</div>
-	</div>	
-	<div class="layui-row  f-index-toolbar">
-			<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-				<!-- 默认列表 -->
-   				<table id="maingrid" lay-filter="maingrid"></table>
-   			</div>
-   	</div>
+		</div>	
+		<div class="layui-row  f-index-table">
+				<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+					<!-- 默认列表 -->
+	   				<table id="maingrid" lay-filter="maingrid"></table>
+	   			</div>
+	   	</div>
    	<!-- 	每行的操作按钮 -->
 	<script type="text/html" id="bar_maingrid">
   	<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -153,18 +180,3 @@
 	changeDivContent('#(path)/portal/toFormUpload/#(objectId)','#(divId)');
 #end
 
-<!-- 是否选项函数 -->
-#define getYesOrNo(type,name,title)
-	#if(type=='select')
-	<select name="#(name)">
-			#if(title)
-   			<option value="">#(title)</option>
-   			#end
-   			<option value="1" #if(value==1) selected="selected" #end>#(yesTitle??'是')</option>
-   			<option value="0" #if(value==0) selected="selected" #end>#(noTitle??'否')</option>
-   	</select>
-   	#else
-   		<input type="radio" name="#(name)" value="1" #if(value==1) checked="checked" #end  title="#(yesTitle??'是')"/>
-   		<input type="radio" name="#(name)" value="0" #if(value==0) checked="checked" #end  title="#(noTitle??'否')"/>
-   	#end
-#end

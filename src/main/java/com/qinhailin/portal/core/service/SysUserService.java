@@ -216,4 +216,16 @@ public class SysUserService extends BaseService {
 		
 		return obj==null?"":obj.toString();
 	}
+
+	/**
+	 * 修改皮肤颜色
+	 * @param userID
+	 * @param theme
+	 * @return
+	 */
+	public boolean updateTheme(String userId,String theme) {
+		SysUser entity=(SysUser) findById(userId);
+		entity.setTheme(theme);
+		return entity.update();
+	}
 }

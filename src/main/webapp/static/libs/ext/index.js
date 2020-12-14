@@ -83,12 +83,12 @@ layui.config({
             location.reload();//刷新
         });
     });
-        
-    $('.admin-side-toggle').on('click', function () {
+      //.admin-side-toggle
+    $('.admin-side-toggle-new').on('click', function () {
         var sideWidth = $('#admin-side').width();
         var itemed=$('ul>li.layui-nav-itemed');
         var lasItemed=$('ul>li.check');
-        if (sideWidth === 200) {        	
+        if (sideWidth === 220) {        	
         	setDivWidth(60);
         	showAndHide('none');
         	if(lasItemed.length>0){
@@ -96,17 +96,22 @@ layui.config({
         	}
         	itemed.addClass('check');
         	itemed.removeClass('layui-nav-itemed');
+        	
+        	
+        	$(this).find("i").css({ transform: 'rotate(90deg)' });
+        	
         } else {
         	lasItemed.addClass('layui-nav-itemed');
         	showAndHide('');
-        	setDivWidth(200);
+        	setDivWidth(220);
+        	$(this).find("i").css({ transform: 'rotate(0deg)' });
         }
     });
     
     $('ul.beg-navbar>li').on('click',function () {
     	var sideWidth = $('#admin-side').width();
-    	if(sideWidth<200){
-    		setDivWidth(110);
+    	if(sideWidth<220){
+    		setDivWidth(220);
     		showAndHide('');   
     		layer.close(sideTips);
     	}
@@ -146,7 +151,7 @@ layui.config({
     	});
     }
     
-    $('.admin-side-full').on('click', function () {
+    $('.admin-side-full-new').on('click', function () {
         var docElm = document.documentElement;
         //W3C  
         if (docElm.requestFullscreen) {
@@ -186,7 +191,8 @@ layui.config({
     $('#lock').on('click', function () {
         lock($, layer);
     });
-
+    
+    
     //手机设备的简单适配
     var treeMobile = $('.site-tree-mobile'),
         shadeMobile = $('.site-mobile-shade');
@@ -279,3 +285,14 @@ function lock($, layer) {
         }
     });
 };
+//切换主题
+function themeswicth(theme){
+	 var loading = layer.load(2, {shade: false, time: 2000 });
+	 $.post('switchTheme', { theme: theme}, function (res) {
+		 layer.close(loading);
+		 if(res.code=="success"){
+			// layer.confirm("切换成功，立即刷新？", { icon: 2, time: 1000 });
+		 }
+         window.location.reload();
+     }, 'json');
+}

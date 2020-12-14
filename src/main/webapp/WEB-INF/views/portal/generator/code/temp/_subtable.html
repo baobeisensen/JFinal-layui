@@ -11,10 +11,10 @@ function renderSubTable#(for.count)(refId){
 		config.toolbar='table_toolbar_#(for.count)';//表头工具ID
 		config.rowbar='table_rowbar_#(for.count)';//行按钮ID
 		config.saveBtnId="save_btn_#(for.count)";//保存表格接口
-		config.queryUrl='#("#")(path)#(x.actionKey)/list';//查询接口
+		config.queryUrl='#("#")(path)/portal#(x.actionKey)/list';//查询接口
 		config.params={"refId":refId};//查询参数
-		config.saveUrl='#("#")(path)#(x.actionKey)/saveTableData?type=formTable&refId='+refId;//保存接口
-		config.deleteUrl='#("#")(path)#(x.actionKey)/delete';//删除接口
+		config.saveUrl='#("#")(path)/portal#(x.actionKey)/saveTableData?type=formTable&refId='+refId;//保存接口
+		config.deleteUrl='#("#")(path)/portal#(x.actionKey)/delete';//删除接口
 		config.rowData=#(x.rowData);
 		editTable.render(config,{
 			 elem: '#("#")'+config.tableId

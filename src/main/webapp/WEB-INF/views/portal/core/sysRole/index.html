@@ -43,8 +43,8 @@ body .layui-tree-skin-skin .layui-tree-branch{
     color: #183152;
     font-weight: bold;
     height: 30px;
+    background: #e5e5e5;
     line-height: 30px;
-    background: #E5EFFE;
     overflow: hidden;
     cursor: pointer;
 }
@@ -58,13 +58,15 @@ body .layui-tree-skin-skin .layui-tree-branch{
 .disabled[lay-skin="primary"] span {
     color: 	#BDBDBD;
 }
-
+.layui-row{
+   background: #ffffff;
+}
 </style>
 #end
 
 #define main()
 
-	<div id='container' class="layui-row">	
+	<div id='container' class="layui-row" >	
 	<div class="layui-col-xs12 layui-col-sm4 layui-col-md3 div-scroll" position="left" id="accordion1"> 
 		 <div class="l-layout-header" onclick="">角色菜单
 		   <div class="layui-btn-group" style="float: right">
@@ -104,7 +106,7 @@ body .layui-tree-skin-skin .layui-tree-branch{
          </div>
          <div class="layui-col-xs8  layui-btn-group">
          #if(vs.funcMap.get("sys_role_save_function"))
-           <button id='saveRoleFunc'type="button" lay-submit class='layui-btn layui-btn-green layui-btn-xs' value="Submit">
+           <button id='saveRoleFunc'type="button" lay-submit class='layui-btn layui-btn-normal layui-btn-xs' value="Submit">
 			<i class="layui-icon">&#xe605;</i>	保存
 		  </button>
 		  #end		  
@@ -125,7 +127,7 @@ var leftOtions,rightOption,leftNodes,rightNodes,roleName="#(projectName)",roleCo
 var projectName="#(projectName)";
 
 function setHeight(){
-	var height=$(window).height()-5;
+	var height=$(window).height()-25;
 	var width =$('#container').width();
 	var col3=$('#accordion1').width();
 

@@ -19,7 +19,9 @@ body .layui-tree-skin-skin .layui-tree-branch{
 }
 .div-scroll{
 	overflow:auto;
-	border:1px solid #DCDCDC;
+	border-top:1px solid #DCDCDC;
+	border-left:1px solid #DCDCDC;
+	border-bottom:1px solid #DCDCDC;
 	height: 550px;
 	position: relative;
 	min-width:280px;
@@ -31,12 +33,15 @@ body .layui-tree-skin-skin .layui-tree-branch{
     font-weight: bold;
     height: 30px;
     line-height: 30px;
-    background: #E5EFFE;
+    background: #e5e5e5;
     overflow: hidden;
     cursor: pointer;
 }
 .cite{
    color:#5FB878;
+}
+#container{
+  background: #ffffff;
 }
 </style>
 #end
@@ -72,16 +77,16 @@ body .layui-tree-skin-skin .layui-tree-branch{
     <!-- 右侧表格 -->
 	<div class="layui-col-xs12 layui-col-sm8 layui-col-md9" position='center'  id="tablelist"style="border:1px solid #DCDCDC;">
     	<!-- 表头按钮 -->  
-		<div class='layui-row f-index-toolbar'>
+		<div class='layui-row'>
 			<div class='layui-col-xs12'>
 				<div class="layui-btn-group">
 				    #if(vs.funcMap.get('form_sql_add'))
-					<button style="margin-top: -2px" id='addBtn_' type="button" class="layui-btn layui-btn-mini layui-btn-normal layui-btn-sm">
+					<button id='addBtn_' type="button" class="layui-btn layui-btn-mini layui-btn-normal layui-btn-sm">
 						<i class="layui-icon">&#xe608;</i> 添加
 					</button>
 					#end
 					#if(vs.funcMap.get('form_sql_delete'))
-					<button style="margin-top: -2px" id='deleteBtn_' type="button" class="layui-btn layui-btn-mini layui-btn-normal layui-btn-sm">
+					<button   id='deleteBtn_' type="button" class="layui-btn layui-btn-mini layui-btn-normal layui-btn-sm">
 						<i class="layui-icon">&#xe640;</i> 删除
 					</button>
 					#end
@@ -168,7 +173,7 @@ $(function(){
 });
 
 function setHeight(){
-	var contentHeight=$(window).height()-5;
+	var contentHeight=$(window).height()-25;
 	var width =$('#container').width();
 	$("#accordion1").css("height",contentHeight);
 	$("#tablelist").css("height",contentHeight);
@@ -194,7 +199,7 @@ function getTableList(){
 	gridArgs.updateUrl='#(path)/portal/form/sql/edit?id=';
 	gridArgs.addUrl='#(path)/portal/form/sql/add?treeId='+itemId+"&treeName="+itemName;
 	gridArgs.gridDivId ='maingrid';
-	gridArgs.heightDiff=85;
+	gridArgs.heightDiff=125;
 	initGrid({id : 'maingrid',
 			elem : '#maingrid',
 			cols : [ [

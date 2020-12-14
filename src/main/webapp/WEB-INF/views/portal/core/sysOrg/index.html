@@ -19,7 +19,9 @@ body .layui-tree-skin-skin .layui-tree-branch{
 }
 .div-scroll{
 	overflow:auto;
-	border:1px solid #DCDCDC;
+	border-top:1px solid #DCDCDC;
+	border-left:1px solid #DCDCDC;
+	border-bottom:1px solid #DCDCDC;
 	height: 595px;
 	position: relative;
 	min-width:280px;
@@ -32,16 +34,28 @@ body .layui-tree-skin-skin .layui-tree-branch{
     font-weight: bold;
     height: 30px;
     line-height: 30px;
-    background: #E5EFFE;
+    background: #e5e5e5;
     overflow: hidden;
     cursor: pointer;
 }
 .cite{
    color:#5FB878;
 }
+
+.search-model {
+    height: auto;
+    margin-bottom: 0px !important;
+    padding: 10px 10px 0px 10px;
+    border-radius: 2px;
+    border: 0;
+}
+
+.layui-row{
+   background: #ffffff;
+}
 </style>
 
-  <div id='container' class="layui-row">	
+  <div id='container' class="layui-row" >	
 	<div class="layui-col-xs12 layui-col-sm4 layui-col-md3 div-scroll" position="left" id="accordion1"> 
 	     <div class="l-layout-header" onclick="reloadOrg()">部门菜单
 	        <div class="layui-btn-group"style="float: right">
@@ -107,7 +121,7 @@ body .layui-tree-skin-skin .layui-tree-branch{
 var leftOtions,orgName,orgCode="sys",index;
 
 function setHeight(){
-	var contentHeight=$(window).height()-5;
+	var contentHeight=$(window).height()-25;
 	var width =$('#container').width();
 	var col3=$('#accordion1').width();
 	if(col3<=280){
@@ -269,7 +283,7 @@ function treeClick(item){
 function queryOrgUser(){
 	$("#orgUser").show();
 	gridArgs.gridDivId ='maingrid';
-	gridArgs.heightDiff =227;
+	gridArgs.heightDiff =280;
 	gridArgs.pageSize =10;
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'

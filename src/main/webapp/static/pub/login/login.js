@@ -22,30 +22,27 @@ $(function(){
 	function reloadImage() {
 		document.getElementById('imageId').src = _path+"/pub/verify?t=" + (new Date()).toTimeString();
 	}
-	var isRequest=false;
-	
 	function login(){
+		
 		var userCode=$("#signup_code").val();
 		var password=$("#signup_password").val();
 		var verifyCode=$("#signup_verifyCode").val();
 		if (userCode == '') {
-			$("#showMsg").html("用户名不能为空");
-			$("#userCodeMsg").show();
+			layer.msg('用户名不能为空');
 			return;
 		}
 		if (password == '') {
-			$("#showMsg").html("用户密码不能为空");
-			$("#passwordMsg").show();
+			layer.msg('用户密码不能为空');
+			 
 			return;
 		}
-		if(vc!="")isRequest=true;
-		if (isRequest && verifyCode == '') {
-			$("#showMsg").html("验证码不能为空");
-			$("#verifyCodeMsg").show();
-			$("#show_verifyCode").show();
-			return;
-		}
-
+		
+		var loading = layer.load(2, {
+            shade: false,
+            time: 2000
+        });
+		
+		
 		//加密处理
 		bodyRSA();
 	    password = encryptedString(key, encodeURIComponent(password));

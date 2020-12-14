@@ -3,8 +3,9 @@
 <style type="text/css">
 .div-scroll{
 	overflow:auto;
-	border:1px solid #DCDCDC;
-	min-height: 595px;
+	border-top:1px solid #DCDCDC;
+	border-left:1px solid #DCDCDC;
+	border-bottom:1px solid #DCDCDC;
 	min-width:345px;
 	position: relative;
 }
@@ -15,7 +16,7 @@
     font-weight: bold;
     height: 30px;
     line-height: 30px;
-    background: #E5EFFE;
+    background: #e5e5e5;
     overflow: hidden;
     cursor: pointer;
 }
@@ -26,6 +27,16 @@
 .f-form .layui-inline {
     margin-top: 3px;
     margin-bottom: 0px;
+}
+#container{
+   background: #ffffff;
+}
+.search-model {
+    margin-bottom: 0px;
+    padding: 0px;
+}
+.layui-container-fluid{
+ background: #ffffff;
 }
 </style>
 #end
@@ -55,7 +66,7 @@
 		  	<div class="l-layout-header"><span style="color:#5FB878"></span> 已选用户</div>
 		  	<div class="l-scroll"style="left: 0px;top: 0px;">
 		  		<form class="layui-form layui-form-pane f-form" id='searchForm1' lay-filter='searchForm1' action="javascript:;">
-					<div class='layui-row layui-col-space1 task-row'>
+					<div class='layui-row layui-col-space1 task-row search-model'>
 						<div class='layui-col-xs12 '> 
 							<div class="layui-form-item">
 								<div class="layui-inline">																	
@@ -71,7 +82,7 @@
 								  </div>								
 								<div class="layui-inline">
 									<div class="layui-btn-group">
-										<button class="layui-btn">
+										<button class="layui-btn" style=" height: 30px; line-height: 30px;    border-radius: 3px !important; font-size: 13px; margin-right: 10px !important;">
 											<i class="layui-icon">&#xe615;</i>查询
 										</button>
 									</div>
@@ -154,6 +165,7 @@
 	gridArgs.title='用户';
 	gridArgs.dataId='id';
 	gridArgs.gridDivId ='maingrid';
+	gridArgs.heightDiff =125;
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'
 			,cellMinWidth: 80

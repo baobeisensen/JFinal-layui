@@ -605,6 +605,7 @@ CREATE TABLE sys_user  (
   deleted int(11)  DEFAULT 0 COMMENT '删除操作（1：删除未审核）',
   allow_login_time datetime   COMMENT '允许登录时间或最后登录时间',
   failure_number int(11)   COMMENT '登录错误次数',
+  theme varchar(100)  COMMENT '用户主题切换',
   PRIMARY KEY (id) USING BTREE,
   INDEX index_1_sys_user_orgid(org_id) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8  COMMENT = '用户' ROW_FORMAT = Dynamic;

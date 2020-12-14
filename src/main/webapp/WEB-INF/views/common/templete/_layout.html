@@ -48,7 +48,9 @@
 	<link href="#(path)/static/libs/ddlsql/codemirror.min.css" rel="stylesheet">
 	<script src="#(path)/static/libs/jquery/jquery-2.1.4.min.js?t=#now()" type="text/javascript" ></script>
 	<script src="#(path)/static/libs/jquery/jquery.form.js?t=#now()" type="text/javascript" ></script>
-
+    
+    #if(theme??) <link rel="stylesheet" href="#(path)/static/css/theme/#(theme).css?t=#now()" media="all" /> #end
+    
 #end
 
 <!-- 引入js文件 -->

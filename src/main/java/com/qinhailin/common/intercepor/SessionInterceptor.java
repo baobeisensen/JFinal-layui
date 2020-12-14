@@ -28,10 +28,12 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.Ret;
+import com.qinhailin.common.model.SysUser;
 import com.qinhailin.common.visit.Visitor;
 import com.qinhailin.common.visit.VisitorUtil;
 import com.qinhailin.common.vo.Feedback;
 import com.qinhailin.portal.core.service.SysRoleFuncService;
+import com.qinhailin.portal.core.service.SysUserService;
 
 /**
  * 登陆session、权限认证
@@ -43,6 +45,9 @@ public class SessionInterceptor implements Interceptor {
 
 	@Inject
 	SysRoleFuncService sysRoleFuncService;
+	
+	@Inject
+	SysUserService sysUserService;
 	
 	@Override
 	public void intercept(Invocation inv) {
@@ -104,6 +109,11 @@ public class SessionInterceptor implements Interceptor {
 		
 		//用于页面按钮权限控制
 		controller.setAttr("vs", vs);
+		//根据用户theme主题发送前端
+		if(vs!=null) {
+			SysUser sysUser=(SysUser) sysUserService.findById(vs.getUserData().getId());
+			controller.setAttr("theme", sysUser.getTheme());
+		}
 		
 		//演示系统的对增、删、改操作权限拦截，很简单的实现
 //		String method="save.*|update.*|delete.*|upload*|resetPassword.*|is.*|";
