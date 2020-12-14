@@ -1,0 +1,105 @@
+/*global*/
+.layui-btn-normal {
+    background-color: #009688 ;
+}
+
+.layui-layout-admin .header-demo{border-bottom-color: #ffffff; background-color: #009688 !important;}<!--   #4381e6-->
+
+.admin-nav-card>.layui-tab-title .layui-this {
+    color: #009688 !important;
+    border-radius: 0px;
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover {
+    background-color: #009688 !important;
+    color: #fff;
+}
+.layui-nav-tree .layui-nav-item a:hover {
+    background-color: #009688 !important;
+    color: #fff;
+    border:0;
+}
+
+.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+    background-color: #009688 !important;
+    color: #fff;
+}
+
+.search-model  #searchBtn_{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    background-color: #009688 !important;
+    border-radius: 3px !important;
+    font-size: 13px;
+    margin-right: 10px !important;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    padding: 1px;
+    width: 100%;
+    height: 100%;
+    background-color: #009688 !important;
+}
+
+.layui-laypage-limits:active{
+    border: 1px solid #009688 !important;
+}
+
+.layui-nav-tree .layui-nav-bar {
+    width: 2px;
+    height: 0;
+    background-color: #009688 !important;
+}
+
+/*public*/
+
+ .layui-form-checked[lay-skin=primary] i {
+    border-color: #009688 !important;
+    background-color: #009688 !important;
+    color: #fff;
+}
+ .layui-tab-brief>.layui-tab-title .layui-this {
+    color: #009688 !important;
+}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after {
+    border-bottom:0px !important;
+}
+
+.layui-btn-group .layui-btn-primary:hover {
+    border-color: #C9C9C9;
+    color: #009688  !important;
+}
+ 
+ form .task-row #searchBtn_{
+	 background-color: #009688 !important;
+}
+
+.layui-table-tool .layui-inline[lay-event] {
+    width: 30px;
+    height: 30px;
+    color: #ffffff !important;
+    background-color: #009688 !important;
+    border: 1px solid #009688;
+}
+
+.layui-form-radio>i:hover, .layui-form-radioed>i {
+    color: #009688;
+}
+
+.layui-form-onswitch {
+    border-color: #009688;
+    background-color: #009688;
+}
+
+.layui-table-main table .layui-table-cell a{
+       background-color: transparent !important;
+       color: #009688;
+       font-weight: 500;
+}
