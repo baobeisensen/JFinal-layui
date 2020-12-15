@@ -1815,14 +1815,15 @@ background
 .layui-layout-admin .layui-side {
 	top: 60px;
 	width: 220px;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .layui-side-scroll {
 	position: relative;
 	width: 240px;
-	height: auto;
+	height: 100%;
 	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .layui-body {
@@ -1839,7 +1840,7 @@ background
 
 .layui-nav-tree {
 	width: 220px;
-	padding: 0;
+	padding: 0 0 100px 0;
 }
 
 .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this

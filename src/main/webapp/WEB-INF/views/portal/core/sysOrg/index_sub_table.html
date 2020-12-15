@@ -1,7 +1,26 @@
 #@layoutT("主从表格展示")
+#define css()
+<style type="text/css">
+#searchForm .layui-inline:nth-child(2){
+	border:1px solid #e6e6e6;
+} 
+#searchForm .layui-inline:nth-child(2) .layui-input-block{
+	min-height: 28px;
+}
+#searchForm .layui-inline:nth-child(2) label{
+	height:28px;
+	padding-top:6px;
+	background: none;
+	border:none;
+}
+#searchForm .layui-inline:nth-child(2) .layui-form-radio{
+	margin-top:0;
+}
+</style>
+#end
 #define main()
 	#@formStart()
-		#@queryStart('部门名称')
+		#@queryStart('部门名称:')
 		   <input type="search" name="orgName" autocomplete="off" class="layui-input" placeholder="部门名称"/>
 		#@queryEnd()
 		
