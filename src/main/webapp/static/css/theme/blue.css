@@ -104,3 +104,7 @@
        color: #4381e6;
        font-weight: 500;
 }
+.lay-ext-mulitsel .layui-input.multiple a {
+    background: #4381e6 !important;
+    color: #fff;
+}

@@ -245,6 +245,8 @@ function getTable(data){
 	        	codeName.push($(this).val());
 	        });
         	text=codeName.toString();
+        }else{
+        	codeName = ["all"];
         }
         
         if(type!='codeAll'&&codeName.length==0){

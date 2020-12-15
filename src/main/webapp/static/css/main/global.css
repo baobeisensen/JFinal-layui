@@ -1720,6 +1720,7 @@ background
 	text-align: center;
 	cursor: pointer;
 	border-radius: 11px;
+	border: 1px solid #eee;
 }
 
 .layui-tab-title {

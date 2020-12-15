@@ -40,7 +40,12 @@
 .layui-form-item .layui-inline {
     margin-bottom: 5px;
     margin-right: 0px;
+    height:30px !important;
 }
 .layui-form .layui-form-item {
     margin-bottom: 0px;
+}
+.layui-form-pane .layui-form-item .layui-inline .layui-form-label {
+    padding: 4px 15px;
+    height: 30px;
 }

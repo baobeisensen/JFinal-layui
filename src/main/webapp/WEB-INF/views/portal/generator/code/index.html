@@ -206,7 +206,7 @@ function getTable(data){
 
     function download(type){
         var text="所有";
-        var codeName = [];
+        var codeName = ["all"];
         if(type=="codeHtml"){
             $('input[type=checkbox][name=htmlCode]:checked').each(function() {
             	codeName.push($(this).val());
@@ -217,6 +217,8 @@ function getTable(data){
 	        	codeName.push($(this).val());
 	        });
         	text=codeName.toString();
+        }else{
+        	codeName = ["all"];
         }
         
         if(type!='codeAll'&&codeName.length==0){
