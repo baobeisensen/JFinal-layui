@@ -1,103 +1,51 @@
 /*global*/
-.layui-btn-normal {
-    background-color: #FFB800 ;
-}
-
-.layui-layout-admin .header-demo{border-bottom-color: #ffffff; background-color: #FFB800 !important;}<!--   #4381e6-->
-
-.admin-nav-card>.layui-tab-title .layui-this {
-    color: #FFB800 !important;
-    border-radius: 0px;
-    margin-left: 5px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover {
-    background-color: #FFB800 !important;
-    color: #fff;
-}
-.layui-nav-tree .layui-nav-item a:hover {
-    background-color: #FFB800 !important;
-    color: #fff;
-    border:0;
-}
-
-.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
-    background-color: #FFB800 !important;
-    color: #fff;
-}
-
-.search-model  #searchBtn_{
-    height: 30px;
-    line-height: 30px;
-    padding: 0 10px;
-    background-color: #FFB800 !important;
-    border-radius: 3px !important;
-    font-size: 13px;
-    margin-right: 10px !important;
-}
-
-.layui-laypage .layui-laypage-curr .layui-laypage-em {
-    position: absolute;
-    left: -1px;
-    top: -1px;
-    padding: 1px;
-    width: 100%;
-    height: 100%;
+/*需要改成主题色--背景颜色的样式*/
+.layui-btn,
+.layui-btn-normal,
+.layui-layout-admin .header-demo,
+.layui-nav-tree .layui-nav-child dd.layui-this, 
+.layui-nav-tree .layui-nav-child dd.layui-this a, 
+.layui-nav-tree .layui-this, 
+.layui-nav-tree .layui-this>a, 
+.layui-nav-tree .layui-this>a:hover,
+.layui-nav-tree .layui-nav-item a:hover,
+.layui-nav-tree .layui-nav-bar,
+.layui-nav .layui-nav-child dd.layui-this a, 
+.layui-nav-child dd.layui-this,
+.layui-table-tool .layui-inline[lay-event],
+.layui-form-checked[lay-skin=primary] i,
+.layui-form-onswitch,
+.layui-laypage .layui-laypage-curr .layui-laypage-em,
+.lay-ext-mulitsel .layui-input.multiple a, /*下拉多选*/
+.search-model  #searchBtn_ ,
+form .task-row #searchBtn_{
     background-color: #FFB800 !important;
 }
-
-.layui-laypage-limits:active{
+/*需要改成主题色--字体颜色的样式*/
+.admin-nav-card>.layui-tab-title .layui-this,
+.layui-tab-brief>.layui-tab-title .layui-this,
+.layui-btn-group .layui-btn-primary:hover,
+.layui-form-radio>i:hover, .layui-form-radioed>i,
+.layui-table-main table .layui-table-cell a{
+	color: #FFB800 !important;
+}
+/*需要改成主题色--边框颜色的样式*/
+.layui-laypage-limits:active,
+.layui-form-checked[lay-skin=primary] i,
+.layui-table-tool .layui-inline[lay-event],
+.layui-form-onswitch {
     border: 1px solid #FFB800 !important;
 }
-
-.layui-nav-tree .layui-nav-bar {
-    width: 2px;
-    height: 0;
-    background-color: #FFB800 !important;
-}
-
-/*public*/
-
- .layui-form-checked[lay-skin=primary] i {
-    border-color: #FFB800 !important;
-    background-color: #FFB800 !important;
-    color: #fff;
-}
- .layui-tab-brief>.layui-tab-title .layui-this {
-    color: #FFB800 !important;
-}
-.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after {
-    border-bottom:0px !important;
-}
- 
-
-.layui-btn-group .layui-btn-primary:hover {
-    border-color: #C9C9C9;
-    color: #FFB800  !important;
-}
-form .task-row #searchBtn_{
-	 background-color: #FFB800 !important;
-}
-.layui-table-tool .layui-inline[lay-event] {
-    width: 30px;
-    height: 30px;
-    color: #ffffff !important;
-    background-color: #FFB800 !important;
-    border: 1px solid #FFB800;
-}
-.layui-form-radio>i:hover, .layui-form-radioed>i {
-    color: #FFB800;
-}
-
-.layui-form-onswitch {
-    border-color: #FFB800;
-    background-color: #FFB800;
-}
-
-.layui-table-main table .layui-table-cell a{
-       background-color: transparent !important;
-       color: #FFB800;
-       font-weight: 500;
+/*需要改成白色--字体颜色样式*/
+.layui-nav-tree .layui-nav-child dd.layui-this, 
+.layui-nav-tree .layui-nav-child dd.layui-this a, 
+.layui-nav-tree .layui-this, 
+.layui-nav-tree .layui-this>a, 
+.layui-nav-tree .layui-this>a:hover,
+.layui-nav-tree .layui-nav-item a:hover,
+.layui-nav .layui-nav-child dd.layui-this a, 
+.layui-nav-child dd.layui-this,
+.layui-form-checked[lay-skin=primary] i,
+.layui-table-tool .layui-inline[lay-event]  {
+    color: #fff !important;
 }
