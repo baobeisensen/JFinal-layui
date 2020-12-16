@@ -58,7 +58,7 @@ function initGrid(options, events, initGridArgs) {
 	}
 	var searchFormHeight=42;
 	if(options.searchForm){
-		searchFormHeight=42+$('#'+options.searchForm).height();
+		searchFormHeight=70+$('#'+options.searchForm).height();
 	}
 	var heightDiff=gridArgs_.heightDiff||searchFormHeight;
 

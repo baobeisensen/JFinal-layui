@@ -1865,7 +1865,9 @@ background
 }
 
 .layui-container-fluid {
-	margin: 10px;
+	margin: 5px;
+	/* background: #ffffff;
+    padding: 10px; */
 }
 
 .layui-table td, .layui-table th {
@@ -1876,7 +1878,7 @@ background
 .search-model {
 	height: auto;
 	background: #ffffff;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	padding: 10px;
 	border-radius: 2px;
 }
