@@ -56,13 +56,7 @@ public class SysUserController extends BaseController {
 
 
 	public void list() {
-		Record record = new Record();
-		record.set("userCode", getPara("userCode"));
-		record.set("userName", getPara("userName"));
-		record.set("orgId", getPara("orgId"));
-		record.set("sex", getPara("sex"));
-		record.set("type", getPara("type","user"));
-		renderJson(service.page(getParaToInt("pageNumber", 1), getParaToInt("pageSize", 10), record));
+		renderJson(service.page(getParaToInt("pageNumber", 1), getParaToInt("pageSize", 10), getAllParamsToRecord()));
 	}
 
 	public void add() {

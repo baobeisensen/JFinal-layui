@@ -24,7 +24,7 @@ public class ${modelName}Service extends BaseService {
 
    public Grid page(int pageNumber, int pageSize,Record record) {
       Record rd = new Record();
-      //rd.set("user_name like", record.getStr("searchName"));
+      //rd.set("user_name like", record.getStr("keyword"));
       return queryForList(pageNumber, pageSize,rd);
    }
 }

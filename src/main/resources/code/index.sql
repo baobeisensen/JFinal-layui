@@ -5,8 +5,8 @@
 #define main()
    #@formStart()
       #@queryStart('关键词查询')
-   <input type="search" name="searchName" autocomplete="off" class="layui-input" placeholder="搜索关键词" style="padding-left:20px"/>
-   <i class="layui-icon layui-icon-search" style="position: absolute;top:12px;left:2px"></i>
+   <input type="search" name="keyword" autocomplete="off" class="layui-input" placeholder="搜索关键词" style="padding-left:20px"/>
+   <i class="layui-icon layui-icon-search" style="position: absolute;top:7px;left:2px"></i>
       #@queryEnd()
    #@formEnd()
 

@@ -37,11 +37,7 @@ public class SysLogController extends BaseController {
 	}
 	
 	public void list(){
-		Record record = new Record();
-		record.set("user_code", getPara("userCode"));
-		record.set("method_name", getPara("methodName"));
-		record.set("create_time", getPara("createTime"));
-		record.set("remark", getPara("remark"));
+		Record record = getAllParamsToRecord();
 		renderJson(service.queryForList(getParaToInt("pageNumber",1), getParaToInt("pageSize",10),record,"order by create_time desc"));
 	}
 	
