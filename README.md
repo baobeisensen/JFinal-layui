@@ -130,11 +130,11 @@ public class SysUserController extends BaseController {
 	gridArgs.addUrl='#(path)/portal/core/sysUser/add';
 	gridArgs.resetUrl='#(path)/portal/core/sysUser/resetPassword';
 	gridArgs.gridDivId ='maingrid';
-        gridArgs.heightDiff=82;//调整表格高度
+  gridArgs.heightDiff=82;//调整表格高度
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'
 			,cellMinWidth: 80
-                        ,toolbar:'#table_toolbar'//自定义工具栏		
+             ,toolbar:'#table_toolbar'//自定义工具栏		
 			,cols : [ [
 					{title: '主键',field : 'id',width : 35,checkbox : true},						
 					{title:'序号',type:'numbers',width:35},
