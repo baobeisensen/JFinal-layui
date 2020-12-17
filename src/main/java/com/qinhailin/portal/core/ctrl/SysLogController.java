@@ -38,6 +38,7 @@ public class SysLogController extends BaseController {
 	
 	public void list(){
 		Record record = getAllParamsToRecord();
+		record.remove("pageSize","pageNumber");
 		renderJson(service.queryForList(getParaToInt("pageNumber",1), getParaToInt("pageSize",10),record,"order by create_time desc"));
 	}
 	
