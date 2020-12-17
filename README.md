@@ -1,7 +1,12 @@
-# Jfinal-layui
+# Jfinal-layui-pro 专业版
 
 #### 介绍
 JFinal+layui极速开发企业应用管理系统，是以JFinal+layui为核心的企业应用项目架构，利用JFinal的特性与layui完美结合，达到快速启动项目的目的。让开发更简单高效，即使你不会layui，也能轻松掌握使用。该项目的核心功能有：登录、功能管理、角色管理（包含了权限管理）、用户管理、部门管理、系统日志、业务字典，报表管理、代码生成器、通用的附件上传、下载、导入、导出，echart图表统计，缓存，druid的sql监控，基本满足企业应用管理系统的需求，简化了前段代码，后台公用接口都封装完善，你只需要开发业务功能即可。从后端架构到前端开发，从开发到部署，这真正的展现了jfinal极速开发的魅力。
+
+ 
+
+### pro和master版本的区别主要是前端界面的不同，在原有的基础上修改css，调整首页布局，打造一款免费、漂亮、专业的后台管理系统
+
 
 #### 软件架构
 软件架构说明：
@@ -33,7 +38,7 @@ jfinal的通用配置如果不是特别需要，不需要修改，直接开发�
    ControllerBind的path、viewPath默认相同，也可自定义：
 
 ```
-@ControllerBind(path="/portal/core/sysUser")
+@Path("/portal/core/sysUser")
 public class SysUserController extends BaseController {
 	@Inject
 	SysUserService service;
@@ -44,12 +49,7 @@ public class SysUserController extends BaseController {
 	}
 
 	public void list() {
-            //条件查询
-	     Record record = new Record();
-	     record.set("userName", getPara("userName"));
-	     record.set("orgId", getPara("orgId"));
-	     record.set("sex", getPara("sex"));
-	     renderJson(service.page(getParaToInt("pageNumber", 1), getParaToInt("pageSize", 10), record));
+            renderJson(service.page(getParaToInt("pageNumber", 1), getParaToInt("pageSize", 10), getAllParamsToRecord()));
 	}
  }
 ```
@@ -64,6 +64,30 @@ public class SysUserController extends BaseController {
 	@Override
 	public Model<?> getDao(){
 		return dao;
+	}
+
+    public Grid page(int pageNumber, int pageSize, Record record) {
+		Record rd = new Record();
+		rd.set("a.user_code like", record.getStr("userCode"));
+		rd.set("a.user_name like", record.getStr("userName"));
+		rd.set("a.sex=", record.getStr("sex"));
+		String sql=Db.getSql("core.getUserList");
+		String orgId=record.getStr("orgId");
+		
+		//部门用户列表
+		String type=record.getStr("type");
+		if("org".equals(type)){
+			
+			StringBuffer sbf=new StringBuffer();
+			sbf.append("'").append(orgId).append("'");		
+			String orgIds=orgService.getIdsByOrgId(orgId,sbf);
+			
+			sql=Db.getSql("core.getOrgUserList").replace("?", orgIds);
+			return queryForList(sql,pageNumber, pageSize, rd, null);			
+		}
+		//用户管理列表
+		rd.set("a.org_id=", orgId);
+		return queryForList(sql,pageNumber, pageSize, rd, null);
 	}
   }
 
@@ -106,9 +130,11 @@ public class SysUserController extends BaseController {
 	gridArgs.addUrl='#(path)/portal/core/sysUser/add';
 	gridArgs.resetUrl='#(path)/portal/core/sysUser/resetPassword';
 	gridArgs.gridDivId ='maingrid';
+        gridArgs.heightDiff=82;//调整表格高度
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'
 			,cellMinWidth: 80
+                        ,toolbar:'#table_toolbar'//自定义工具栏		
 			,cols : [ [
 					{title: '主键',field : 'id',width : 35,checkbox : true},						
 					{title:'序号',type:'numbers',width:35},
@@ -157,24 +183,28 @@ code:字典编号，name:元素name属性,text:选项名称，需要选中值，
 
 #### 系统界面
 1、登录界面，第一次不显示验证码，输错一次密码，则需要验证码
-![第一次登录界面](https://images.gitee.com/uploads/images/2019/0105/215040_a8a2fc5f_1692092.png "登录登录.png")
-![密码错误，显示验证码](https://images.gitee.com/uploads/images/2019/0105/215235_6a995c90_1692092.png "显示验证码.png")
+![第一次登录界面](https://images.gitee.com/uploads/images/2020/1217/153554_6616f521_1692092.png "登录登录.png")
+![密码错误，显示验证码](https://images.gitee.com/uploads/images/2020/1217/153837_3dc2b86d_1692092.png "显示验证码.png")
 2、登录后的管理主页
-![管理主页](https://images.gitee.com/uploads/images/2019/0105/215505_6151b7da_1692092.png "管理主页.png")
+![管理主页](https://images.gitee.com/uploads/images/2020/1217/161507_72b38982_1692092.png "系统管理主页.png")
 3、系统管理核心模块
-![功能管理](https://images.gitee.com/uploads/images/2019/0105/215623_059ce33f_1692092.png "功能管理.png")
-![角色管理](https://images.gitee.com/uploads/images/2019/0105/215705_08c4c892_1692092.png "角色管理.png")
-![用户管理](https://images.gitee.com/uploads/images/2019/0105/215739_245dccdd_1692092.png "用户管理.png")
-![部门管理](https://images.gitee.com/uploads/images/2019/0301/085710_77180688_1692092.jpeg "部门管理.jpg")
-![业务字典](https://images.gitee.com/uploads/images/2019/0105/215832_91d9f78c_1692092.png "业务字典.png")
-![系统日志](https://images.gitee.com/uploads/images/2019/0105/215909_00d4c9e0_1692092.png "系统日志.png")
-![附件上传](https://images.gitee.com/uploads/images/2019/0105/220039_83ff97e3_1692092.png "附件上传.png")
-![附件下载](https://images.gitee.com/uploads/images/2019/0105/220152_c1c0a0fc_1692092.png "附件下载.png")
-![echart图表](https://images.gitee.com/uploads/images/2019/0105/220239_fea15866_1692092.png "echart图表.png")
-![代码生成器](https://images.gitee.com/uploads/images/2020/0807/111744_c69d2d87_1692092.png "代码生成器.png")
-![报表设计器](https://images.gitee.com/uploads/images/2020/0807/111819_fb934897_1692092.png "报表设计器.png")
-![可编辑表格](https://images.gitee.com/uploads/images/2020/0807/111924_16880ad0_1692092.png "可编辑表格.png")
-![联级多选](https://images.gitee.com/uploads/images/2020/0807/112021_1eefe7e1_1692092.png "联级多选.png")
+![功能管理](https://images.gitee.com/uploads/images/2020/1217/155447_4e4ea99f_1692092.png "功能管理.png")
+![角色管理](https://images.gitee.com/uploads/images/2020/1217/155537_7b4eea63_1692092.png "角色管理.png")
+![用户管理](https://images.gitee.com/uploads/images/2020/1217/155606_1e30ad3d_1692092.png "用户管理.png")
+![部门管理](https://images.gitee.com/uploads/images/2020/1217/155702_8482791d_1692092.png "部门管理.jpg")
+![业务字典](https://images.gitee.com/uploads/images/2020/1217/155735_e5c21d9a_1692092.png "业务字典.png")
+![系统日志](https://images.gitee.com/uploads/images/2020/1217/155808_ac86b0d5_1692092.png "系统日志.png")
+![自定义SQL](https://images.gitee.com/uploads/images/2020/1217/155848_a01ed2e3_1692092.png "自定义SQL.png")
+![附件上传](https://images.gitee.com/uploads/images/2020/1217/160018_b02f38be_1692092.png "附件上传.png")
+![附件列表](https://images.gitee.com/uploads/images/2020/1217/160059_447aacad_1692092.png "附件列表.png")
+![echart图表](https://images.gitee.com/uploads/images/2020/1217/160140_a64d5839_1692092.png "echart图表.png")
+![单表代码生成器](https://images.gitee.com/uploads/images/2020/1217/160237_1d746b3f_1692092.png "代码生成器.png")
+![主从表代码生成器](https://images.gitee.com/uploads/images/2020/1217/160317_55b40123_1692092.png "主从表代码生成器.png")
+![主从表示例](https://images.gitee.com/uploads/images/2020/1217/160810_05683f52_1692092.png "主从表示例.png")
+![报表设计器](https://images.gitee.com/uploads/images/2020/1217/160913_3f056759_1692092.png "报表设计器.png")
+![报表预览](https://images.gitee.com/uploads/images/2020/1217/160958_f6997107_1692092.png "报表预览.png")
+![可编辑表格](https://images.gitee.com/uploads/images/2020/1217/161043_2b869643_1692092.png "可编辑表格.png")
+![联级多选](https://images.gitee.com/uploads/images/2020/1217/161123_9f1cb41e_1692092.png "联级多选.png")
  **4、响应式布局展示：** 
 
 ![移动端主菜单](https://images.gitee.com/uploads/images/2020/0121/175529_c0d9ea9e_1692092.png "移动端菜单.png")
