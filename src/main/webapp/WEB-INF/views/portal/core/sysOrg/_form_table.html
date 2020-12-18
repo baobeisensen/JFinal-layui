@@ -54,7 +54,7 @@
 			</div>
 		
 		<!-- 从表数据 -->
-		#@subTable(['用户管理']);
+		#@subTable(['用户管理'])
 			
 		<div class="layui-row layui-col-space1 task-row">
 				<div class="layui-hide-xs layui-col-sm12 layui-col-md4">
@@ -112,7 +112,7 @@ function renderSubTable1(orgId){
 	//表格列表设置
 	editTable.render(config,{
 		  elem: '#'+config.tableId
-	      ,height: '300'
+	      ,height: 'full-350'
 	      ,toolbar:'#'+config.toolbar
 	      ,cols: [[ 
 	      		 {field : 'id',type:'checkbox'}

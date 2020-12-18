@@ -7,7 +7,7 @@
 			    <li #if(for.first) class="layui-this" #end>#(x)</li>
 			 #end
 		  </ul>
-		  <div class="layui-tab-content" style="height: #(sub_table_height??300)px">
+		  <div class="layui-tab-content" style="min-height: #(sub_table_height??200)px">
 		  	#for(x:items)
 		  		<!-- 内容#(for.count)-->
 			    <div class="layui-tab-item #if(for.first) layui-show #end">	   	
