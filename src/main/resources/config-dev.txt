@@ -7,6 +7,9 @@ password=root
 devMode=true
 engineDevMode=true
 
+#ureport2报表插件
+startUreport2=true
+
 #业务配置
 projectName=JFinal极速开发企业应用管理系统
 baseUploadPath=WEB-INF/temp/upload

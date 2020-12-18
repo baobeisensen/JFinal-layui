@@ -57,16 +57,23 @@ public class MainConfig extends JFinalConfig {
 	 *运行main方法启动项目
 	 */
 	public static void main(String[] args) {
-//		UndertowServer.start(MainConfig.class);
-		UndertowServer.create(MainConfig.class)
-		.configWeb( builder -> {
-	         // 配置 UReport2 Servlet
-	         builder.addServlet("ureportServlet", "com.bstek.ureport.console.UReportServlet");
-	         builder.addServletMapping("ureportServlet", "/ureport/*");
-	         // 配置 Listener
-	         builder.addListener("org.springframework.web.context.ContextLoaderListener");
-	      })
-		.start();
+		// 加载配置文件
+		loadConfig();
+		
+		// 启动ureport2报表插件
+		if(p.getBoolean("startUreport2",false)){
+			UndertowServer.create(MainConfig.class)
+			.configWeb( builder -> {
+				// 配置 UReport2 Servlet
+				builder.addServlet("ureportServlet", "com.bstek.ureport.console.UReportServlet");
+				builder.addServletMapping("ureportServlet", "/ureport/*");
+				// 配置 Listener
+				builder.addListener("org.springframework.web.context.ContextLoaderListener");
+			})
+			.start();
+		}else{ 
+			UndertowServer.start(MainConfig.class);
+		}
 	}
 	
 	// 使用 jfinal-undertow 时此处仅保留声明，不能有加载代码
@@ -82,15 +89,15 @@ public class MainConfig extends JFinalConfig {
 	 * 配置JFinal常量
 	 */
 	@Override
-	public void configConstant(Constants me) {
-		// 读取数据库配置文件
-		loadConfig();		
+	public void configConstant(Constants me) {	
+		//加载配置文件
+		loadConfig();
 		// 设置当前是否为开发模式
 		me.setDevMode(p.getBoolean("devMode"));
 		// 设置默认上传文件保存路径 getFile等使用
-		me.setBaseUploadPath(p.get("baseUploadPath"));
+		me.setBaseUploadPath(WebContant.baseUploadPath);
 		// 设置默认下载文件路径 renderFile使用
-		me.setBaseDownloadPath(p.get("baseDownloadPath"));
+		me.setBaseDownloadPath(WebContant.baseDownloadPath);
 		// 设置error渲染视图
 		me.setError403View(WebContant.error403View);
 		me.setError404View(WebContant.error404View);
