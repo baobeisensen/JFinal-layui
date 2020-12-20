@@ -17,14 +17,6 @@ body .layui-tree-skin-skin .layui-tree-branch{
 .l-accordion-header{
 	display:none;
 }
-.div-scroll{
-	overflow:auto;
-	border:1px solid #DCDCDC;
-	height: 595px;
-	position: relative;
-	min-width:345px;
-}
-	
 .function_content{
 	border:1px solid #DCDCDC;
 	height: 595px;
@@ -36,18 +28,6 @@ body .layui-tree-skin-skin .layui-tree-branch{
 	overflow: auto;
 	border:1px solid #DCDCDC;
 	margin:0px 1px;
-}
-.l-layout-header {
-    position: relative;
-    padding-left: 10px;
-    color: #183152;
-    font-weight: bold;
-    height: 30px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    line-height: 30px;
-    overflow: hidden;
-    cursor: pointer;
 }
 .cite{
    color:#5FB878;
@@ -68,9 +48,9 @@ body .layui-tree-skin-skin .layui-tree-branch{
 #define main()
 
 	<div id='container' class="layui-row" >	
-	<div class="layui-col-xs12 layui-col-sm4 layui-col-md3 div-scroll" position="left" id="accordion1"> 
+	<div class="layui-col-xs12 layui-col-sm4 div-scroll" position="left" id="accordion1"> 
 		 <div class="l-layout-header" onclick="">角色菜单
-		   <div class="layui-btn-group" style="float: right">
+		   <div class="layui-btn-group">
 		   		#if(vs.funcMap.get('sys_role_add'))
 				<button id='addBtn_' class="layui-btn layui-btn-normal layui-btn-sm">
 				  <i class="layui-icon">&#xe608;</i> 新增
@@ -97,17 +77,17 @@ body .layui-tree-skin-skin .layui-tree-branch{
          </div>
      </div>
         
-	<div class="layui-col-xs12 layui-col-sm8 layui-col-md9 function_content" id="maingrid" position='center'>
+	<div class="layui-col-xs12 layui-col-sm8 function_content" id="maingrid" position='center'>
       <form class="layui-form" action="">
       
         <div class="l-layout-header" style="border-bottom:0px;margin:0px;height:30px">
          <div class="layui-col-xs4">
-            <span id="roleName" style="color:#5FB878">#(projectName)</span>
+            <span id="roleName">#(projectName)</span>
            <label>角色权限：</label>
          </div>
          <div class="layui-col-xs8  layui-btn-group">
          #if(vs.funcMap.get("sys_role_save_function"))
-           <button id='saveRoleFunc'type="button" lay-submit class='layui-btn layui-btn-normal layui-btn-xs' value="Submit">
+           <button id='saveRoleFunc'type="button" lay-submit class='layui-btn layui-btn-normal layui-btn-sm' value="Submit">
 			<i class="layui-icon">&#xe605;</i>	保存
 		  </button>
 		  #end		  
@@ -128,17 +108,17 @@ var leftOtions,rightOption,leftNodes,rightNodes,roleName="#(projectName)",roleCo
 var projectName="#(projectName)";
 
 function setHeight(){
-	var height=$(window).height()-10;
+	var height=$(window).height()-20;
 	var width =$('#container').width();
 	var col3=$('#accordion1').width();
 
 	$("#accordion1").css("height",height);
 	$("#maingrid").css("height",height);
 	if(col3<=345){
-		$("#maingrid").css("width",width-col3-2);		
+		// $("#maingrid").css("width",width-col3-2);		
 	}
 	
-	$(".func_tree").css("height",height-32);
+	$(".func_tree").css("height",height-60);
 	
 }
 var option={

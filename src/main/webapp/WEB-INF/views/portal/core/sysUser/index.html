@@ -1,5 +1,6 @@
 #@layoutT("用户管理")
 #define main()
+<div class="container-wrap">
 	#@formStart()
 		#@queryStart('用户名')
 		   <input type="search" name="userCode" autocomplete="off" class="layui-input" placeholder="用户名"/>
@@ -76,6 +77,7 @@
 		>删除</a>
 	#end
 	</script>
+</div>
 #end
 
 #define js()
@@ -97,7 +99,7 @@
 	gridArgs.addUrl='#(path)/portal/core/sysUser/add';
 	gridArgs.resetUrl='#(path)/portal/core/sysUser/resetPassword';
 	gridArgs.gridDivId ='maingrid';
-	gridArgs.heightDiff=82;//调整表格高度
+	gridArgs.heightDiff=92;//调整表格高度
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'
 			,cellMinWidth: 80

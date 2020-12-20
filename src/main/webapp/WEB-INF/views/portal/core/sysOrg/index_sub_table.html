@@ -19,6 +19,7 @@
 </style>
 #end
 #define main()
+<div class="container-wrap">
 	#@formStart()
 		#@queryStart('部门名称:')
 		   <input type="search" name="orgName" autocomplete="off" class="layui-input" placeholder="部门名称"/>
@@ -75,7 +76,7 @@
 	
 	<!-- 从表数据 -->
 	#@subTable(['用户管理','用户管理2'])
-	
+</div>	
 #end
 
 #define js()

@@ -1,5 +1,6 @@
 #@layoutT("用户管理")
 #define main()
+<div class="container-wrap">
 	#@formStart()
 		#@queryStart('操作用户')
 		   <input type="search" name="userCode" autocomplete="off" class="layui-input" placeholder="操作用户"/>
@@ -37,6 +38,7 @@
 	<script type="text/html" id="bar_maingrid">
   		<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
 	</script>
+</div>
 #end
 
 #define js()
@@ -49,7 +51,7 @@
 	gridArgs.deleteUrl='#(path)/portal/core/sysLog/delete';
 	gridArgs.gridDivId ='maingrid';
 	if(userCode!="superadmin"){
-		gridArgs.heightDiff=82;
+		gridArgs.heightDiff=92;
 	}
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'

@@ -22,7 +22,28 @@
 			var _path="#(path)";
 	</script>
 <style type="text/css">
+.layui-main .layui-nav-item a {
+	color: #ffffff !important;
+}
 
+.layui-main .layui-nav-item a:hover {
+	color: #ffffff !important;
+}
+
+.layui-main .admin-header-item .layui-nav-more {
+	right: 0px !important;
+}
+.indextl{
+   visibility: visible; position: absolute; height: 60px; right: 0;
+}
+.tl{
+  color: #ffffff !important; float: left; padding: 0 15px;
+}
+
+.layui-nav .layui-nav-item a {
+    padding: 0 12px;
+}
+ 
 </style>
 </head>
 <body>
@@ -30,15 +51,15 @@
 		<div class="layui-header header header-demo">
 			<div class="layui-main">
 				<div class="admin-login-box">
-					<a class="logo"> 
-						<span>#(projectName)</span>
+					<a class="logo" style="left: 0;"> <span
+						style="font-size: 24px; color: #ffffff; padding-left: 20px;">#(projectName)</span>
 					</a>
 				</div>
 
 
 				<ul class="layui-nav admin-header-item">
 
-					<li class="layui-nav-item">
+					<li class="layui-nav-item" style="width: 420px; height: 60px; margin: 0 0px;">
 						<div class="indextl" >
 							<a href="javascript:void(0);" id="lock"  class="tl"><i class="fa fa-lock" aria-hidden="true"></i> 锁屏 (Alt+L)</a> 
 							<a href="javascript:void(0);" id="passwd" class="tl"><i class="fa fa-volume-down" aria-hidden="true"></i> 修改密码</a> 
@@ -47,7 +68,7 @@
 					</li>
 
 					<li class="layui-nav-item " >
-						<a href="javascript:;" id="themebtn">
+						<a href="javascript:;" id="themebtn" style="padding: 0 0px;">
 						    <i class="fa fa-th-large" ></i> 
 						       主题
 						</a>
@@ -63,11 +84,11 @@
 		</div>
 		<div class="layui-side" id="admin-side">
 			<div class="admin-side-toggle-new" style="height: 40px; text-align: center; line-height: 40px;">
-				<i class="fa fa-bars " aria-hidden="true" style="color: #999; font-size: 20px; cursor: pointer;" title="隐藏菜单"></i>
+				<i class="fa fa-bars " aria-hidden="true" style="color: #555555; font-size: 20px; cursor: pointer;" title="隐藏菜单"></i>
 			</div>
 			<div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side"></div>
 		</div>
-		<div class="layui-body" id="admin-body">
+		<div class="layui-body" style="bottom: 0; border-left: solid 1.4px #ebebeb; background: #ffffff;" id="admin-body">
 			<div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
 				<ul class="layui-tab-title">
 					<li class="layui-this">
@@ -84,7 +105,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="layui-footer footer layui-hide-xs" id="admin-footer">
+		<div class="layui-footer footer layui-hide-xs" id="admin-footer"
+			style="z-index: 999">
 			<div class="layui-main">
 				<p>
 					<a href="https://www.hnnyj.com" target="_bank">Copyright
@@ -92,7 +114,7 @@
 				</p>
 			</div>
 		</div>
-		<div class="site-tree-mobile">
+		<div class="site-tree-mobile layui-hide">
 			<i class="layui-icon">&#xe602;</i>
 		</div>
 		<div class="site-mobile-shade"></div>

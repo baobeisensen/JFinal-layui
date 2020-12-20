@@ -1,5 +1,6 @@
 #@layoutT('表格编辑')
 #define main()
+<div class="container-wrap">
 	<table class="layui-hide" id="tableId" lay-filter="tableEvent"></table>
 	<!-- 表头工具栏 -->
    	<script type="text/html" id="table_toolbar_1">
@@ -15,17 +16,11 @@
 	<!-- 	每行的操作按钮 -->
 	<script type="text/html" id="table_rowbar_1">
   		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del_btn_1">删除</a>
-	</script>	
+	</script>
+</div>	
 #end
 
 #define js()
-<style>
-.layui-container-fluid {
-    margin: 5px;
-    background: #ffffff;
-    padding: 10px;
-}
-</style>
 <script>
 //查询初始化表格数据
 function getTableData(table){

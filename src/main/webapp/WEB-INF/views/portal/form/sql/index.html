@@ -17,27 +17,6 @@ body .layui-tree-skin-skin .layui-tree-branch{
 .l-accordion-header{
 	display:none;
 }
-.div-scroll{
-	overflow:auto;
-	border-top:1px solid #DCDCDC;
-	border-left:1px solid #DCDCDC;
-	border-bottom:1px solid #DCDCDC;
-	height: 550px;
-	position: relative;
-	min-width:280px;
-}
-.l-layout-header {
-    position: relative;
-    padding-left: 10px;
-    color: #183152;
-    font-weight: bold;
-    height: 30px;
-    line-height: 30px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    overflow: hidden;
-    cursor: pointer;
-}
 .cite{
    color:#5FB878;
 }
@@ -49,9 +28,9 @@ body .layui-tree-skin-skin .layui-tree-branch{
 #define main()
 <div id='container' class="layui-row">	
 	<!-- 左侧树 -->
-	<div class="layui-col-xs12 layui-col-sm4 layui-col-md3 div-scroll" position="left" id="accordion1"> 
+	<div class="layui-col-xs12 layui-col-sm3 div-scroll" position="left" id="accordion1"> 
 	     <div class="l-layout-header">sql分类
-	     	<div class="layui-btn-group" style="float: right">
+	     	<div class="layui-btn-group">
 		   		#if(vs.funcMap.get('sql_sys_tree_add'))
 				<button id='addBtn_1' class="layui-btn layui-btn-normal layui-btn-sm">
 				  <i class="layui-icon">&#xe608;</i> 新增
@@ -76,7 +55,7 @@ body .layui-tree-skin-skin .layui-tree-branch{
      </div>
     
     <!-- 右侧表格 -->
-	<div class="layui-col-xs12 layui-col-sm8 layui-col-md9" position='center'  id="tablelist"style="border:1px solid #DCDCDC;">
+	<div class="layui-col-xs12 layui-col-sm9" position='center'  id="tablelist"style="border:1px solid #DCDCDC;">
     	<!-- 表头按钮 -->  
 		<div class='layui-row' style="border-bottom: 1px solid #eee;">
 			<div class='layui-col-xs12'>
@@ -174,13 +153,13 @@ $(function(){
 });
 
 function setHeight(){
-	var contentHeight=$(window).height()-10;
+	var contentHeight=$(window).height()-20;
 	var width =$('#container').width();
 	$("#accordion1").css("height",contentHeight);
 	$("#tablelist").css("height",contentHeight);
 	var col3=$('#accordion1').width();
 	if(col3<=280){
-		$("#tablelist").css("width",width-col3-2);	
+		// $("#tablelist").css("width",width-col3-2);	
 	}
 }
 

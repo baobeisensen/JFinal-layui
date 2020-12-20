@@ -1,43 +1,37 @@
 #@layoutT("公共上传")
 #define main()
-</h1>
-<div class="form_box">
-
-	<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 10px;">
-  		<legend>多文件上传&nbsp;<span id="fileNumber" style="font-size: 18px;color:#424041"></span></legend>
-	</fieldset> 
- 	<div class="layui-progress layui-hide" lay-showpercent="true" lay-filter="upload" style="margin-bottom:5px">
- 	 	<div class="layui-progress-bar" lay-percent="0%"></div>
+<div class="container-wrap">
+	<div class="form_box">
+	
+		<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 10px;">
+	  		<legend>多文件上传&nbsp;<span id="fileNumber" style="font-size: 18px;color:#424041"></span></legend>
+		</fieldset> 
+	 	<div class="layui-progress layui-hide" lay-showpercent="true" lay-filter="upload" style="margin-bottom:5px">
+	 	 	<div class="layui-progress-bar" lay-percent="0%"></div>
+		</div>
+	
+		<div class="layui-upload">
+		  <button type="button" class="layui-btn layui-btn-normal" id="fileList">选择文件</button> 
+		  <button type="button" class="layui-btn" id="fileListAction">开始上传</button>
+		  <div class="layui-upload-list" style="overflow-y:auto">
+		    <table class="layui-table">
+		      <thead>
+		      	<tr>
+		      		<th>序号</th>
+			      	<th>文件名</th>
+			        <th>大小</th>
+			        <th>状态</th>
+			        <th>操作</th>
+		      	</tr>
+		      </thead>
+		      <tbody id="uploadList"></tbody>
+		    </table>
+		  </div>
+		</div> 
+	
 	</div>
-
-	<div class="layui-upload">
-	  <button type="button" class="layui-btn layui-btn-normal" id="fileList">选择文件</button> 
-	  <button type="button" class="layui-btn" id="fileListAction">开始上传</button>
-	  <div class="layui-upload-list" style="overflow-y:auto">
-	    <table class="layui-table">
-	      <thead>
-	      	<tr>
-	      		<th>序号</th>
-		      	<th>文件名</th>
-		        <th>大小</th>
-		        <th>状态</th>
-		        <th>操作</th>
-	      	</tr>
-	      </thead>
-	      <tbody id="uploadList"></tbody>
-	    </table>
-	  </div>
-	</div> 
-
 </div>
 #end
-<style>
-.layui-container-fluid {
-    margin: 10px;
-    background: #ffffff;
-    padding: 10px;
-}
-</style>
 #define js()
 <script type="text/javascript">
 layui.use(['upload','element'], function(){

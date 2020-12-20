@@ -1,52 +1,53 @@
 #@layoutT("select 多选和无限级联动")
 #define main()
-<form action="" class="layui-form layui-form-pane f-form" method="post" autocomplete="off">
-	<div class="layui-row layui-col-spacel task-row">
-	  #@colStart('多级1',12)
-			<div id="cat_ids1">			
-      #@colEnd()
-    </div>
-    <div class="layui-row layui-col-spacel task-row">
-	  #@colStart('多级2',12)
-			<div id="cat_ids2">			
-      #@colEnd()
-    </div>
-    <div class="layui-row layui-col-spacel task-row">
-	  #@colStart('多选1',12)
-			<div id="tag_ids1">
-   	  #@colEnd()
-     </div>
-    <div class="layui-row layui-col-spacel task-row">
-	  #@colStart('多选2',12)
-			<div id="tag_ids2">
-  	  #@colEnd()         
-	</div>
-    
-     <div class="layui-row layui-col-space1 task-row">
-				<div class="layui-hide-xs layui-col-sm3 layui-col-md4">
-					<div class="layui-input-block"></div>	
-				</div>
-				<div class="layui-col-xs12 layui-col-sm9 layui-col-md8">
-					<div class="layui-input-block">
-							<div class="layui-btn-container" style="margin-top: 10px;margin-left:-25px">
-								<button id='submitBtn' type="submit" lay-submit	 class='layui-btn  layui-btn-normal '  value="Submit">
-									<i class="layui-icon">&#xe605;</i>	提交
-								</button>
-								<button id='closeWinBtn_' type="button" onclick="deleteTab()"	 class='layui-btn  layui-btn-normal  layui-btn-radius' value="Close">
-									<i class="layui-icon">&#x1006;</i>	关闭
-								</button>
-							</div>
+<div class="container-wrap">
+	<form action="" class="layui-form layui-form-pane f-form" method="post" autocomplete="off">
+		<div class="layui-row layui-col-spacel task-row">
+		  #@colStart('多级1',12)
+				<div id="cat_ids1">			
+	      #@colEnd()
+	    </div>
+	    <div class="layui-row layui-col-spacel task-row">
+		  #@colStart('多级2',12)
+				<div id="cat_ids2">			
+	      #@colEnd()
+	    </div>
+	    <div class="layui-row layui-col-spacel task-row">
+		  #@colStart('多选1',12)
+				<div id="tag_ids1">
+	   	  #@colEnd()
+	     </div>
+	    <div class="layui-row layui-col-spacel task-row">
+		  #@colStart('多选2',12)
+				<div id="tag_ids2">
+	  	  #@colEnd()         
+		</div>
+	    
+	     <div class="layui-row layui-col-space1 task-row">
+					<div class="layui-hide-xs layui-col-sm3 layui-col-md4">
+						<div class="layui-input-block"></div>	
+					</div>
+					<div class="layui-col-xs12 layui-col-sm9 layui-col-md8">
+						<div class="layui-input-block">
+								<div class="layui-btn-container" style="margin-top: 10px;margin-left:-25px">
+									<button id='submitBtn' type="submit" lay-submit	 class='layui-btn  layui-btn-normal '  value="Submit">
+										<i class="layui-icon">&#xe605;</i>	提交
+									</button>
+									<button id='closeWinBtn_' type="button" onclick="deleteTab()"	 class='layui-btn  layui-btn-normal  layui-btn-radius' value="Close">
+										<i class="layui-icon">&#x1006;</i>	关闭
+									</button>
+								</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			#@submitFunction()   
-</form>
-  
-  <div id="btn-wrap">
-    <button type="button" class="layui-btn set1">设置多级1</button>
-    <button type="button" class="layui-btn set2">设置多选1</button>
-  </div>
- 
+				#@submitFunction()   
+	</form>
+	  
+	  <div id="btn-wrap">
+	    <button type="button" class="layui-btn set1">设置多级1</button>
+	    <button type="button" class="layui-btn set2">设置多选1</button>
+	  </div>
+</div> 
 #end
 
   #define js()

@@ -1,57 +1,52 @@
 #@layoutT("附件列表")
 #define main()
-<div class="form_box">
-
-	<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 10px;">
-  		<legend>附件列表</legend>
-	</fieldset> 
- 
-	<div class="layui-upload">
-	  <div class="layui-upload-list" style="max-height:500px;overflow-y:auto;margin:0;">
-	    <table class="layui-table">
-	      <thead>
-	      	<tr>
-	      		<th>序号</th>
-		      	<th>文件名</th>
-		        <th>大小</th>
-		        <th>时间</th>
-		        <th>操作</th>
-	      	</tr>
-	      </thead>
-	      <tbody id="uploadList">
-	       #if(fileList)
-           #for(data:fileList)
-           <tr id="upload-#(for.index)">
-              <td>#(for.index+1)</td>
-              <td>#(data.file_name??)</td>
-              <td>#number(data.file_size/1024.0,"#.#")KB</td>
-              <td>#date(data.create_time??,"yyyy-MM-dd HH:mm:ss")</td>
-              <td>
-              	<a href="#(path)/portal/download/#(data.url??)"><button class="layui-btn layui-btn-xs">下载</button></a>
-              	#set(fileType=data.file_name.substring(data.file_name.lastIndexOf(".")+1).toLowerCase())
-              	#if(fileType=="jpg"||fileType=="png"||fileType=="jpeg"||fileType=="gif"||fileType=="ico"||fileType=="bmp")
-              	<a href="javascript:reviewImg('#(data.url??)','#(data.file_name??)')"><button class="layui-btn layui-btn-xs">预览</button></a>
-              	#end
-              	<a href="javascript:deleteFile('#(data.url??)','#(data.file_name??)')"><button class="layui-btn layui-btn-xs layui-btn-danger .demo-delete">删除</button></a>
-              </td>
-           </tr>
-           #end
-       	   #end
-	      </tbody>
-	    </table>
-	  </div>
-
-	</div> 
-
+<div class="container-wrap">
+	<div class="form_box">
+	
+		<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 10px;">
+	  		<legend>附件列表</legend>
+		</fieldset> 
+	 
+		<div class="layui-upload">
+		  <div class="layui-upload-list" style="max-height:500px;overflow-y:auto;margin:0;">
+		    <table class="layui-table">
+		      <thead>
+		      	<tr>
+		      		<th>序号</th>
+			      	<th>文件名</th>
+			        <th>大小</th>
+			        <th>时间</th>
+			        <th>操作</th>
+		      	</tr>
+		      </thead>
+		      <tbody id="uploadList">
+		       #if(fileList)
+	           #for(data:fileList)
+	           <tr id="upload-#(for.index)">
+	              <td>#(for.index+1)</td>
+	              <td>#(data.file_name??)</td>
+	              <td>#number(data.file_size/1024.0,"#.#")KB</td>
+	              <td>#date(data.create_time??,"yyyy-MM-dd HH:mm:ss")</td>
+	              <td>
+	              	<a href="#(path)/portal/download/#(data.url??)"><button class="layui-btn layui-btn-xs">下载</button></a>
+	              	#set(fileType=data.file_name.substring(data.file_name.lastIndexOf(".")+1).toLowerCase())
+	              	#if(fileType=="jpg"||fileType=="png"||fileType=="jpeg"||fileType=="gif"||fileType=="ico"||fileType=="bmp")
+	              	<a href="javascript:reviewImg('#(data.url??)','#(data.file_name??)')"><button class="layui-btn layui-btn-xs">预览</button></a>
+	              	#end
+	              	<a href="javascript:deleteFile('#(data.url??)','#(data.file_name??)')"><button class="layui-btn layui-btn-xs layui-btn-danger .demo-delete">删除</button></a>
+	              </td>
+	           </tr>
+	           #end
+	       	   #end
+		      </tbody>
+		    </table>
+		  </div>
+	
+		</div> 
+	
+	</div>
 </div>
 #end
-<style>
-.layui-container-fluid {
-    margin: 10px;
-    background: #ffffff;
-    padding: 10px;
-}
-</style>
 #define js()
 <script type="text/javascript">
 	function deleteFile(url,fileName){

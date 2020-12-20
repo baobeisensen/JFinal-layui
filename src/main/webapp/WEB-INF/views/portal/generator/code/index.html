@@ -2,9 +2,10 @@
 #define css()
 <style type="text/css">
 .layui-btn-primary{
+	color:#f0ffff;
 	border:0px;
 }
- .layui-btn-primary:hover{
+.layui-btn-primary:hover{
     color: #fff;
     border-color: #1e9fff;
     background: #1e9fff;
@@ -20,65 +21,63 @@ form .task-row:nth-child(3){
 form .task-row:nth-child(4) button,form .task-row:nth-child(5) button{
 	margin:0 0 10px 10px;
 }
-.layui-container-fluid{
-    background: #ffffff;
-       padding: 10px;
-}
 </style>
 
 #end
 #define main()
-<form action="javascript:void(0)" class="layui-form layui-form-pane f-form" method="post">
-<div class="layui-row layui-col-space1 task-row">
-	#@colStart("数据库表",6)
-		<input type="text" class="layui-input" name="tableName"  readonly="readonly" placeholder="请选择数据库表"/>
-	#@colEnd()
-<!-- 	#@colStart("备注信息",6)
-		<input type="text" class="layui-input" name="tableComment" />
-	#@colEnd() -->
-	#@colStart("作者名称",6)
-		<input type="text" class="layui-input" name="authorName" value="qinhailin"/>
-	#@colEnd()
-</div>
-<div class="layui-row layui-col-space1 task-row">
-	#@colStart("实体名称",6)
-		<input type="text" class="layui-input" name="modelName" value="" readonly="readonly"/>
-	#@colEnd()
-	#@colStart("package",6)
-		<input type="text" class="layui-input" name="packageName" value="com.qinhailin.portal.business"/>
-	#@colEnd()
-</div>
-
-<div class="layui-row layui-col-space12 task-row" style="text-align: center">
- 	<button class="layui-btn  layui-btn-normal" id="btnGenCode">生成代码 »</button>
- 	<button class="layui-btn  layui-btn-normal" id="downloadAll" disabled="disabled">下载代码</button>
-</div>
-
-<div class="layui-row layui-col-space task-row">
- 	#@colStart("后端代码",12)
- 		<div id="btnGroupJava">
-			<button  class="btn layui-btn layui-btn-primary" id="Controller.java" onclick="chilckBtn(this)" >Controller.java</button>
-	        <button  class="btn layui-btn layui-btn-primary" id="Service.java" onclick="chilckBtn(this)">Service.java</button>
-			<button  class="btn layui-btn layui-btn-primary" id="Model.java" onclick="chilckBtn(this)">Model.java</button>
-	        <button  class="btn layui-btn layui-btn-primary" id="BaseModel.java" onclick="chilckBtn(this)">BaseModel.java</button>
-	    </div>
-	#@colEnd()
+<div class="container-wrap">
+	<form action="javascript:void(0)" class="layui-form layui-form-pane f-form" method="post">
+	<div class="layui-row layui-col-space1 task-row">
+		#@colStart("数据库表",6)
+			<input type="text" class="layui-input" name="tableName"  readonly="readonly" placeholder="请选择数据库表"/>
+		#@colEnd()
+	<!-- 	#@colStart("备注信息",6)
+			<input type="text" class="layui-input" name="tableComment" />
+		#@colEnd() -->
+		#@colStart("作者名称",6)
+			<input type="text" class="layui-input" name="authorName" value="qinhailin"/>
+		#@colEnd()
 	</div>
-
-<div class="layui-row layui-col-space1 task-row">
- 	#@colStart("前端代码",12)
- 		<div id="btnGroupHtml">
-	         <button class="btn layui-btn layui-btn-primary" id="index.html" onclick="chilckBtn(this)">index.html</button>
-	         <button class="btn layui-btn layui-btn-primary" id="add.html" onclick="chilckBtn(this)">add.html</button>
-	         <button class="btn layui-btn layui-btn-primary" id="edit.html" onclick="chilckBtn(this)">edit.html</button>
-			 <button class="btn layui-btn layui-btn-primary" id="_form.html" onclick="chilckBtn(this)">_form.html</button>
-	    </div>
-	#@colEnd()
+	<div class="layui-row layui-col-space1 task-row">
+		#@colStart("实体名称",6)
+			<input type="text" class="layui-input" name="modelName" value="" readonly="readonly"/>
+		#@colEnd()
+		#@colStart("package",6)
+			<input type="text" class="layui-input" name="packageName" value="com.qinhailin.portal.business"/>
+		#@colEnd()
+	</div>
+	
+	<div class="layui-row layui-col-space12 task-row" style="text-align: center">
+	 	<button class="layui-btn  layui-btn-normal" id="btnGenCode">生成代码 »</button>
+	 	<button class="layui-btn  layui-btn-normal" id="downloadAll" disabled="disabled">下载代码</button>
+	</div>
+	
+	<div class="layui-row layui-col-space task-row">
+	 	#@colStart("后端代码",12)
+	 		<div id="btnGroupJava">
+				<button  class="btn layui-btn layui-btn-primary" id="Controller.java" onclick="chilckBtn(this)" >Controller.java</button>
+		        <button  class="btn layui-btn layui-btn-primary" id="Service.java" onclick="chilckBtn(this)">Service.java</button>
+				<button  class="btn layui-btn layui-btn-primary" id="Model.java" onclick="chilckBtn(this)">Model.java</button>
+		        <button  class="btn layui-btn layui-btn-primary" id="BaseModel.java" onclick="chilckBtn(this)">BaseModel.java</button>
+		    </div>
+		#@colEnd()
+		</div>
+	
+	<div class="layui-row layui-col-space1 task-row">
+	 	#@colStart("前端代码",12)
+	 		<div id="btnGroupHtml">
+		         <button class="btn layui-btn layui-btn-primary" id="index.html" onclick="chilckBtn(this)">index.html</button>
+		         <button class="btn layui-btn layui-btn-primary" id="add.html" onclick="chilckBtn(this)">add.html</button>
+		         <button class="btn layui-btn layui-btn-primary" id="edit.html" onclick="chilckBtn(this)">edit.html</button>
+				 <button class="btn layui-btn layui-btn-primary" id="_form.html" onclick="chilckBtn(this)">_form.html</button>
+		    </div>
+		#@colEnd()
+	</div>
+	<div class="layui-row layui-col-space1 task-row">
+	 	<textarea id="genCodeArea" class="layui-textarea" style="display: none;"></textarea>
+	</div>
+	</form>
 </div>
-<div class="layui-row layui-col-space1 task-row">
- 	<textarea id="genCodeArea" class="layui-textarea" style="display: none;"></textarea>
-</div>
-</form>
 #end
 #define js()
 <script>

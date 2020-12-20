@@ -17,27 +17,6 @@ body .layui-tree-skin-skin .layui-tree-branch{
 .l-accordion-header{
 	display:none;
 }
-.div-scroll{
-	overflow:auto;
-	border-top:1px solid #DCDCDC;
-	border-left:1px solid #DCDCDC;
-	border-bottom:1px solid #DCDCDC;
-	height: 595px;
-	position: relative;
-	min-width:345px;
-}
-.l-layout-header {
-    position: relative;
-    padding-left: 10px;
-    color: #183152;
-    font-weight: bold;
-    height: 30px;
-    line-height: 30px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    overflow: hidden;
-    cursor: pointer;
-}
 .cite{
    color:#5FB878;
 }
@@ -48,9 +27,9 @@ body .layui-tree-skin-skin .layui-tree-branch{
 #end
 #define main()
 <div id='container' class="layui-row">	
-	<div class="layui-col-xs12 layui-col-sm4 layui-col-md3 div-scroll" position="left" id="accordion1"> 
+	<div class="layui-col-xs12 layui-col-sm3 div-scroll" position="left" id="accordion1"> 
 	     <div class="l-layout-header" onclick="reloadTree()">字典菜单
-	     	<div class="layui-btn-group"style="float: right">
+	     	<div class="layui-btn-group">
 				#if(vs.funcMap.get('data_dictionary_add'))
 				<button id='addBtn_1' class="layui-btn layui-btn-normal layui-btn-sm">
 				  <i class="layui-icon">&#xe608;</i> 新增
@@ -75,7 +54,7 @@ body .layui-tree-skin-skin .layui-tree-branch{
          </div>
      </div>
         
-	<div class="layui-col-xs12 layui-col-sm8 layui-col-md9" position='center'  id="tablelist" style="border:1px solid #DCDCDC;">
+	<div class="layui-col-xs12 layui-col-sm9" position='center'  id="tablelist" style="border:1px solid #DCDCDC;">
 		<form class="layui-form layui-form-pane f-form" id='searchForm' lay-filter='searchForm' action="javascript:;">
 		<div class='layui-row '>
 					<div class='layui-col-xs12'>
@@ -116,11 +95,11 @@ body .layui-tree-skin-skin .layui-tree-branch{
 var leftOtions,leftNodes,code="",name="";
 
 function setHeight(){
-	var contentHeight=$(window).height()-10;
+	var contentHeight=$(window).height()-20;
 	var width =$('#container').width();
 	var col3=$('#accordion1').width();
 	if(col3<=345){
-		$("#tablelist").css("width",width-col3-2);	
+		// $("#tablelist").css("width",width-col3-2);	
 	}
 	$("#accordion1").css("height",contentHeight);
 	$("#tablelist").css("height",contentHeight);

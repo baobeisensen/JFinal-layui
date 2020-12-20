@@ -25,7 +25,7 @@
 
 </head>
 <body onkeypress="_loginKeyPress(event);"
-	style="background: url('#(path)/static/img/login_bg.png'); background-size: cover;">
+	style="background: url('#(path)/static/img/login_bg.png'); background-size: cover; background-position:center center;">
 
 
 	<div class="layadmin-user-login layadmin-user-display-show"
@@ -46,7 +46,7 @@
 							class="layadmin-user-login-icon layui-icon layui-icon-username"
 							for="signup_code"></label> <input type="text" name="userCode"
 							placeholder="输入登陆账号" id="signup_code" lay-verify="userCode"
-							lay-verType="tips" placeholder="用户名" class="layui-input">
+							lay-verType="tips" placeholder="用户名" class="layui-input" value="">
 					</div>
 					<div class="layui-form-item">
 						<label
@@ -54,7 +54,7 @@
 							for="signup_password"></label> <input type="password"
 							name="password" placeholder="输入登陆密码" id="signup_password"
 							lay-verType="tips" lay-verify="password" placeholder="密码"
-							class="layui-input">
+							class="layui-input" value="">
 					</div>
 					<div class="layui-form-item" id="show_verifyCode" #if(vc??)style='display:block' #end>
 						<div class="layui-row">

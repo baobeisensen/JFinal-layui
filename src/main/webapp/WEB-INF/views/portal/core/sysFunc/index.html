@@ -23,18 +23,6 @@ body .layui-tree-skin-skin .layui-tree-branch{
 	height: 595px;
 	position: relative;
 }
-.l-layout-header {
-    position: relative;
-    padding-left: 10px;
-    color: #183152;
-    font-weight: bold;
-    height: 30px;
-    line-height: 30px;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    overflow: hidden;
-    cursor: pointer;
-}
 .cite{
    color:#5FB878;
 }
@@ -115,7 +103,7 @@ var leftOtions,leftNodes,funcName,funcCode="frame";
 var projectName="#(peojectName)";
 
 function setHeight(){
-	var contentHeight=$(window).height()-10;
+	var contentHeight=$(window).height()-20;
 	$("#accordion1").css("height",contentHeight);
 	$("#tablelist").css("height",contentHeight);
 }
@@ -136,7 +124,7 @@ function getFuncList(){
 	gridArgs.updateUrl='#(path)/portal/core/sysFunc/edit/';
 	gridArgs.addUrl='#(path)/portal/core/sysFunc/add?parentId='+funcCode;
 	gridArgs.gridDivId ='maingrid';
-	gridArgs.heightDiff=55;
+	gridArgs.heightDiff=70;
 	initGrid({id : 'maingrid',
 			elem : '#maingrid',
 			cols : [ [
