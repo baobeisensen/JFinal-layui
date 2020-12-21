@@ -20,3 +20,10 @@
    		width:70px;
    		padding:0px;
    }
+   
+.layui-btn-danger {
+    background-color: #FF5722!important;
+}
+.layui-table-tool-panel{
+	color:#4040ef;
+}
