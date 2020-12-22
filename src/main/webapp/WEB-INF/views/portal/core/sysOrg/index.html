@@ -23,11 +23,9 @@ body .layui-tree-skin-skin .layui-tree-branch{
 .layui-row{
    background: #ffffff;
 }
-.layui-form .layui-input{
-	line-height: 38px;
-}
+
 #searchForm{
-	margin: 10px 0;
+	margin-top: 5px;
 }
 
 </style>
@@ -259,7 +257,7 @@ function treeClick(item){
 function queryOrgUser(){
 	$("#orgUser").show();
 	gridArgs.gridDivId ='maingrid';
-	gridArgs.heightDiff =249;
+	gridArgs.heightDiff =225;
 	gridArgs.pageSize =10;
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'
