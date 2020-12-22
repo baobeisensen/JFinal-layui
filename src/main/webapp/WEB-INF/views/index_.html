@@ -163,7 +163,9 @@
 		<!--锁屏模板 start-->
 		<script type="text/template" id="lock-temp">
 				<div class="admin-header-lock" id="lock-box">
-					 
+					 <div class="admin-header-lock-img">
+						<img src="#(path)/static/img/#(vs.type).png"/>
+					</div>
 					<div class="admin-header-lock-name" id="lockUserName">#(vs.name)</div>
 					<input type="text" style="background-color: #4381e6; height: 38px;" class="admin-header-lock-input" value="输入密码解锁.." name="password" id="lockPwd" />
 					<button  style="background-color: #4381e6;"  class="layui-btn layui-btn-small" id="unlock">解锁</button>
