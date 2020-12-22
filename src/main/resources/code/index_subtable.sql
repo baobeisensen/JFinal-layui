@@ -4,47 +4,27 @@
 #[[
 #@layoutT("${tableComment}")
 #define main()
+<div class="container-wrap">
 	#@formStart()
 		#@queryStart('关键词查询')
 		   <input type="search" name="searchName" autocomplete="off" class="layui-input" placeholder="搜索关键词" style="padding-left:20px"/>
-		   <i class="layui-icon layui-icon-search" style="position: absolute;top:12px;left:2px"></i>
+		   <i class="layui-icon layui-icon-search" style="position: absolute;top:7px;left:2px"></i>
       #@queryEnd()
 	#@formEnd()
 	
 	<!-- 主表数据 -->
-	<div class="layui-row  f-index-toolbar">
-			<div class="layui-col-xs12">
-   				<table id="maingrid" lay-filter="maingrid"></table>
-   			</div>
-   	</div>
-   	   	
-   	<!-- 表头工具栏 -->
-   	<script type="text/html" id="table_toolbar">
-  		<div class="layui-btn-group">
-				<button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">
-				  <i class="layui-icon">&#xe608;</i> 新增
-				</button>
-				<button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="update">
-				  <i class="layui-icon">&#xe642;</i> 编辑
-				</button>				
-				<button class="layui-btn  layui-btn-normal layui-btn-sm" lay-event="delete">
-				  <i class="layui-icon">&#xe640;</i> 删除
-				</button>		
-		</div>
-	</script>
-   	<!-- 	每行的操作按钮 -->
-	<script type="text/html" id="bar_maingrid">
-  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
-	</script>
+	#@table()
 	
 	<!-- 从表Tab页签-->
 	#@subTable([${subTableTitle}])
-	
+</div>	
 #end
 
 #define js()
+
+<!-- 引入从表js-->
 #@subTableJs()
+
 <!-- 主表 -->
 <script>
     gridArgs.title='${tableComment}';
@@ -56,7 +36,12 @@
     gridArgs.gridDivId ='maingrid';
     initGrid({id : 'maingrid'
         ,elem : '#maingrid'
-        ,toolbar:'#table_toolbar'
+        ,toolbar:'#table_toolbar'//开启头部工具栏，并为其绑定左侧模板
+        /*
+        ,defaultToolbar:['filter', 'exports', 'print',{//自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+            title:'提示',layEvent: 'LAYTABLE_TIPS',icon: 'layui-icon-tips'
+        }]
+        */
         ,cellMinWidth: 100
         ,cols : [ [
 ${tableCols}
