@@ -32,9 +32,21 @@
 	margin-bottom: 5px;
 	padding-bottom: 5px;
 }
+/*日志详情*/
 .show-text{
 	padding:10px 0px 0px 10px;
 }
+/*首页footer*/
 .layui-layout-admin .layui-footer{
 	background-color: #ddd;
+}
+
+/*查询条件label*/
+.layui-form-pane  .layui-inline .layui-form-label{
+	padding: 5px 15px;
+	height:30px;
+}
+.layui-form-pane  .layui-inline .layui-input-block{
+	height:30px;
+	min-height: 30px;
 }
