@@ -25,5 +25,13 @@
     background-color: #FF5722!important;
 }
 .layui-table-tool-panel{
-	color:#4040ef;
+	color:#409eff;
+}
+.table-button{
+	border-bottom: 1px solid #eee;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+}
+.show-text{
+	padding:10px 0px 0px 10px;
 }
