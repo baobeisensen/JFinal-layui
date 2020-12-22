@@ -187,19 +187,19 @@ code:字典编号，name:元素name属性,text:选项名称，需要选中值，
 
 ![密码错误，显示验证码](https://images.gitee.com/uploads/images/2020/1217/174703_205ef05a_1692092.png "显示验证码.png")
 2、登录后的管理主页
-![管理主页](https://images.gitee.com/uploads/images/2020/1217/161507_72b38982_1692092.png "系统管理主页.png")
+![管理主页](https://images.gitee.com/uploads/images/2020/1222/205352_9487c450_1692092.png "系统管理主页.png")
 3、系统管理核心模块
-![功能管理](https://images.gitee.com/uploads/images/2020/1217/155447_4e4ea99f_1692092.png "功能管理.png")
-![角色管理](https://images.gitee.com/uploads/images/2020/1217/155537_7b4eea63_1692092.png "角色管理.png")
-![用户管理](https://images.gitee.com/uploads/images/2020/1217/155606_1e30ad3d_1692092.png "用户管理.png")
-![部门管理](https://images.gitee.com/uploads/images/2020/1217/155702_8482791d_1692092.png "部门管理.jpg")
-![业务字典](https://images.gitee.com/uploads/images/2020/1217/155735_e5c21d9a_1692092.png "业务字典.png")
-![系统日志](https://images.gitee.com/uploads/images/2020/1217/155808_ac86b0d5_1692092.png "系统日志.png")
-![自定义SQL](https://images.gitee.com/uploads/images/2020/1217/155848_a01ed2e3_1692092.png "自定义SQL.png")
+![功能管理](https://images.gitee.com/uploads/images/2020/1222/205555_32261dfa_1692092.png "功能管理.png")
+![角色管理](https://images.gitee.com/uploads/images/2020/1222/205651_fe52e54d_1692092.png "角色管理.png")
+![用户管理](https://images.gitee.com/uploads/images/2020/1222/205810_3dbc44b1_1692092.png "用户管理.png")
+![部门管理](https://images.gitee.com/uploads/images/2020/1222/210053_ace40f91_1692092.png "部门管理.png")
+![业务字典](https://images.gitee.com/uploads/images/2020/1222/210310_7dac4ab5_1692092.png "业务字典.png")
+![系统日志](https://images.gitee.com/uploads/images/2020/1222/210349_446b56e5_1692092.png "系统日志.png")
+![自定义SQL](https://images.gitee.com/uploads/images/2020/1222/210432_96eaa6a8_1692092.png "自定义sql.png")
 ![附件上传](https://images.gitee.com/uploads/images/2020/1217/160018_b02f38be_1692092.png "附件上传.png")
 ![附件列表](https://images.gitee.com/uploads/images/2020/1217/160059_447aacad_1692092.png "附件列表.png")
 ![echart图表](https://images.gitee.com/uploads/images/2020/1217/160140_a64d5839_1692092.png "echart图表.png")
-![单表代码生成器](https://images.gitee.com/uploads/images/2020/1217/160237_1d746b3f_1692092.png "代码生成器.png")
+![单表代码生成器](https://images.gitee.com/uploads/images/2020/1222/210914_44c91768_1692092.png "单表代码生成器.png")
 ![主从表代码生成器](https://images.gitee.com/uploads/images/2020/1217/160317_55b40123_1692092.png "主从表代码生成器.png")
 ![主从表示例](https://images.gitee.com/uploads/images/2020/1217/160810_05683f52_1692092.png "主从表示例.png")
 ![报表设计器](https://images.gitee.com/uploads/images/2020/1217/160913_3f056759_1692092.png "报表设计器.png")
@@ -208,13 +208,12 @@ code:字典编号，name:元素name属性,text:选项名称，需要选中值，
 ![联级多选](https://images.gitee.com/uploads/images/2020/1217/161123_9f1cb41e_1692092.png "联级多选.png")
  **4、响应式布局展示：** 
 
-![移动端主菜单](https://images.gitee.com/uploads/images/2020/0121/175529_c0d9ea9e_1692092.png "移动端菜单.png")
-![功能管理菜单树](https://images.gitee.com/uploads/images/2020/0121/175635_e8d6b7c6_1692092.png "功能管理菜单树.png")
+![移动端主菜单](https://images.gitee.com/uploads/images/2020/1222/211404_034d7e13_1692092.png "移动端菜单.png")
+![功能管理菜单树](https://images.gitee.com/uploads/images/2020/1222/211445_16e2dfd0_1692092.png "功能管理菜单树.png")
+![功能管理列表](https://images.gitee.com/uploads/images/2020/1222/211616_9bf6a1e5_1692092.png "功能管理列表.png")
+![功能管理添加弹窗](https://images.gitee.com/uploads/images/2020/1222/211652_f0cb6d53_1692092.png "功能管理添加弹窗.png")
 
-![功能管理列表](https://images.gitee.com/uploads/images/2020/0121/175750_8fe89fde_1692092.png "功能管理列表.png")
-![弹窗展示](https://images.gitee.com/uploads/images/2020/0121/175932_f51966c2_1692092.png "弹窗展示.png")
-
-![用户管理列表](https://images.gitee.com/uploads/images/2020/0121/180430_16c9fab1_1692092.png "用户管理列表.png")
-![删除提示](https://images.gitee.com/uploads/images/2020/0121/180754_f657eab0_1692092.png "删除提示.png")
+![用户管理列表](https://images.gitee.com/uploads/images/2020/1222/211941_93cff64b_1692092.png "用户管理列表.png")
+![删除提示](https://images.gitee.com/uploads/images/2020/1222/212333_7f747c6f_1692092.png "删除提示.png")
 
 感兴趣的攻城狮可以参考，希望能对你有帮助。
