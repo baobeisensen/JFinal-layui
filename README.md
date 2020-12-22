@@ -18,7 +18,7 @@ JFinal+layui极速开发企业应用管理系统，是以JFinal+layui为核心�
 
 #### 友情链接
 
- **JFinal-layui在线演示系统：** [JFinal极速开发企业应用管理系统](http://www.qinhaisenlin.com:8080/)
+ **JFinal-layui-pro专业版在线演示系统：** [JFinal极速开发企业应用管理系统](http://www.qinhaisenlin.com:8081/)
 
  **JFinal-layui交流群：970045838**
 
