@@ -11,35 +11,7 @@
 		#@queryEnd()		
 	#@formEnd()
 	
-	<!-- 表头按钮 -->
-	<div class='layui-row f-index-toolbar'>
-		<div class='layui-col-xs12'>
-			<div class="layui-btn-group">
-				<button id='addBtn_' class="layui-btn layui-btn-normal layui-btn-sm">
-				  <i class="layui-icon">&#xe608;</i> 新增
-				</button>
-				<button id='refreshBtn_' class="layui-btn layui-btn-normal layui-btn-sm">
-				  <i class="layui-icon">&#xe669;</i> 刷新
-				</button>				
-				<button id='deleteBtn_' class="layui-btn  layui-btn-normal layui-btn-sm">
-				  <i class="layui-icon">&#xe640;</i> 删除
-				</button>			
-			</div>
-		</div>
-	</div>
-	
-	<!-- 表格列表 -->
-	<div class="layui-row  f-index-toolbar">
-		<div class="layui-col-xs12">
-			<table id="maingrid" lay-filter="maingrid"></table>
-		</div>
-   	</div>
-   	
-   	<!-- 	每行的操作按钮 -->
-	<script type="text/html" id="bar_maingrid">
-  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
-	</script>
+	#@table()
 </div>
 #end
 
@@ -55,6 +27,12 @@
 	gridArgs.gridDivId ='maingrid';
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'
+			,toolbar:'#table_toolbar'//开启头部工具栏，并为其绑定左侧模板
+	        /*
+	        ,defaultToolbar:['filter', 'exports', 'print',{//自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+	            title:'提示',layEvent: 'LAYTABLE_TIPS',icon: 'layui-icon-tips'
+	        }]
+	        */
 			,cellMinWidth: 80
 			,cols : [ [
 					{title: '主键',field : 'id',width : 35,checkbox : true},						

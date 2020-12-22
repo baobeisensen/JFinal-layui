@@ -3,6 +3,7 @@
 #[[
 #@layoutT('${tableComment}')
 #define main()
+<div class="container-wrap">
    #@formStart()
       #@queryStart('关键词查询')
    <input type="search" name="keyword" autocomplete="off" class="layui-input" placeholder="搜索关键词" style="padding-left:20px"/>
@@ -11,6 +12,7 @@
    #@formEnd()
 
    #@table()
+</div>
 #end
 
 #define js()
@@ -24,7 +26,12 @@
     gridArgs.gridDivId ='maingrid';
     initGrid({id : 'maingrid'
         ,elem : '#maingrid'
-        //,toolbar:'default'
+        ,toolbar:'#table_toolbar'//开启头部工具栏，并为其绑定左侧模板
+        /*
+        ,defaultToolbar:['filter', 'exports', 'print',{//自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+            title:'提示',layEvent: 'LAYTABLE_TIPS',icon: 'layui-icon-tips'
+        }]
+        */
         ,cellMinWidth: 100
         ,cols : [ [
 ${tableCols}

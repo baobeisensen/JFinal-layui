@@ -56,9 +56,9 @@ function initGrid(options, events, initGridArgs) {
 			gridArgs_.dataId="id";
 		}
 	}
-	var searchFormHeight=42;
+	var searchFormHeight=32;
 	if(options.searchForm){
-		searchFormHeight=70+$('#'+options.searchForm).height();
+		searchFormHeight=32+$('#'+options.searchForm).height();
 	}
 	var heightDiff=gridArgs_.heightDiff||searchFormHeight;
 
@@ -193,6 +193,9 @@ function initGrid(options, events, initGridArgs) {
 						layer.alert('请选择行',{icon: 7});
 					}
 				break;
+		      case 'LAYTABLE_TIPS':
+		    	  layer.alert('这是工具栏右侧自定义的一个图标按钮');
+		          break;
 		    };
 		  });
 		  
