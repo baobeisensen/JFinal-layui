@@ -44,7 +44,7 @@
 #define main()
 		<div class="layui-row layui-col-space1 task-row">
 		  <div class="layui-col-xs6 div-scroll">
-			 <div class="l-layout-header"><span style="color:#5FB878">#(roleName)</span> 可选用户</div>
+			 <div class="l-layout-header"><span class="header-span">#(roleName)</span> 可选用户</div>
              <div class="l-scroll"style="left: 0px;top: 0px;">
             	#@formStart()							
 					<div class="layui-inline">																	
@@ -166,7 +166,7 @@
 	gridArgs.title='用户';
 	gridArgs.dataId='id';
 	gridArgs.gridDivId ='maingrid';
-	gridArgs.heightDiff =125;
+	gridArgs.heightDiff =80;
 	initGrid({id : 'maingrid'
 			,elem : '#maingrid'
 			,cellMinWidth: 80

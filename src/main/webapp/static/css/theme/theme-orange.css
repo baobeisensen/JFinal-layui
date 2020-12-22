@@ -27,7 +27,7 @@ form .task-row #searchBtn_{
 .layui-tab-brief>.layui-tab-title .layui-this,
 .layui-btn-group .layui-btn-primary:hover,
 .layui-form-radio>i:hover, .layui-form-radioed>i,
-#container .l-layout-header .header-span,
+.l-layout-header .header-span,
 .layui-tree-txt.cite {
 	color: #FFB800 !important;
 }
