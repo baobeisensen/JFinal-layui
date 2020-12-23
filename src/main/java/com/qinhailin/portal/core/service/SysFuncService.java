@@ -16,11 +16,13 @@
 
 package com.qinhailin.portal.core.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.IAtom;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.service.BaseService;
@@ -61,11 +63,17 @@ public class SysFuncService extends BaseService {
 		if(isExist(entity.getId())) {
 			return false;
 		}
-		//系统权限
-		Db.update(Db.getSql("core.saveRoleFunction"), "sys_" + entity.getId(), entity.getId(), "sys");
-		//超级管理员权限
-		Db.update(Db.getSql("core.saveRoleFunction"), "superadmin_" + entity.getId(), entity.getId(), "superadmin");
-		return entity.save();
+		return Db.tx(new IAtom() {
+			
+			@Override
+			public boolean run() throws SQLException {
+				//系统权限
+				Db.update(Db.getSql("core.saveRoleFunction"), "sys_" + entity.getId(), entity.getId(), "sys");
+				//超级管理员权限
+				Db.update(Db.getSql("core.saveRoleFunction"), "superadmin_" + entity.getId(), entity.getId(), "superadmin");
+				return entity.save();			
+			}
+		});
 	}
 
 	@Override

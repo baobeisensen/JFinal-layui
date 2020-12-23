@@ -54,24 +54,38 @@ public class SysRoleService extends BaseService {
 		if(isExist(entity.getRoleCode())) {
 			return false;
 		}
-		//添加改角色的人拥有该角色
-		SysUserRole userRole=new SysUserRole();
-		userRole.setId(entity.getRoleCode()+"-"+userCode);
-		userRole.setRoleCode(entity.getRoleCode());
-		userRole.setUserCode(userCode);
-		userRole.save();
-		return entity.save();
+		return Db.tx(new IAtom() {
+			
+			@Override
+			public boolean run() throws SQLException {
+				//添加改角色的人拥有该角色
+				SysUserRole userRole=new SysUserRole();
+				userRole.setId(entity.getRoleCode()+"-"+userCode);
+				userRole.setRoleCode(entity.getRoleCode());
+				userRole.setUserCode(userCode);
+				userRole.save();
+				return entity.save();
+			}
+		});
 	}
 
 	public void deleteRoleByRoleCode(String roleCode) {
 		if(roleCode.equals("superadmin")||roleCode.equals("admin")) {
 			return ;
 		}
-		String sql = "delete from sys_role where role_code=? or parent_id=?";
-		Db.update(sql, roleCode, roleCode);
-		//删除角色权限
-		sql="delete from sys_role_function where role_code=?";
-		Db.update(sql, roleCode);
+		Db.tx(new IAtom() {
+			
+			@Override
+			public boolean run() throws SQLException {
+				String sql = "delete from sys_role where role_code=? or parent_id=?";
+				Db.update(sql, roleCode, roleCode);
+				//删除角色权限
+				sql="delete from sys_role_function where role_code=?";
+				Db.update(sql, roleCode);
+				
+				return true;
+			}
+		});
 	}
 
 	public boolean isExist(String roleCode) {
