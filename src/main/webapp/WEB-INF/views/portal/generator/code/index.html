@@ -209,7 +209,7 @@ function getTable(data){
 
     function download(type){
         var text="所有";
-        var codeName = ["all"];
+        var codeName = [];
         if(type=="codeHtml"){
             $('input[type=checkbox][name=htmlCode]:checked').each(function() {
             	codeName.push($(this).val());
