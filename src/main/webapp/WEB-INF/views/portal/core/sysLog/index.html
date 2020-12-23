@@ -3,13 +3,13 @@
 <div class="container-wrap">
 	#@formStart()
 		#@queryStart('操作用户')
-		   <input type="search" name="userCode" autocomplete="off" class="layui-input" placeholder="操作用户"/>
+		   <input type="search" name="user_code" autocomplete="off" class="layui-input" placeholder="操作用户"/>
 		#@queryEnd()
 		#@queryStart('时间')
-			<input type="search" name="createTime" autocomplete="off" class="layui-input layui-date" placeholder="时间"/>
+			<input type="search" name="create_time" autocomplete="off" class="layui-input layui-date" placeholder="时间"/>
 		#@queryEnd()		
 		#@queryStart('资源类型')
-		   <input type="search" name="methodName" autocomplete="off" class="layui-input" placeholder="资源类型"/>
+		   <input type="search" name="method_name" autocomplete="off" class="layui-input" placeholder="资源类型"/>
 		#@queryEnd()
 		#@queryStart('日志类型')					
 			#@getSelect('logType','remark','日志类型')			
