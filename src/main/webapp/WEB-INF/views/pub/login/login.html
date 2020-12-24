@@ -22,6 +22,51 @@
 <link rel="stylesheet" type="text/css"
 	href="#(path)/static/pub/login/css/login.css" />
 
+<!-- 背景图滚动 -->
+<style type="text/css">
+@-webkit-keyframes animate-cloud {
+  from {
+    background-position: 1700px 100%;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+@-moz-keyframes animate-cloud {
+  from {
+    background-position: 1700px 100%;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+@-ms-keyframes animate-cloud {
+  from {
+    background-position: 1700px 100%;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+@-o-keyframes animate-cloud {
+  from {
+    background-position: 1700px 100%;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+
+body{
+  -webkit-animation: animate-cloud 30s linear infinite;
+  -moz-animation: animate-cloud 30s linear infinite;
+  -ms-animation: animate-cloud 30s linear infinite;
+  -o-animation: animate-cloud 30s linear infinite;
+  animation: animate-cloud 30s linear infinite;
+  width: 100%;
+  height: auto;
+}
+</style>
 
 </head>
 <body onkeypress="_loginKeyPress(event);"
