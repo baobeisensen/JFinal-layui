@@ -17,6 +17,7 @@ html,body {
 .header-demo .admin-header-item {
 	float:right;
 	width: 60%;
+	padding:0;
 	text-align: right;
 }
 .header-demo .admin-header-item .layui-nav-bar{
@@ -139,6 +140,7 @@ body > .layui-container-fluid{
 /*顶部菜单导航*/
 .admin-nav-card > .layui-tab-title{
 	line-height: 40px;
+	padding:0 10px;
 }
 .admin-nav-card > .layui-tab-title li {
     display: inline-block;
