@@ -9,7 +9,7 @@
 #define colStart(lable,xs)
  		<div class="layui-col-xs12 layui-col-sm6 layui-col-md#(xs??4)">
 			<div class="layui-form-item">
-				<label class="layui-form-label" #if(labelWidth) style="width:#(labelWidth??110)px" #end for="#(lable??)_id" >#(lable??)#@star()</label>
+				<label class="layui-form-label" #if(labelWidth) style="width:#(labelWidth??110)px;#if(labelWidth==0)display:none #end" #end for="#(lable??)_id" >#(lable??)#@star()</label>
 				<div class="layui-input-block" #if(labelWidth)  style="margin-left:#(labelWidth??110)px" #end>
 #end
 			
