@@ -18,6 +18,8 @@ package com.qinhailin.common.kit;
 
 import java.security.MessageDigest;
 
+import com.jfinal.kit.HashKit;
+
 public class Md5Kit {
 
 	
@@ -47,17 +49,17 @@ public class Md5Kit {
 				str[k++] = hexDigits[byte0 >>> 4 & 0xf];
 				str[k++] = hexDigits[byte0 & 0xf];
 			}
-			return new String(str);
+			String salt=new String(str);
+			return HashKit.md5(HashKit.sha256(salt+HashKit.md5(value)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 
 	}
-	
 
    public static void main(String[] args) {
-		System.out.println(md5("123456"));
-     }
+	   System.out.println(md5("123456"));
+   }
 	
 }

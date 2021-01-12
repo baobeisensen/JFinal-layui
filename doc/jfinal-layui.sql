@@ -613,8 +613,8 @@ CREATE TABLE sys_user  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO sys_user VALUES ('admin', 'admin', '管理员', 'E10ADC3949BA59ABBE56E057F20F883E', 'ff808081616e1efd01616e2c89af0000', NULL, 1, NULL, NULL, NULL, NULL, 0, 0, '2019-01-03 18:08:17', 0, null);
-INSERT INTO sys_user VALUES ('superadmin', 'superadmin', '超级管理员', 'E10ADC3949BA59ABBE56E057F20F883E', 'ff808081616e1efd01616e2c89af0000', NULL, 1, NULL, NULL, NULL, NULL, 0, 0, '2019-01-02 18:12:29', 0, null);
+INSERT INTO sys_user VALUES ('admin', 'admin', '管理员', '2f232a589ed4c0b57862546a5a080389', 'ff808081616e1efd01616e2c89af0000', NULL, 1, NULL, NULL, NULL, NULL, 0, 0, '2019-01-03 18:08:17', 0, null);
+INSERT INTO sys_user VALUES ('superadmin', 'superadmin', '超级管理员', '2f232a589ed4c0b57862546a5a080389', 'ff808081616e1efd01616e2c89af0000', NULL, 1, NULL, NULL, NULL, NULL, 0, 0, '2019-01-02 18:12:29', 0, null);
 
 -- ----------------------------
 -- Table structure for sys_user_role
