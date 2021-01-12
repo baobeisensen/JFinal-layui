@@ -66,6 +66,9 @@ public class LoginController extends BaseController {
 		try {
 			password = RSAKit.decryptionToString(password);
 			loginService.aopLogin(userCode, password, getRequest());
+			if(returnUrl.startsWith("http://")||returnUrl.startsWith("https://")){
+				returnUrl="/";
+			}
 			redirect(!returnUrl.equals("")?returnUrl:"/");
 		} catch (Exception e) {
 			handerException(e);

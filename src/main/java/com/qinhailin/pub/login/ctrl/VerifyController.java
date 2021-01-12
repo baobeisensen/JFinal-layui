@@ -19,7 +19,6 @@ package com.qinhailin.pub.login.ctrl;
 import com.jfinal.core.Controller;
 import com.jfinal.core.Path;
 import com.qinhailin.common.kit.VerifyCodeKit;
-import com.qinhailin.common.routes.ControllerBind;
 
 /**
  * 验证码
