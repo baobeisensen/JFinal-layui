@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 覃海林(qinhaisenlin@163.com).
+ * Copyright 2019-2021 覃海林(qinhaisenlin@163.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,16 @@
 
 package com.qinhailin.index;
 
-import java.util.Collection;
-
-
 import com.jfinal.aop.Inject;
+import com.jfinal.core.NotAction;
 import com.jfinal.core.Path;
 import com.jfinal.kit.JsonKit;
-import com.jfinal.plugin.ehcache.CacheKit;
-import com.jfinal.plugin.ehcache.IDataLoader;
+import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.kit.Md5Kit;
-import com.qinhailin.common.model.SysFunction;
 import com.qinhailin.common.model.SysUser;
 import com.qinhailin.common.visit.Visitor;
 import com.qinhailin.common.visit.VisitorUtil;
-import com.qinhailin.common.vo.TreeNode;
 import com.qinhailin.portal.core.service.SysFuncService;
 import com.qinhailin.portal.core.service.SysUserService;
 
@@ -62,44 +57,30 @@ public class IndexController extends BaseController {
 			return;
 		}
 		
-		Visitor vs = VisitorUtil.getVisitor(getSession());
-		// 锁屏未解锁,刷新浏览器强制移除登录身份信息
-		String userName = (String) getSession().getAttribute(vs.getName());
-
-		if (userName != null) {
-			getSession().removeAttribute(userName);
-			VisitorUtil.removeVisitor(getSession());
-			this.logout();
+		if(this.isUnLock()){
+			logout();
 			return;
-		}
-
-		// 缓存
-		Collection<TreeNode> funcList = CacheKit.get("userFunc", "funcList"+vs.getCode(), new IDataLoader() {
-			@Override
-			public Object load() {
-				return sysFuncService.getUserFunctionTree(vs.getCode(), "sys");
-			}
-		});
+		}	
 		
-		SysFunction sf = CacheKit.get("userFunc", "frameMainView", new IDataLoader() {
-			@Override
-			public Object load() {
-				return sysFuncService.findById("frame_main_view");
-			}
-		    });
-		//主页
-		if (sf != null) {
-			setAttr("frameMainView", sf.getLinkPage());
-			setAttr("frameMainViewName", sf.getFuncName());
-			setAttr("frameMainViewIcon", sf.getIcon());
-		}
-		
-		setAttr("funcList", JsonKit.toJson(funcList));
-		setAttr("vs", vs);
-		
+		Record record=sysFuncService.getMenuInfo(getVisitor().getCode(),getPara("menuId"));			
+		setAttr("funcList", JsonKit.toJson(record.get("funcList")));
+		setAttr("topMenuList",record.get("topMenuList"));		
+		setAttr("menuId",record.get("menuId"));	
+		setAttr("menu",record.get("menu"));
 		render("index.html");
 	}
 
+	@NotAction
+	public boolean isUnLock(){
+		// 锁屏未解锁,刷新浏览器强制移除登录身份信息
+		String userName = (String) getSession().getAttribute(getVisitor().getName());
+		if (userName != null) {
+			getSession().removeAttribute(userName);
+			VisitorUtil.removeVisitor(getSession());
+			return true;
+		}
+		return false;
+	}
 
 	/**
 	 * 退出登录

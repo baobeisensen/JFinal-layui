@@ -23,6 +23,7 @@
 	</script>
 <style type="text/css">
 .layui-body{overflow-y:hidden}
+.layui-nav-item a:hover{background-color: #000!important}
 </style>
 </head>
 <body>
@@ -35,25 +36,20 @@
 					</a>
 				</div>
 
-
 				<ul class="layui-nav admin-header-item">
-
 					<li class="layui-nav-item">
-						<div class="indextl" >
+						#for(data:topMenuList)					
+						<a href="#((data.link_page==null||data.link_page=='') ? path+'/?menuId='+data.id : data.link_page)" class="tl" >
+						<i class="layui-icon #(data.icon)"></i>&nbsp;#(data.func_name)</a>						
+						#end						
+					</li>
+					<li class="layui-nav-item">
 							<a href="javascript:void(0);" id="lock"  class="tl"><i class="fa fa-lock" aria-hidden="true"></i> 锁屏 (Alt+L)</a> 
 							<a href="javascript:void(0);" id="passwd" class="tl"><i class="fa fa-volume-down" aria-hidden="true"></i> 修改密码</a> 
 							<a href="javascript:void(0);" class="admin-side-full-new tl" ><i class="fa fa-arrows-alt" aria-hidden="true"></i> 全屏</a>
-					</div>
-					</li>
-
-					<li class="layui-nav-item " >
-						<a href="javascript:;" id="themebtn">
-						    <i class="fa fa-th-large" ></i> 
-						       主题
-						</a>
 					 </li>
-
 					<li class="layui-nav-item">
+						<a href="javascript:void(0);" id="themebtn"><i class="fa fa-th-large" ></i>主题</a>
 						<a href="javascript:void(0);" id="userInfor" class=" tl" >#(vs.name??)</a>
 						<a href="#(path)/logout" title="注销"  class="tl"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
 					</li>
@@ -61,38 +57,25 @@
 
 			</div>
 		</div>
+		
 		<div class="layui-side" id="admin-side">
-			<div class="admin-side-toggle-new" style="height: 40px; text-align: center; line-height: 40px;">
-				<i class="fa fa-bars " aria-hidden="true" style="color: #999; font-size: 20px; cursor: pointer;" title="隐藏菜单"></i>
+			<div class="admin-side-toggle-new" style="height: 40px; text-align: center; line-height: 40px;" title="隐藏菜单">
+				<span id="menu_tip" style="margin-left:18px;float:left;font-size:16px">
+				<i class="layui-icon #(menu.icon)" style="font-size: 18px;"></i>&nbsp;&nbsp;&nbsp;#(menu.func_name)</span>
+				<i class="fa fa-bars" aria-hidden="true" style="color: #999; font-size: 18px; cursor: pointer;" ></i>
 			</div>
 			<div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side"></div>
 		</div>
 		<div class="layui-body" id="admin-body">
 			<div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
 				<ul class="layui-tab-title">
-					<li class="layui-this">
-					    <i class="layui-icon #(frameMainViewIcon??'layui-icon-home')" aria-hidden="true"></i> 
-						<cite>#(frameMainViewName??'主页')</cite>
-					</li>
 				</ul>
 				<div class="layui-tab-content" style="min-height: 150px; padding: 0px 0 0 0;">
-					<div class="layui-tab-item layui-show">
-						#if(vs.funcMap.get('frame_main_view'))
-						<iframe src="#(frameMainView??)"></iframe>
-						#end
-					</div>
 				</div>
 			</div>
 		</div>
-		<div class="layui-footer footer layui-hide-xs" id="admin-footer">
-			<div class="layui-main">
-				<p>
-					<a href="https://www.qinhaisenlin.com" target="_bank">Copyright
-						&copy;2019-2020 #(copyright)</a>
-				</p>
-			</div>
-		</div>
-		<div class="site-tree-mobile">
+
+		<div class="site-tree-mobile layui-hide-md">
 			<i class="layui-icon">&#xe602;</i>
 		</div>
 		<div class="site-mobile-shade"></div>
@@ -211,7 +194,6 @@
 			    		$("#themePopup").hide(200);
 			    	}
 			    }});
-	
 			</script>
 	</div>
 </body>

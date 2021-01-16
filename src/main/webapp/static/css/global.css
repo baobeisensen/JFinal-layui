@@ -12,7 +12,7 @@ html,body {
 .header-demo .admin-login-box a {
 	color:#fff;
 	line-height: 60px;
-	font-size:18px;
+	font-size:22px;
 }
 .header-demo .admin-header-item {
 	float:right;
@@ -82,7 +82,7 @@ html,body {
 /*内容部分*/
 .layui-layout-admin .layui-body{
 	left:220px;
-	bottom:40px;
+	bottom:0px;
 	transition: left 0.4s;
     -webkit-transition: left 0.4s; /* Safari */
 }

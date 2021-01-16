@@ -54,7 +54,7 @@ layui.config({
     $(window).on('resize', function () {
         var $content = $('.admin-nav-card .layui-tab-content');
         console.log(111)
-        $content.height($(this).height() - 141);
+        $content.height($(this).height() - 101);
         $content.find('iframe').each(function () {
             $(this).height($content.height());
         });
@@ -136,6 +136,7 @@ layui.config({
     function showAndHide(display){
       	 $('ul.beg-navbar>li>a>cite').css('display',display);
       	 $('ul.beg-navbar>li>a>span').css('display',display);
+      	 $('#menu_tip').css('display',display);
       }
     function setDivWidth(w){
     	$('#admin-body').animate({

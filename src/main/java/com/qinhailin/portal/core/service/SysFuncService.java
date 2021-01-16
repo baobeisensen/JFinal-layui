@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 覃海林(qinhaisenlin@163.com).
+ * Copyright 2019-2021 覃海林(qinhaisenlin@163.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.IAtom;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Record;
+import com.jfinal.plugin.ehcache.CacheKit;
 import com.qinhailin.common.base.service.BaseService;
 import com.qinhailin.common.model.SysFunction;
 import com.qinhailin.common.vo.Grid;
@@ -131,7 +132,7 @@ public class SysFuncService extends BaseService {
 		String sql=Db.getSql("core.getUserFunctionTree");
 		List<Record> list = Db.find(sql, userCode, treeNodeId);
 
-		Collection<TreeNode> nodes = new ArrayList<TreeNode>();
+		List<TreeNode> nodes = new ArrayList<TreeNode>();
 		for (int i = 0; i < list.size(); i++) {
 			Record func = list.get(i);
 			TreeNode node = new TreeNode();
@@ -169,6 +170,31 @@ public class SysFuncService extends BaseService {
 			nodes.add(node);
 		}
 		return nodes;
+	}
+	
+	/**
+	 * 获取系统个菜单
+	 * @param userCode
+	 * @param menuId
+	 * @return
+	 */
+	public Record getMenuInfo(String userCode,String menuId){
+		Record record=new Record();
+		String sql=Db.getSql("core.getUserFunctionTree");
+		Db.find(sql, userCode, menuId);
+		List<Record> topMenuList=Db.find(sql, userCode, "frame");
+		
+		String topMenuId=topMenuList.get(0).getStr("id");
+		String funcId = (menuId==null ? topMenuId : menuId);
+		
+		Collection<TreeNode> funcList=CacheKit.get("userFunc", "funcList"+userCode+funcId, ()-> {		
+			return getUserFunctionTree(userCode,funcId);			
+		});
+		record.set("topMenuList", topMenuList);
+		record.set("funcList", funcList);
+		record.set("menuId", funcId);
+		record.set("menu", findById(funcId));
+		return record;
 	}
 	
 }

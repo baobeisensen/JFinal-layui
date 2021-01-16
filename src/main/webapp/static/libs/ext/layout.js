@@ -13,7 +13,7 @@ layui.config({
 	//iframe自适应
 	$(window).on('resize', function() {
 		var $content = $('.layout-nav-card .layui-tab-content');
-		$content.height($(this).height() - 165);
+		$content.height($(this).height() - 125);
 		$content.find('iframe').each(function() {
 			$(this).height($content.height());
 		});
