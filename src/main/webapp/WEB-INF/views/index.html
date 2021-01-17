@@ -25,10 +25,6 @@
 				topHeight=61;
 			#end
 	</script>
-<style type="text/css">
-.layui-body{overflow-y:hidden}
-.layui-nav-item a:hover{background-color: #000!important}
-</style>
 </head>
 <body>
 	<div class="layui-layout layui-layout-admin">
@@ -41,9 +37,9 @@
 				</div>
 
 				<ul class="layui-nav admin-header-item">
-					<li class="layui-nav-item">
+					<li class="layui-nav-item" style="float:left">
 						#for(data:topMenuList)					
-						<a href="#(path+'/?menuId='+data.id)" class="tl" >
+						<a href="#(path+'/?menuId='+data.id)" class="tl #if(menuId==data.id) menu-this #end" >
 						<i class="layui-icon #(data.icon)"></i>&nbsp;#(data.func_name)</a>						
 						#end						
 					</li>
@@ -105,17 +101,20 @@
 						 <a href="javascript:themeswicth('green')">
 						     <span class="layui-badge layui-bg-green">绿</span>&nbsp;&nbsp;
 						 </a> 
-						 <a href="javascript:themeswicth('cyan')">
+						<!--  <a href="javascript:themeswicth('cyan')">
 						     <span class="layui-badge layui-bg-cyan">青</span>&nbsp;&nbsp;
-						 </a> 
+						 </a>  -->
 						 <a href="javascript:themeswicth('black')">
 						      <span class="layui-badge layui-bg-black">黑</span>&nbsp;&nbsp;
 						 </a>
 						 <a href="javascript:themeswicth('purple')">
-						       <span class="layui-badge layui-bg-black" style="background-color: #6575c7 !important">紫</span>&nbsp;&nbsp;
+						       <span class="layui-badge" style="background-color: #6575c7 !important">紫</span>&nbsp;&nbsp;
 						  </a>						 
 						  <a href="javascript:themeswicth('orange')">
 						     <span class="layui-badge layui-bg-orange">橙</span>&nbsp;&nbsp;
+						 </a> 
+						  <a href="javascript:themeswicth('badge')">
+						     <span class="layui-badge layui-bg-dange">红</span>&nbsp;&nbsp;
 						 </a> 
 					 </div>
 				</div>
