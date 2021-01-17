@@ -54,7 +54,7 @@ layui.config({
     $(window).on('resize', function () {
         var $content = $('.admin-nav-card .layui-tab-content');
         console.log(111)
-        $content.height($(this).height() - 101);
+        $content.height($(this).height() - topHeight);
         $content.find('iframe').each(function () {
             $(this).height($content.height());
         });

@@ -173,7 +173,7 @@ public class SysFuncService extends BaseService {
 	}
 	
 	/**
-	 * 获取系统个菜单
+	 * 获取系统菜单
 	 * @param userCode
 	 * @param menuId
 	 * @return
