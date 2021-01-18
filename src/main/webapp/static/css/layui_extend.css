@@ -32,6 +32,12 @@
 	margin-bottom: 5px;
 	padding-bottom: 5px;
 }
+.layui-btn-group .layui-dropMenu{
+	font-size:14px;
+}
+.layui-btn-group .layui-inline {
+	margin-left:1px;
+}
 /*日志详情*/
 .show-text{
 	padding:10px 0px 0px 10px;

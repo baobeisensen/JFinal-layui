@@ -16,6 +16,7 @@
 	<!-- 	每行的操作按钮 -->
 	<script type="text/html" id="table_rowbar_1">
   		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del_btn_1">删除</a>
+		<a class="layui-btn layui-btn-xs layui-btn-danger rowmoreBtn" lay-events="viewinfo,neworder,recycle">更多</a>
 	</script>
 </div>	
 #end
@@ -40,7 +41,8 @@ function getTableData(table){
 
 layui.extend({
 	tableEdit: '#(path)/static/libs/ext/tableEdit',
-}).use(['table','tableEdit','layer'], function () {
+	dropMenu: '#(path)/static/libs/dropMenu/dropMenu'
+}).use(['table','tableEdit','layer','dropMenu'], function () {
         var table = layui.table,tableEdit = layui.tableEdit,$ = layui.$;
         var params = [{value:1,name:"张三1"},{value:2,name:"张三2"},{value:3,name:"张三3"},{value:4,name:"张三4"},{value:5,name:"张三5"}];
       	//初始化表格数据
@@ -103,7 +105,7 @@ layui.extend({
                     ,config:{type:'select',data:params},templet:function (d) {
                     return d.rqxiaji && d.rqxiaji.name ? d.rqxiaji.name : '';
                 }}
-                ,{fixed: 'right', title:'操作', toolbar: '#table_rowbar_1',width:100 }
+                ,{fixed: 'right', title:'操作', toolbar: '#table_rowbar_1',width:150 }
             ]]
         	,done: function (res, curr, count) {
 				var editTableData = res.data;
@@ -135,8 +137,57 @@ layui.extend({
 					var saveUrl="";//TODO
 					submitData(saveUrl,{"tableList":JSON.stringify(editTableData)});
 				});	
+								
+				//下拉菜单
+				layui.dropMenu.render({
+					 type:0,
+		             elem:".rowmoreBtn",
+		             width:"110px", //菜单宽度（非必填）
+		             location:"r", //下拉菜单依靠位置，c居中、l左、r右（非必填）
+		 	         align: "l", //菜单内容文本对齐方式，c居中、l左、r右（非必填）
+		             data:[
+				     	 {title:'查看', icon:'layui-icon-set', event:'viewinfo'},
+		                 {title:'新建订单', icon:'layui-icon-add-circle', event:'neworder'},
+		                 {title:'放入回收站', icon:'layui-icon-cart', event:'recycle'}
+		             ]
+					//触发的事件（非必填）
+		 	   		,event:{
+		 	   			viewinfo: function(obj){
+			 	   			var checkStatus = table.checkStatus('tableId'); // test即为基础参数id对应的值
+			 	   			if(checkStatus.data.length==0){
+								layer.msg("请选择行");
+								return;
+				 	   		}		 	   		
+				 	   		layer.alert(JSON.stringify(checkStatus.data), {
+				 	   	      title: '当前行数据：'
+				 	   	    });	
+		 	   			},
+		 	   			neworder: function(){
+		 	   			var checkStatus = table.checkStatus('tableId'); // test即为基础参数id对应的值
+		 	   			if(checkStatus.data.length==0){
+							layer.msg("请选择行");
+							return;
+			 	   		}		 	   			
+			 	   		layer.alert(JSON.stringify(checkStatus.data), {
+				 	   	      title: '当前行数据：'
+				 	   	    });	
+		 	   			},
+		 	   			recycle: function(){
+			 	   			var checkStatus = table.checkStatus('tableId'); // test即为基础参数id对应的值
+			 	   			if(checkStatus.data.length==0){
+								layer.msg("请选择行");
+								return;
+				 	   		}		 	   			
+				 	   		layer.alert(JSON.stringify(checkStatus.data), {
+					 	   	      title: '当前行数据：'
+					 	   	    });	
+		 	   			}
+		 	   		}
+		        });
 	        }
         }).config.cols;  
+
+       
                 
         /**
          * 参数cols是table.render({})中的cols属性值
@@ -177,9 +228,8 @@ layui.extend({
  			 		table.reload("tableId",{data:editTableData}); // 重新渲染表格
  			 		layer.close(confirmIndex); // 关闭弹窗
  				});
- 	        }
-        });
-
+ 	        } 	
+    });
 
         /**
          * 级联下拉框 => 点击事件生成下拉框之前的回调函数
@@ -242,5 +292,7 @@ layui.extend({
  	        return element.replace(/\"/g, '');
  	    });
  	}
+
+ 	
 </script>
 #end
