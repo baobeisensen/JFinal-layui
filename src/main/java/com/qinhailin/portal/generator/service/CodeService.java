@@ -111,7 +111,7 @@ public class CodeService{
         	   break;
         }
         
-        return new Grid(buildTableRemarks(resultList));
+        return new Grid(buildTableRemarks(resultList),tableMetas.size());
 	}
 	
 	/**
