@@ -27,7 +27,7 @@ import com.qinhailin.portal.core.service.SysLogService;
  * @author QinHaiLin
  *
  */
-@Path("/portal/core/sysLog")
+@Path(value="/portal/core/sysLog",viewPath = "/portal/core/sysLog")
 public class SysLogController extends BaseController {
 
 	@Inject
