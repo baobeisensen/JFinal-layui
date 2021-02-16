@@ -207,7 +207,8 @@ public class CodeController extends BaseController {
 		String modelPackage=basePackage+".model.";
 		record.set("modelName", modelPackage+modelName);
 		record.set("primaryKey", itemRet.get("primaryKey"));
-		record.set("tableComment", itemRet.get("tableComment"));
+		//这里从表的注释会覆盖主表注释，导致主表弹窗显示从表名称，所以注释掉
+		//record.set("tableComment", itemRet.get("tableComment"));
 		record.set("isSubTable", true);
 		Record codeRecord=codeService.createCodeTemplete(record,formItem,tableItem);
 		codeList.add(codeRecord);
