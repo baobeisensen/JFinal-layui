@@ -60,6 +60,7 @@ public class MyDruidFilter extends FilterAdapter {
 	                str = "'"+str+"'";
 	                break;
                 }
+                str =escapeExprSpecialWord(str);
                 sql = sql.replaceFirst("\\?",str);
             }
             System.out.println("Sql= " + sql);
@@ -69,4 +70,21 @@ public class MyDruidFilter extends FilterAdapter {
             }
         }
     }
+	/**
+	 * 转义正则特殊字符 （$()*+.[]?\^{},|）
+	 * 
+	 * @param keyword
+	 * @return
+	 */
+	public static String escapeExprSpecialWord(String keyword) {
+		if (StrKit.notBlank(keyword)) {
+			String[] fbsArr = {"\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|" };
+			for (String key : fbsArr) {
+				if (keyword.contains(key)) {
+					keyword = keyword.replace(key, "\\" + key);
+				}
+			}
+		}
+		return keyword;
+	}
 }
