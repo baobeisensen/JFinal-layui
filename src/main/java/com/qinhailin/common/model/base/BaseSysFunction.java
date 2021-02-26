@@ -107,4 +107,13 @@ public abstract class BaseSysFunction<M extends BaseSysFunction<M>> extends Mode
 	public java.lang.Integer getSpread() {
 		return getInt("spread");
 	}
+	
+	public M setIsWindowOpen(java.lang.Integer isWindowOpen) {
+		set("is_window_open", isWindowOpen);
+		return (M)this;
+	}
+	
+	public java.lang.Integer getIsWindowOpen() {
+		return getInt("is_window_open");
+	}
 }

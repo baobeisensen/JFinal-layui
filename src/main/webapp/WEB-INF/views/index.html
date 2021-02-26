@@ -38,9 +38,13 @@
 
 				<ul class="layui-nav admin-header-item">
 					<li class="layui-nav-item" style="float:left">
-						#for(data:topMenuList)					
-						<a href="#(path+'/?menuId='+data.id)" class="tl #if(menuId==data.id) menu-this #end" >
-						<i class="layui-icon #(data.icon)"></i>&nbsp;#(data.func_name)</a>						
+						#for(data:topMenuList)	
+							#if(data.is_window_open==1)
+								<a href="#(data.link_page==null?path+'/?menuId='+data.id:data.link_page)" class="tl #if(menuId==data.id) menu-this #end" target="_blank">								
+							#else
+								<a href="#(path+'/?menuId='+data.id)" class="tl #if(menuId==data.id) menu-this #end">
+							#end				
+								<i class="layui-icon #(data.icon)"></i>&nbsp;#(data.func_name)</a>						
 						#end						
 					</li>
 					<li class="layui-nav-item">

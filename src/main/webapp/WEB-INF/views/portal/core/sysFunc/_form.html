@@ -35,16 +35,21 @@
 	</div>
 	
 	<div class="layui-row layui-col-space1 task-row">
-	#@colStart("功能类型",6)
+	#@colStart("功能类型",4)
 		<input name="sysFunction.funcType" type="radio" value="0" class="layui-input" title="菜单"checked="checked"/>
 		<input name="sysFunction.funcType" type="radio" value="1" class="layui-input" title="按钮"
 		#if(sysFunction.func_type??==1) checked="checked" #end />
 	#@colEnd()
 	
-	#@colStart("是否启用",6)
+	#@colStart("是否启用",4)
 		<input name="sysFunction.isStop" type="radio" value="0" class="layui-input" title="是" checked="checked" />
 		<input name="sysFunction.isStop" type="radio" value="1" class="layui-input" title="否" 
 		#if(sysFunction.is_stop??==1) checked="checked" #end />
+	#@colEnd()
+	#@colStart("window打开",4)
+		<input name="sysFunction.isWindowOpen" type="radio" value="0" class="layui-input" title="否" checked="checked" />
+		<input name="sysFunction.isWindowOpen" type="radio" value="1" class="layui-input" title="是" 
+		#if(sysFunction.is_window_open??==1) checked="checked" #end />
 	#@colEnd()
 	</div>
 	

@@ -30,6 +30,7 @@ public class TreeNode {
 	private Collection<TreeNode> children;
 	private String pid;
 	private Boolean spread;//是否展开
+	private Integer isWindowOpen;//在window页打开菜单
 	
 	public String getId() {
 		return id;
@@ -109,6 +110,14 @@ public class TreeNode {
 
 	public void setSpread(Boolean spread) {
 		this.spread = spread;
+	}
+
+	public Integer getIsWindowOpen() {
+		return isWindowOpen;
+	}
+
+	public void setIsWindowOpen(Integer isWindowOpen) {
+		this.isWindowOpen = isWindowOpen;
 	}
 
 }

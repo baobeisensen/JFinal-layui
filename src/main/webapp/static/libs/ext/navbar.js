@@ -216,7 +216,11 @@ layui.define(['element', 'common'], function (exports) {
                 	ulHtml = ulHtml.replace("class=\"layui-this\"","");
                 	dataUrl +=' class="layui-this"';
                 }
-                ulHtml += '<a href="javascript:;" ' + dataUrl + '>';
+                if(obj.isWindowOpen==1){
+                	ulHtml += '<a target="_blank" href="' + obj.href + '">';
+                }else{
+                	ulHtml += '<a href="javascript:;" ' + dataUrl + '>';              	
+                }
                 if (obj.icon !== null && obj.icon !== undefined && obj.icon !== '') {
                     if (obj.icon.indexOf('fa-') !== -1) {
                     	ulHtml += '<i class="fa ' + obj.icon + '" aria-hidden="true" data-icon="' + obj.icon + '"></i>';
@@ -272,7 +276,11 @@ layui.define(['element', 'common'], function (exports) {
                     	content=content.replace("class=\"layui-this\"","");
                     	dataUrl+=' class="layui-this"';
                     }
-                    content += '<a href="javascript:;" ' + dataUrl + '>';
+                    if(note.isWindowOpen==1){
+                    	content += '<a target="_blank" href="' + note.href + '">';
+                    }else{                 	
+                    	content += '<a href="javascript:;" ' + dataUrl + '>';
+                    }
                     if (note.icon !== null && note.icon !== undefined && note.icon !== '') {
                         if (note.icon.indexOf('fa-') !== -1) {
                         	content += '<i class="fa ' + note.icon + '" aria-hidden="true" data-icon="' + note.icon + '"></i>';
