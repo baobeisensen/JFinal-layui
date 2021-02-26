@@ -86,7 +86,7 @@ function initGrid(options, events, initGridArgs) {
 				limitName : 'pageSize' // 每页数据量的参数名，默认：limit
 			},
 			response : {
-				countName : 'totalRow' // 数据总数的字段名称，默认：count
+				countName : 'totalCount' // 数据总数的字段名称，默认：count
 				,
 				dataName : 'list' // 数据列表的字段名称，默认：data
 			},
