@@ -43,11 +43,11 @@ public class Grid extends Pager{
 	}
 	public Grid(Collection<?> list){
 		this.list=list;
-		this.setTotalRow(getTotal()==0?list.size():getTotal());
+		this.setTotalCount(getTotal()==0?list.size():getTotal());
 	}
-	public Grid(Collection<?> list,int totalRow){
+	public Grid(Collection<?> list,int totalCount){
 		this.list=list;
-		this.setTotalRow(totalRow);
+		this.setTotalCount(totalCount);
 	}
 	
 	public Grid(Collection<?> list,int pageNumber,int pageSize){
@@ -56,11 +56,11 @@ public class Grid extends Pager{
 		this.setPageSize(pageSize);
 	}
 	
-	public Grid(Collection<?> list,int pageNumber,int pageSize,int totalRow){
+	public Grid(Collection<?> list,int pageNumber,int pageSize,int totalCount){
 		this.list=list;
 		this.setPageNumber(pageNumber);
 		this.setPageSize(pageSize);
-		this.setTotalRow(totalRow);
+		this.setTotalCount(totalCount);
 	}
 	
 	public List<Integer> getIntIds() {
@@ -88,7 +88,7 @@ public class Grid extends Pager{
 	}
 
 	public long getTotal() {
-		return this.getTotalRow();
+		return this.getTotalCount();
 	}
 	
 	public int getCode() {

@@ -24,17 +24,17 @@ public class Pager{
 	private int pageNumber = 1;
 	private int pageSize = 50;
 	private int totalPage = 0;
-	private long totalRow;
+	private long totalCount;
 	private String sortname;
 	private String sortorder;
 
 
-	public long getTotalRow() {
-		return totalRow;
+	public long getTotalCount() {
+		return totalCount;
 	}
 
-	public Pager setTotalRow(long totalRow) {
-		this.totalRow = totalRow;
+	public Pager setTotalCount(long totalCount) {
+		this.totalCount = totalCount;
 		return this;
 	}
 
