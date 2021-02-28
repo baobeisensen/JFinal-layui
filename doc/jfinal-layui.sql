@@ -163,6 +163,8 @@ INSERT INTO sys_function VALUES ('ureport_preview_sys_log', '日志报表', 0, '
 INSERT INTO sys_function VALUES ('ureport_preview_user', '用户报表', 0, '/ureport/preview?_u=file:user.ureport.xml', 'ureport_preview', '报表预览', 0, NULL, 5, NULL, 1,0);
 -- 可编辑表格
 INSERT INTO sys_function VALUES ('table_edit', '可编辑表格', 0, '/portal/go/common/demo/layuiTableEdit', 'sys', '网站后台管理', 0, 'layui-icon-table', 50, NULL, 1,0);
+-- xm-select组件示例
+INSERT INTO `jfinal-layui-pro`.`sys_function`(`id`, `func_name`, `is_stop`, `link_page`, `parent_code`, `parent_name`, `func_type`, `icon`, `order_no`, `descript`, `spread`, `is_window_open`) VALUES ('xm_select_demo', 'xm-select组件示例', 0, '/portal/go/common/demo/xm-select-demo', 'sys', '网站后台管理', 0, 'layui-icon-slider', 70, NULL, 1, 0);
 
 -- ----------------------------
 -- Table structure for sys_log
