@@ -101,7 +101,7 @@ public class BusinessController extends BaseController{
 		record.set(primaryKey, createUUID());
 		
 		//移除不是表字段的参数
-		record.remove("object","primaryKey");	
+		record.remove("object","primaryKey","file");
 		boolean b=service.save(tableNameSpace+table,primaryKey, record);
 		
 		if(!b) {
@@ -127,7 +127,7 @@ public class BusinessController extends BaseController{
 		String table=record.get("object");
 		String primaryKey=record.get("primaryKey","id");
 		//移除不是表字段的参数
-		record.remove("object","primaryKey");	
+		record.remove("object","primaryKey","file");	
 		boolean b=service.update(tableNameSpace+table, primaryKey, record);
 		if(!b) {
 			renderJson(fail());
