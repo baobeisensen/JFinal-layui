@@ -2,6 +2,7 @@
 
 #@layoutT("列表首页")
 #define main()
+<div class="container-wrap">
 	#@formStart()
 		#@queryStart('名称')
 		   <input type="search" name="name" autocomplete="off" class="layui-input" placeholder="名称"/>
@@ -40,6 +41,7 @@
   		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
 	</script>
+</div>
 #end
 
 #define js()
