@@ -57,7 +57,7 @@
 				if(data.state=='ok'){
 				   layer.msg("删除成功",{icon:1});
 				}else{
-					layer.msg("附件不存在",{icon:2});
+					layer.msg(data.msg||"附件不存在",{icon:2});
 				}
 			});
 		});
