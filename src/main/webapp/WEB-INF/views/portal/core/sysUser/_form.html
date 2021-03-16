@@ -28,12 +28,16 @@
 		#@colEnd()
 		
 		#@colStart('部门',6)
+			#set(value=sysUser.org_id??,filterable=true)
+			#@getOrgSelect('orgId','sysUser.orgId')
+		#--
 		 <select name="sysUser.orgId" class="layui-input" lay-search>
 		   		<option value="">---请选择---</option>
 		   		#for(data:orgList)
        			<option value="#(data.value??)" #if(sysUser.org_id??==data.value) selected="selected" #end>#(data.text??)</option>
        			#end
 		   </select>
+		--#
 		#@colEnd()
 	</div>
 	

@@ -28,6 +28,7 @@ import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.qinhailin.common.base.service.BaseService;
 import com.qinhailin.common.model.SysFunction;
+import com.qinhailin.common.model.SysOrg;
 import com.qinhailin.common.vo.Grid;
 import com.qinhailin.common.vo.TreeNode;
 
@@ -199,4 +200,21 @@ public class SysFuncService extends BaseService {
 		return record;
 	}
 	
+	public Collection<Record> getXMSelectData(String treeNodeId,String selectData) {
+		List<Record> list = queryForList(Db.getSql("core.getFunctionTree"), treeNodeId);
+
+		Collection<Record> nodes = new ArrayList<Record>();
+		for (Record func : list) {
+			Record node = new Record();
+			node.set("name",func.get("func_name"));
+			node.set("value",func.get("id"));
+			if(func.get("id").equals(selectData)){
+				node.set("selected", true);		
+			}
+			Collection<Record> children = this.getXMSelectData(func.get("id"),selectData);
+			node.set("children",children);
+			nodes.add(node);
+		}
+		return nodes;
+	}
 }

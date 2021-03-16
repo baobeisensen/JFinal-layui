@@ -188,4 +188,20 @@ public class SysFuncController extends BaseController {
 		CacheKit.removeAll("funcManager");
 		renderJson(suc("修改成功"));
 	}
+	
+	public void getXmSelectData(){
+		String parentId=getPara("parentId","frame");
+		String selectData=getPara("selectData");
+		Collection<Record> xmSelectData=service.getXMSelectData(parentId,selectData);
+		Collection<Record> node=new ArrayList<>();
+		Record rd =new Record();
+		rd.set("value", "frame");
+		if("frame".equals(selectData)){
+			rd.set("selected", true);
+		}
+		rd.set("name", WebContant.projectName);
+		rd.set("children", xmSelectData);
+		node.add(rd);
+		renderJson(ok(node));
+	}
 }

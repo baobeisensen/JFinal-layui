@@ -22,6 +22,7 @@ import java.util.List;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
+import com.jfinal.plugin.activerecord.Record;
 import com.qinhailin.common.base.service.BaseService;
 import com.qinhailin.common.model.SysOrg;
 import com.qinhailin.common.vo.TreeNode;
@@ -100,5 +101,23 @@ public class SysOrgService extends BaseService {
 			getIdsByOrgId(t.getId(),sbf);			
 		}
 		return sbf.toString();
+	}
+	
+	public Collection<Record> getXMSelectData(String treeNodeId,String selectData) {
+		List<SysOrg> list = dao.find("select * from sys_org where parentid=? order by id asc", treeNodeId);
+
+		Collection<Record> nodes = new ArrayList<Record>();
+		for (SysOrg org : list) {
+			Record node = new Record();
+			node.set("name",org.getOrgName());
+			node.set("value",org.getId());
+			if(org.getId().equals(selectData)){
+				node.set("selected", true);		
+			}
+			Collection<Record> children = this.getXMSelectData(org.getId(),selectData);
+			node.set("children",children);
+			nodes.add(node);
+		}
+		return nodes;
 	}
 }

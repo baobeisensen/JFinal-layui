@@ -1,8 +1,10 @@
 	#(token)
-	<input type="hidden" class="layui-input" name="sysFunction.parentCode" value="#(sysFunction.parent_code??parentId)"/>
+	###<input type="hidden" class="layui-input" name="sysFunction.parentCode" value="#(sysFunction.parent_code??parentId)"/>
 	<div class="layui-row layui-col-space1 task-row">
 	#@colStart("上级菜单",12)
-		<input type="text" class="layui-input layui-disabled" name="sysFunction.parentName" value="#(sysFunction.parentName??parentName)" readonly="readonly"/>
+		#set(value=sysFunction.parent_code??parentId,filterable=true)
+		#@getFuncSelect('parentCode','sysFunction.parentCode')
+		###<input type="text" class="layui-input layui-disabled" name="sysFunction.parentName" value="#(sysFunction.parentName??parentName)" readonly="readonly"/>
 	#@colEnd()
 	</div>
 	<div class="layui-row layui-col-space1 task-row">

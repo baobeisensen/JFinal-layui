@@ -51,6 +51,34 @@
        </div>
        <br/>			
 
+		<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 10px;">
+           <legend>部门树(radio模式)</legend>
+       </fieldset>
+       <div class="layui-row layui-col-space1 task-row">
+	        #@colStart("单选+搜索",6)
+	        <!-- 原生写法 -->
+	        <div id="demo4"></div>
+	        #@colEnd()
+		</div>
+	    <div class="layui-row layui-col-space1 task-row">
+	        <!-- 内部封装用法,参数：1、divId,2、表单提交名称 -->
+	        #@colStart("单选无搜索",6)
+	        	#@getOrgSelect('demo5','org')
+	        #@colEnd()
+		</div>
+	    <div class="layui-row layui-col-space1 task-row">
+	        #@colStart("多选+无搜索",6)
+	        	#set(radio=false,value='ff808081616e1efd01616e2c89af0000')
+	        	#@getOrgSelect('demo6','org3')
+	        #@colEnd()
+		</div>
+	    <div class="layui-row layui-col-space1 task-row">
+	         #@colStart("多选+搜索",6)
+	        	#set(radio=false,filterable=true)
+	        	#@getOrgSelect('demo7','org4')
+	        #@colEnd()
+       </div>
+       <br/>		
 
 #end
 #define js()
@@ -262,5 +290,36 @@ var demo3 = xmSelect.render({
 		]
 	}
 })
+
+var demo4 = xmSelect.render({
+	el: '#demo4', 
+	model: { label: { type: 'text' } },
+	radio: true,
+	clickClose: true,
+	name:'orgId',
+	tree: {
+		show: true,
+		strict: false,
+		expandedKeys: [ -1 ],
+	},
+	height: 'auto',
+	filterable:true
+})
+
+$.ajax({
+	url:'#(path)/portal/core/sysOrg/getXmSelectData',
+	type:"POST",
+	data:{"selectData":"40288ae767ee75f70167ee7bae0a0001"},
+	success:function(ret){
+		if(ret.state=='ok'){
+			var data=ret.data;
+			demo4.update({
+				data: data,
+				autoRow: true,
+			})
+		}
+	}
+})
+
 </script>
 #end

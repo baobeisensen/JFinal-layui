@@ -182,4 +182,12 @@ public class SysOrgController extends BaseController {
 		}
 		renderJson(ok());
 	}
+	
+	public void getXmSelectData(){
+		String parentId=getPara("parentId","sys");
+		String selectData=getPara("selectData");
+		Collection<Record> xmSelectData=service.getXMSelectData(parentId,selectData);
+		renderJson(ok(xmSelectData));
+	}
+	 
 }
