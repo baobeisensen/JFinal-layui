@@ -56,3 +56,6 @@
 	height:30px;
 	min-height: 30px;
 }
+.layui-table-tool{
+	min-height:35px;
+}
