@@ -26,6 +26,7 @@ import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.IDataLoader;
 import com.qinhailin.common.base.BaseController;
+import com.qinhailin.common.config.WebContant;
 import com.qinhailin.common.model.SysOrg;
 import com.qinhailin.common.vo.Feedback;
 import com.qinhailin.common.vo.TreeNode;
@@ -187,7 +188,16 @@ public class SysOrgController extends BaseController {
 		String parentId=getPara("parentId","sys");
 		String selectData=getPara("selectData");
 		Collection<Record> xmSelectData=service.getXMSelectData(parentId,selectData);
-		renderJson(ok(xmSelectData));
+		Collection<Record> node=new ArrayList<>();
+		Record rd =new Record();
+		rd.set("value", "sys");
+		if("sys".equals(selectData)){
+			rd.set("selected", true);
+		}
+		rd.set("name", "组织机构");
+		rd.set("children", xmSelectData);
+		node.add(rd);
+		renderJson(ok(node));
 	}
 	 
 }
