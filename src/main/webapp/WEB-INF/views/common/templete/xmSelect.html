@@ -1,7 +1,7 @@
 
 <!-- 功能下拉函数 -->
 #define getFuncSelect(divId,inputName)
-	<div id="#(divId)"></div>
+	<div id="#(divId)" style="min-width:100px;#(style)"></div>
 	<script type="text/javascript">
 	$(function(){
 		getFuncOption("#(divId)","#(inputName)","#(value)",#(radio??true),#(filterable??false));
@@ -12,7 +12,7 @@
 
 <!-- 部门下拉函数 -->
 #define getOrgSelect(divId,inputName)
-<div id="#(divId)"></div>
+<div id="#(divId)"  style="min-width:100px;#(style)"></div>
 <script type="text/javascript">
 	$(function(){
 		getOrgOption("#(divId)","#(inputName)","#(value)",#(radio??true),#(filterable??false));
