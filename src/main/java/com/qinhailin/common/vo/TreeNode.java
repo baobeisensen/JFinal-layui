@@ -65,7 +65,14 @@ public class TreeNode {
 	}
 
 	public String getHref() {
-		return JFinal.me().getContextPath() + url;
+		if(url!=null){
+			if(url.startsWith("http://")||url.startsWith("https://")){
+				return url;
+			}else{
+				return JFinal.me().getContextPath() + url;
+			}
+		}
+		return url;
 	}
 
 	public void setUrl(String url) {
