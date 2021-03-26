@@ -30,8 +30,7 @@ import com.qinhailin.common.kit.VerifyCodeKit;
 public class VerifyController extends Controller {
 
 	public void index() {
-		VerifyCodeKit.createImage(getResponse(), 2);
-		getSession().setAttribute("verifyCode", VerifyCodeKit.getVerityCode(2));
+		getSession().setAttribute("verifyCode", VerifyCodeKit.createImage(getResponse(), 2));
 		renderNull();
 	}
 }

@@ -21,6 +21,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -35,47 +37,34 @@ import javax.servlet.http.HttpServletResponse;
 public class VerifyCodeKit {
 
 	/**
-	 * 保存认证码
-	 */
-	private static String verityCode = "";
-	/**
 	 * 随机函数
 	 */
 	private static Random random = new Random();
 	
 	/**
-	 * 输出验证码图片到页面	 * 
+	 * 输出验证码图片到页面	  
 	 * @param response
 	 * @param type 1:数字验证码；2：算式验证码
 	 * @author QinHaiLin
 	 * @date 2018年2月5日
 	 */
-	public static void createImage(HttpServletResponse response,int type) {
-		BufferedImage image=createImage(80,30,type);
-		ServletOutputStream out;
-		try {
-			out = response.getOutputStream();
-			ImageIO.write(image, "jpeg", out);
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * 获取createImage认证码
-	 * @param type 1:数字验证码；2：算式验证码
-	 * @return
-	 * @author QinHaiLin
-	 * @date 2018年2月2日下午1:16:36
-	 */
-	public static String getVerityCode(int type) {
-		if (verityCode.equals("")) {
-			createImage(80, 30,type);
+	public static String createImage(HttpServletResponse response,int type) {
+		Map<String,Object> map=createImage(80,30,type);		
+		BufferedImage image=(BufferedImage) map.get("image");
+		String verityCode=map.get("verityCode").toString();
+		if(response!=null){
+			ServletOutputStream out;
+			try {
+				out = response.getOutputStream();
+				ImageIO.write(image, "jpeg", out);
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}		
 		}
 		return verityCode;
 	}
-
+	
 	/**
 	 * 给定范围获得随机颜色
 	 *
@@ -110,7 +99,8 @@ public class VerifyCodeKit {
 	 * @author QinHaiLin
 	 * @date 2018年2月2日下午1:01:19
 	 */
-	public static BufferedImage createImage(int width, int height,int type) {
+	public static Map<String,Object> createImage(int width, int height,int type) {
+		Map<String,Object> result=new HashMap<>();
 		BufferedImage image = new BufferedImage(width, height,
 				BufferedImage.TYPE_INT_RGB);
 		// 获取图形上下文
@@ -140,8 +130,10 @@ public class VerifyCodeKit {
 			//算式验证码
 			vCode=drawString(g);
 		}
-		verityCode=vCode;
-		return image;
+
+		result.put("verityCode", vCode);
+		result.put("image", image);
+		return result;
 	}
 		
 	/**
