@@ -186,12 +186,17 @@ public class SysOrgController extends BaseController {
 	
 	public void getXmSelectData(){
 		String parentId=getPara("parentId","sys");
-		String selectData=getPara("selectData");
-		Collection<Record> xmSelectData=service.getXMSelectData(parentId,selectData);
+		String selectData=getPara("selectData","");
+		String disabledData=getPara("disabledData","");
+		Collection<Record> xmSelectData=service.getXMSelectData(parentId,selectData,disabledData);
 		Collection<Record> node=new ArrayList<>();
 		Record rd =new Record();
 		rd.set("value", "sys");
-		if("sys".equals(selectData)){
+
+		if(disabledData.contains("sys")){
+			rd.set("disabled", true);
+		}
+		if(selectData.contains("sys")){
 			rd.set("selected", true);
 		}
 		rd.set("name", "组织机构");

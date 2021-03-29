@@ -103,21 +103,56 @@ public class SysOrgService extends BaseService {
 		return sbf.toString();
 	}
 	
-	public Collection<Record> getXMSelectData(String treeNodeId,String selectData) {
+	/**
+	 * 部门下拉函数接口
+	 * @param treeNodeId
+	 * @param selectData，选中项数据
+	 * @param disabledData 禁用选项数据
+	 * @return
+	 */
+	public Collection<Record> getXMSelectData(String treeNodeId,String selectData,String disabledData) {	
+		String[] selData={};
+		String[] disData={};
+		if(selectData!=null){
+			selData=selectData.split(",");
+		}
+		if(selectData!=null){
+			disData=disabledData.split(",");
+		}
+		
 		List<SysOrg> list = dao.find("select * from sys_org where parentid=? order by id asc", treeNodeId);
-
 		Collection<Record> nodes = new ArrayList<Record>();
 		for (SysOrg org : list) {
 			Record node = new Record();
 			node.set("name",org.getOrgName());
 			node.set("value",org.getId());
-			if(org.getId().equals(selectData)){
-				node.set("selected", true);		
+			
+			//禁用选项
+			if(disData.length>0){
+				for (int i = 0; i < disData.length; i++) {
+					if(org.getId().equals(disData[i])){
+						node.set("disabled", true);		
+					}							
+				}
 			}
-			Collection<Record> children = this.getXMSelectData(org.getId(),selectData);
+			//选中值，多选、单选
+			if(selData.length>1){
+				for (int i = 0; i < selData.length; i++) {
+					if(org.getId().equals(selData[i])){
+						node.set("selected", true);		
+					}							
+				}
+			}else{
+				if(org.getId().equals(selectData)){
+					node.set("selected", true);		
+				}	
+			}
+			
+			Collection<Record> children = this.getXMSelectData(org.getId(),selectData,disabledData);
 			node.set("children",children);
 			nodes.add(node);
 		}
+		
 		return nodes;
 	}
 }

@@ -9,12 +9,8 @@
 		   <input type="search" name="userName" autocomplete="off" class="layui-input" placeholder="姓名"/>
 		#@queryEnd()
 		#@queryStart('部门')
-		   <select name="orgId" class="layui-input" lay-search>
-		   		<option value="">---请选择部门---</option>
-		   		#for(data:orgList)
-       			<option value="#(data.value??)">#(data.text??)</option>
-       			#end
-		   </select>
+			#setLocal(size="mini",style="width:200px")
+			#@getOrgSelect('orgId','orgId')
 		#@queryEnd()
 		
 		#@queryStart('性别')
