@@ -28,12 +28,12 @@
 	              <td>#number(data.file_size/1024.0,"#.#")KB</td>
 	              <td>#date(data.create_time??,"yyyy-MM-dd HH:mm:ss")</td>
 	              <td>
-	              	<a href="#(path)/portal/download/#(data.url??)"><button class="layui-btn layui-btn-xs">下载</button></a>
+	              	<a href="#(path)/portal/download/#(data.url??)" class="layui-btn layui-btn-xs">下载</a>
 	              	#set(fileType=data.file_name.substring(data.file_name.lastIndexOf(".")+1).toLowerCase())
 	              	#if(fileType=="jpg"||fileType=="png"||fileType=="jpeg"||fileType=="gif"||fileType=="ico"||fileType=="bmp")
-	              	<a href="javascript:reviewImg('#(data.url??)','#(data.file_name??)')"><button class="layui-btn layui-btn-xs">预览</button></a>
+	              	<a href="javascript:reviewImg('#(data.url??)','#(data.file_name??)')" class="layui-btn layui-btn-xs" >预览</a>
 	              	#end
-	              	<a href="javascript:deleteFile('#(data.url??)','#(data.file_name??)')"><button class="layui-btn layui-btn-xs layui-btn-danger .demo-delete">删除</button></a>
+	              	<a href="javascript:deleteFile('#(data.url??)','#(data.file_name??)')" class="layui-btn layui-btn-xs layui-btn-danger .demo-delete" >删除</a>
 	              </td>
 	           </tr>
 	           #end
