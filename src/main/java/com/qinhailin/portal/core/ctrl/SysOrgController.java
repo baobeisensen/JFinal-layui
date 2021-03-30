@@ -157,9 +157,9 @@ public class SysOrgController extends BaseController {
 	public void saveFormData(){
 		SysOrg entity=getBean(SysOrg.class);
 		boolean b=entity.setOrgCode(entity.getId()).save();
+		String json=(String) getSession().getAttribute(entity.getId()+"sysUser");
 		//主表录入成功才录入从表信息
-		if(b){			
-			String json=(String) getSession().getAttribute(entity.getId()+"sysUser");
+		if(b&&json!=null){			
 			sysUserService.saveUserList(JSONArray.parseArray(json), entity.getId());
 			getSession().removeAttribute(entity.getId()+"sysUser");
 		}

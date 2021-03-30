@@ -180,6 +180,8 @@ public class SysUserService extends BaseService {
 	 * @return
 	 */
 	public boolean saveUserList(JSONArray userList,String orgId){
+		if(userList==null)
+			return false;
 		for(int i=0;i<userList.size();i++){
 			JSONObject obj=(JSONObject) userList.get(i);
 			String userCode=obj.getString("user_code");
