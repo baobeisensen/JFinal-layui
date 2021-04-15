@@ -123,8 +123,7 @@ public class SessionInterceptor implements Interceptor {
 //		if(b){	
 //			b="XMLHttpRequest".equalsIgnoreCase(controller.getHeader("X-Requested-With"));
 //			if (b) {
-//				controller.renderJson(Feedback.error("权限异常，请联系管理员"));		
-//				controller.renderJson(Ret.fail("code", "error").set("msg", "权限异常，请联系管理员"));	
+//				controller.renderJson(Ret.fail("code", "error").set("msg", "没有访问权限，请联系管理员"));	
 //				return;
 //			}else{
 //				controller.getResponse().setStatus(403);

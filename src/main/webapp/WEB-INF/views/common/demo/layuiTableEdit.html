@@ -16,7 +16,7 @@
 	<!-- 	每行的操作按钮 -->
 	<script type="text/html" id="table_rowbar_1">
   		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del_btn_1">删除</a>
-		<a class="layui-btn layui-btn-xs layui-btn-danger rowmoreBtn" lay-events="viewinfo,neworder,recycle">更多</a>
+		<a class="layui-btn layui-btn-xs layui-btn-danger rowmoreBtn" lay-events="viewinfo,neworder,recycle" data-id="{{d.id}}">更多</a>
 	</script>
 </div>	
 #end
@@ -40,10 +40,9 @@ function getTableData(table){
 }
 
 layui.extend({
-	tableEdit: '#(path)/static/libs/ext/tableEdit',
-	dropMenu: '#(path)/static/libs/dropMenu/dropMenu'
-}).use(['table','tableEdit','layer','dropMenu'], function () {
-        var table = layui.table,tableEdit = layui.tableEdit,$ = layui.$;
+	tableEdit: '#(path)/static/libs/ext/tableEdit'
+}).use(['table','tableEdit','layer','dropdown'], function () {
+        var table = layui.table,tableEdit = layui.tableEdit,$ = layui.$,dropdown=layui.dropdown;
         var params = [{value:1,name:"张三1"},{value:2,name:"张三2"},{value:3,name:"张三3"},{value:4,name:"张三4"},{value:5,name:"张三5"}];
       	//初始化表格数据
         getTableData(table);
@@ -137,53 +136,27 @@ layui.extend({
 					var saveUrl="";//TODO
 					submitData(saveUrl,{"tableList":JSON.stringify(editTableData)});
 				});	
-								
-				//下拉菜单
-				layui.dropMenu.render({
-					 type:0,
-		             elem:".rowmoreBtn",
-		             width:"110px", //菜单宽度（非必填）
-		             location:"r", //下拉菜单依靠位置，c居中、l左、r右（非必填）
-		 	         align: "l", //菜单内容文本对齐方式，c居中、l左、r右（非必填）
-		             data:[
-				     	 {title:'查看', icon:'layui-icon-set', event:'viewinfo'},
-		                 {title:'新建订单', icon:'layui-icon-add-circle', event:'neworder'},
-		                 {title:'放入回收站', icon:'layui-icon-cart', event:'recycle'}
-		             ]
-					//触发的事件（非必填）
-		 	   		,event:{
-		 	   			viewinfo: function(obj){
-			 	   			var checkStatus = table.checkStatus('tableId'); // test即为基础参数id对应的值
-			 	   			if(checkStatus.data.length==0){
-								layer.msg("请选择行");
-								return;
-				 	   		}		 	   		
-				 	   		layer.alert(JSON.stringify(checkStatus.data), {
-				 	   	      title: '当前行数据：'
-				 	   	    });	
-		 	   			},
-		 	   			neworder: function(){
-		 	   			var checkStatus = table.checkStatus('tableId'); // test即为基础参数id对应的值
-		 	   			if(checkStatus.data.length==0){
-							layer.msg("请选择行");
-							return;
-			 	   		}		 	   			
-			 	   		layer.alert(JSON.stringify(checkStatus.data), {
-				 	   	      title: '当前行数据：'
-				 	   	    });	
-		 	   			},
-		 	   			recycle: function(){
-			 	   			var checkStatus = table.checkStatus('tableId'); // test即为基础参数id对应的值
-			 	   			if(checkStatus.data.length==0){
-								layer.msg("请选择行");
-								return;
-				 	   		}		 	   			
-				 	   		layer.alert(JSON.stringify(checkStatus.data), {
-					 	   	      title: '当前行数据：'
-					 	   	    });	
-		 	   			}
-		 	   		}
-		        });
+
+			  //下拉菜单
+			  dropdown.render({
+			    elem: '.rowmoreBtn'
+			    ,data: [{
+			      title: 'menu item11'
+			      ,id: 100
+			    },{
+			      title: 'menu item22'
+			      ,id: 101
+			    },{
+			      title: 'menu item33'
+			      ,id: 102
+			    }]
+			    ,click: function(data,othis){
+			    	 var elem = $(this.elem)
+			         ,listId = elem.data('id'); //表格列表的预埋数据
+			         layer.msg('得到表格列表的 id：'+ listId +'，下拉菜单 id：'+ data.id);
+			    }
+			  });
+			  				
 	        }
         }).config.cols;  
 

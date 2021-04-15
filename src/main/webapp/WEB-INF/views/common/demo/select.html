@@ -24,7 +24,7 @@
 		</div>
 		 <div class="layui-row layui-col-spacel task-row">
 		  #@colStart('下拉菜单',6)
-				<button class="layui-btn layui-btn-normal rowmoreBtn" type="button" lay-event="toolmoreBtn">
+				<button class="layui-btn layui-btn-normal rowmoreBtn" type="button">
 	 				<i class="layui-icon">&#xe605;</i> 更多
 			</button>
 	  	  #@colEnd()         
@@ -65,13 +65,14 @@
 
   layui.extend({
 	  selectN: '#(path)/static/libs/layui_extends/selectN',
-  	  selectM: '#(path)/static/libs/layui_extends/selectM',
-  	  dropMenu: '#(path)/static/libs/dropMenu/dropMenu'
-  }).use(['layer','form','jquery','selectN','selectM','dropMenu'],function(){
+  	  selectM: '#(path)/static/libs/layui_extends/selectM'
+  }).use(['layer','form','jquery','selectN','selectM','util','dropdown'],function(){
     $ = layui.jquery;	
     var form = layui.form
     ,selectN = layui.selectN
-    ,selectM = layui.selectM;
+    ,selectM = layui.selectM
+    ,util=layui.util
+    ,dropdown=layui.dropdown;
 
 
     //无限级分类-基本配置
@@ -190,39 +191,130 @@
     });
 
 	//下拉菜单
-    layui.dropMenu.render({
-        type:0, //默认0，单击和鼠标经过时都生效，1点击时，2鼠标经过时（非必填）
-		elem:".rowmoreBtn", //$(".rowmoreBtn")
-		width:"100px", //菜单宽度（非必填）
-	        //css:{"background":"red"}, //菜单样式（非必填）
-	        location:"r", //下拉菜单依靠位置，c居中、l左、r右（非必填）
-	        align: "l", //菜单内容文本对齐方式，c居中、l左、r右（非必填）
-	         //菜单数据，isShow是否显示，可配合权限来显示
-		data:[
-			{title:'选项1', icon:'layui-icon-set', event:'more1', isShow:true},
-			{title:'选项2', icon:'layui-icon-notice', event:'more2'},
-			{title:'选项3', icon:'layui-icon-search', event:'more3'},
-			{title:'选项1', icon:'layui-icon-friends', event:'more1'},
-			{title:'选项2', icon:'layui-icon-console', event:'more2'},
-			{title:'选项3', icon:'layui-icon-app', event:'more3'},
-			{title:'选项1', icon:'layui-icon-home', event:'more1'},
-			{title:'选项2', event:'more2'},
-			{title:'选项3', icon:'layui-icon-face-smile', event:'more3', isShow:false}
-		],
-	    //触发的事件（非必填）
-		event:{
-			more1: function(){
-			  alert('触发了事件1');
-			},
-			more2: function(){
-			  alert('触发了事件2');
-			},
-			more3: function(){
-			  alert('触发了事件3');
-			}
-		},
-	    done:function(dropM){ } //菜单渲染完成后触发事件，dropM下拉菜单对象
-	});
+  //无限层级
+    dropdown.render({
+      elem: '.rowmoreBtn'
+      ,data: [{
+        title: 'JFinal-layui'
+        ,templet: '<i class="layui-icon layui-icon-picture"></i> {{d.title}} <span class="layui-badge-dot"></span>'
+        ,id: 100
+        ,href: 'https://www.qinhaisenlin.com'
+        ,target: '_blank'
+      },{
+        title: 'JFinal'
+        ,templet: '<img src="#(path)/favicon.ico?t=123" style="width: 16px;"> {{d.title}}'
+        ,id: 101
+        ,href: 'https://www.jfinal.com'
+        ,target: '_blank'
+      },{
+        title: 'layui'
+        ,templet: '<img src="#(path)/static/img/0.png?t=123" style="width: 16px;"> {{d.title}}'
+        ,id: 101
+        ,href: 'https://www.layui.com'
+        ,target: '_blank'
+      }
+      ,{type: '-'} //分割线
+      ,{
+        title: 'menu item 3'
+        ,id: 102
+        ,type: 'group'
+        ,child: [{
+          title: 'menu item 3-1'
+          ,id: 103
+        },{
+          title: 'menu item 3-2'
+          ,id: 104
+          ,child: [{
+            title: 'menu item 3-2-1'
+            ,id: 105
+          },{
+            title: 'menu item 3-2-2'
+            ,id: 11
+            ,type: 'group'
+            ,child: [{
+              title: 'menu item 3-2-2-1'
+              ,id: 111
+            },{
+              title: 'menu item 3-2-2-2'
+              ,id: 1111
+            }]
+          },{
+            title: 'menu item 3-2-3'
+            ,id: 11111
+          }]
+        },{
+          title: 'menu item 3-3'
+          ,id: 111111
+          ,type: 'group'
+          ,child: [{
+            title: 'menu item 3-3-1'
+            ,id: 22
+          },{
+            title: 'menu item 3-3-2'
+            ,id: 222
+            ,child: [{
+              title: 'menu item 3-3-2-1'
+              ,id: 2222
+            },{
+              title: 'menu item 3-3-2-2'
+              ,id: 22222
+            },{
+              title: 'menu item 3-3-2-3'
+              ,id: 2222222
+            }]
+          },{
+            title: 'menu item 3-3-3'
+            ,id: 333
+          }]
+        }]
+      }
+      ,{type: '-'}
+      ,{
+        title: 'menu item 4'
+        ,id: 4
+      },{
+        title: 'menu item 5'
+        ,id: 5
+        ,child: [{
+          title: 'menu item 5-1'
+          ,id: 55
+          ,child: [{
+            title: 'menu item 5-1-1'
+            ,id: 5555
+          },{
+            title: 'menu item 5-1-2'
+            ,id: 55555
+          },{
+            title: 'menu item 5-1-3'
+            ,id: 555555
+          }]
+        },{
+          title: 'menu item 5-2'
+          ,id: 52
+        },{
+          title: 'menu item 5-3'
+          ,id: 53
+        }]
+      },{type:'-'},{
+        title: 'menu item 6'
+        ,id: 66
+        ,type: 'group'
+        ,isSpreadItem: false
+        ,child: [{
+          title: 'menu item 6-1'
+          ,id: 666
+        },{
+          title: 'menu item 6-2'
+          ,id: 6666
+        },{
+          title: 'menu item 6-3'
+          ,id: 66666
+        }]
+      }]
+      ,click: function(item){
+        layer.msg(util.escape(JSON.stringify(item)));
+      }
+    });
     
   });
       
