@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jfinal.aop.Clear;
 import com.jfinal.core.JFinal;
 import com.jfinal.core.Path;
 import com.jfinal.kit.PathKit;
@@ -33,6 +34,7 @@ import com.jfinal.upload.UploadFile;
 import com.qinhailin.common.model.FileUploaded;
 import com.qinhailin.common.base.BaseController;
 import com.qinhailin.common.config.WebContant;
+import com.qinhailin.common.intercepor.SessionInterceptor;
 
 /**
  * 附件、公共方法类
@@ -40,6 +42,7 @@ import com.qinhailin.common.config.WebContant;
  * @author QinHaiLin
  *
  */
+@Clear(SessionInterceptor.class)
 @Path(value="/portal",viewPath="/")
 public class PortalController extends BaseController {
 
