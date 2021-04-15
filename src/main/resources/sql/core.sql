@@ -16,7 +16,7 @@
 
 查询角色权限菜单树
 #sql("getRoleFunctionTree")
-	select a.id,a.parent_code,a.func_name,a.link_page,a.icon,a.func_type,a.is_stop,a.spread,,is_window_open  
+	select a.id,a.parent_code,a.func_name,a.link_page,a.icon,a.func_type,a.is_stop,a.spread,is_window_open  
 	from sys_function a 
 	left join sys_role_function b on a.id=b.function_id 
 	where b.role_code=? and a.parent_code=? and a.is_stop=0 
