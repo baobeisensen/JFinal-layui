@@ -55,7 +55,7 @@ public class FileService  {
 	}
 
 	public FileUploaded queryFileUploadedByObjectId(String objectId) {
-		List<FileUploaded> list = dao.find("select * from file_uploaded where object_id=?", objectId);
+		List<FileUploaded> list = dao.find("select * from file_uploaded where object_id=? order by create_time desc", objectId);
 		if (list.size() > 0) {
 			return list.get(0);
 		}
