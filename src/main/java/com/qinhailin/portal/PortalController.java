@@ -42,7 +42,6 @@ import com.qinhailin.common.intercepor.SessionInterceptor;
  * @author QinHaiLin
  *
  */
-@Clear(SessionInterceptor.class)
 @Path(value="/portal",viewPath="/")
 public class PortalController extends BaseController {
 
@@ -105,6 +104,7 @@ public class PortalController extends BaseController {
 	 * @author QinHaiLin
 	 * @date 2018年8月1日
 	 */
+	@Clear(SessionInterceptor.class)
 	public void download() {
 		String url = getAttr("url", "");
 		FileUploaded fu;
@@ -145,6 +145,7 @@ public class PortalController extends BaseController {
 	 * @author QinHaiLin
 	 * @date 2018年8月13日
 	 */
+	@Clear(SessionInterceptor.class)
 	public void getFileList() {
 		String objectId = getPara(0,getVisitor().getCode());
 		setAttr("fileList", getFileUploadListByObjectId(objectId));
@@ -159,6 +160,7 @@ public class PortalController extends BaseController {
 	 * @author QinHaiLin
 	 * @date 2018年8月2日
 	 */
+	@Clear(SessionInterceptor.class)
 	public void temp() {
 		renderFile(new File(PathKit.getWebRootPath() + "/" + WebContant.baseDownloadPath + getAttr("url")));
 	}
@@ -182,6 +184,7 @@ public class PortalController extends BaseController {
 	 * @author QinHaiLin
 	 * @date 2019年6月16日
 	 */
+	@Clear(SessionInterceptor.class)
 	public void view() {
 		String url = getAttr("url", "");
 		FileUploaded fu;
