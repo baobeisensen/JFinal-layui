@@ -31,6 +31,7 @@ import com.jfinal.upload.UploadFile;
 import com.qinhailin.common.model.FileUploaded;
 import com.qinhailin.common.kit.ExcelKit;
 import com.qinhailin.common.kit.IdKit;
+import com.qinhailin.common.kit.SqlKit;
 
 /**
  * 附件管理
@@ -99,14 +100,7 @@ public class FileService  {
 	}
 
 	public void deleteFiles(List<String> urls) {
-		StringBuffer sbf = new StringBuffer();
-		for (String url : urls) {
-			if (sbf.length() > 0) {
-				sbf.append(",");
-			}
-			sbf.append("'").append(url).append("'");
-		}
-		List<FileUploaded> list = dao.find("select * from file_uploaded where url in (" + sbf.toString() + ")");
+		List<FileUploaded> list = dao.find("select * from file_uploaded where url in " + SqlKit.joinIds(urls));
 		delete(list);
 	}
 
