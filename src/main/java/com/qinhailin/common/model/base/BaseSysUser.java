@@ -132,7 +132,7 @@ public abstract class BaseSysUser<M extends BaseSysUser<M>> extends Model<M> imp
 	}
 	
 	public java.util.Date getAllowLoginTime() {
-		return get("allow_login_time");
+		return getDate("allow_login_time");
 	}
 
 	public M setFailureNumber(java.lang.Integer failureNumber) {

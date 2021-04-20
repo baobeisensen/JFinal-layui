@@ -24,7 +24,7 @@ public abstract class BaseFileUploaded<M extends BaseFileUploaded<M>> extends Mo
 	}
 	
 	public java.util.Date getCreateTime() {
-		return get("create_time");
+		return getDate("create_time");
 	}
 
 	public M setFileName(java.lang.String fileName) {

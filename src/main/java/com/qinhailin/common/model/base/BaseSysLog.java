@@ -51,7 +51,7 @@ public abstract class BaseSysLog<M extends BaseSysLog<M>> extends Model<M> imple
 	}
 	
 	public java.util.Date getCreateTime() {
-		return get("create_time");
+		return getDate("create_time");
 	}
 
 	public M setUserCode(java.lang.String userCode) {
