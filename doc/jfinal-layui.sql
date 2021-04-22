@@ -100,7 +100,7 @@ INSERT INTO sys_function VALUES ('data_dictionary_value', '字典数据值', 0, 
 INSERT INTO sys_function VALUES ('data_dictionary_value_add', '添加', 0, '/portal/core/dictionary/value/add', 'data_dictionary_value', '字典数据值', 1, NULL, 5, NULL, 1,0);
 INSERT INTO sys_function VALUES ('data_dictionary_value_delete', '删除', 0, '/portal/core/dictionary/value/delete', 'data_dictionary_value', '字典数据值', 1, NULL, 7, NULL, 1,0);
 INSERT INTO sys_function VALUES ('data_dictionary_value_update', '修改', 0, '/portal/core/dictionary/update', 'data_dictionary_value', '字典数据值', 1, NULL, 6, NULL, 1,0);
-INSERT INTO sys_function VALUES ('frame_main_view', '主页', 0, 'https://www.qinhaisenlin.com/user/reg/2', 'frame', 'JFinal极速开发企业应用管理系统', 0, 'layui-icon-home', 2, NULL, 1,0);
+INSERT INTO sys_function VALUES ('frame_main_view', '主页', 0, '/portal/go/home', 'frame', 'JFinal极速开发企业应用管理系统', 0, 'layui-icon-home', 2, NULL, 1,0);
 INSERT INTO sys_function VALUES ('pub_fileList', '附件列表', 0, '/portal/getFileList', 'sys', '网站后台管理', 0, 'layui-icon-read', 5, NULL, 1,0);
 INSERT INTO sys_function VALUES ('sys', '网站后台管理', 0, NULL, 'frame', 'JFinal极速开发企业应用管理系统', 0, NULL, 1, NULL, 1,0);
 INSERT INTO sys_function VALUES ('sys_druid', '性能监控', 0, '/assets/druid', 'sys', '网站后台管理', 0, 'layui-icon-engine', 3, NULL, 1,0);
@@ -492,6 +492,7 @@ INSERT INTO sys_role_function VALUES ('zjl_sys_user_delete', 'sys_user_delete', 
 INSERT INTO sys_role_function VALUES ('zjl_sys_user_manager', 'sys_user_manager', 'zjl');
 INSERT INTO sys_role_function VALUES ('zjl_sys_user_reset', 'sys_user_reset', 'zjl');
 INSERT INTO sys_role_function VALUES ('zjl_sys_user_update', 'sys_user_update', 'zjl');
+INSERT INTO sys_role_function VALUES ('admin-frame_main_view', 'frame_main_view', 'admin');
 INSERT INTO sys_role_function VALUES ('admin-form_business_table', 'form_business_table', 'admin');
 INSERT INTO sys_role_function VALUES ('admin-form_sys_tree', 'form_sys_tree', 'admin');
 INSERT INTO sys_role_function VALUES ('admin-form_sys_tree_add', 'form_sys_tree_add', 'admin');
